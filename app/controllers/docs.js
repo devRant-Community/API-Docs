@@ -1,0 +1,3 @@
+app.controller('DocsController', function ($scope) {
+	// ...
+});
