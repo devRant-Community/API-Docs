@@ -1,22 +1,35 @@
 <section id="docs" class="row">
 	<aside id="docs-quicklinks" class="col-md-2 bg-devrant-dark">
 		<nav class="nav flex-column">
+			<a class="nav-link" href="#intro" ><code>Introduction</code></a>
 			<a class="nav-link" href="#endpoint-1" ><code>/end/point/</code></a>
 			<a class="nav-link" href="#endpoint-2" ><code>/end/point/</code></a>
 			<a class="nav-link" href="#"><code>/end/point/</code></a>
 			<a class="nav-link" href="#"><code>/end/point/</code></a>
+			<a class="nav-link" href="#errors"><code>Errors</code></a>
 		</nav>
 	</aside>
 	<div id="docs-content" class="col-md-10 row mt-3">
 		<div id="docs-endpoints" class="col-md-10 mx-auto">
+			<div id="intro" class="card textbox">
+				<div class="card-body">
+					<h4 class="card-title textbox-title"><code>Introduction</code></h4>
+					<p class="card-text textbox-content">
+						Welcome to the devRant-API Documentation!<br>
+						bla bla bla ...
+					</p>
+				</div>
+			</div>
+
 			<div id="endpoint-1" class="card endpoint">
 				<div class="card-body">
-					<h4 class="card-title endpoint-title"><span class="badge badge-pink">GET</span> <code>/end/point/</code></h4>
+					<h4 class="card-title endpoint-title"><span class="badge badge-method">GET</span> <code>/end/point/</code></h4>
 					<hr>
 					<div class="card-text endpoint-content">
 						<p class="endpoint-description">
 							Used to bla bla and then bla. Also be used in bla lol haha lorem ipsum
 						</p>
+
 						<div class="endpoint-parameters mt-4">
 							<h4>Parameters:</h4>
 							<dl class="endpoint-parameters-list">
@@ -56,19 +69,22 @@
 					</div>
 				</div>
 			</div>
+
 			<div id="endpoint-2" class="card endpoint">
 				<div class="card-body">
-					<h4 class="card-title endpoint-title"><span class="badge badge-pink">POST</span> <code>/end/point/</code></h4>
+					<h4 class="card-title endpoint-title"><span class="badge badge-method">POST</span> <code>/end/point/</code></h4>
 					<hr>
 					<div class="card-text endpoint-content">
 						<p class="endpoint-description">
 							Used to bla bla and then bla. Also be used in bla lol haha lorem ipsum
 						</p>
+
 						<div class="endpoint-parameters mt-4">
 							<h4>Parameters:</h4>
 							<dl class="endpoint-parameters-list">
 								<dt>app</dt>
 								<dd>Standart app parameter. Set to 3</dd>
+
 								<dt>id</dt>
 								<dd>ID of the user</dd>
 							</dl>
@@ -98,6 +114,17 @@
 						<div class="text-center">
 							<a class="endpoint-tryout btn btn-red" href="#">Try out in Playground</a>
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="errors" class="card textbox">
+				<div class="card-body">
+					<h4 class="card-title textbox-title"><code>Errors</code></h4>
+					<div class="card-text textbox-content">
+						<h5>Response:</h5>
+						<div hljs>{"success": false, "error": "No app id specified"}</div>
+						<p>This means you have to add the app=3 parameter</p>
 					</div>
 				</div>
 			</div>
