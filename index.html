@@ -2,6 +2,7 @@
 <html ng-app="DevRantDocs">
 <head>
 	<meta charset="utf-8" />
+	<base href="/">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>DevRant-API Documentation</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,16 +36,16 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/')" href="#!/">
+				<a class="nav-item nav-link" ng-class="getClassIfActive('/')" href="/">
 					Documentation
-					<span ng-show="isActive('/playground')" class="sr-only"> (current)</span></a>
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/playground')" href="#!/playground">
-					Playground
-					<span ng-show="isActive('/qa')" class="sr-only"> (current)</span></a>
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/qa')" href="#!/qa">
-					Q&A
 					<span ng-show="isActive('/')" class="sr-only"> (current)</span></a>
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/links')" href="#!/links">
+				<a class="nav-item nav-link" ng-class="getClassIfActive('/playground')" href="/playground">
+					Playground
+					<span ng-show="isActive('/playground')" class="sr-only"> (current)</span></a>
+				<a class="nav-item nav-link" ng-class="getClassIfActive('/qa')" href="/qa">
+					Q&A
+					<span ng-show="isActive('/qa')" class="sr-only"> (current)</span></a>
+				<a class="nav-item nav-link" ng-class="getClassIfActive('/links')" href="/links">
 					Links
 					<span ng-show="isActive('/links')" class="sr-only"> (current)</span></a>
 			</div>

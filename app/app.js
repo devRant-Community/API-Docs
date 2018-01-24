@@ -2,7 +2,7 @@
 var app = angular.module('DevRantDocs', ['ngRoute', 'hljs']);
 
 // Routing-Configuration
-app.config(['$routeProvider', function ($routeProvider) {
+app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'views/docs.html',
@@ -22,5 +22,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 			.otherwise({
 				redirectTo: '/'
 			});
+
+		// use the HTML5 History API
+		$locationProvider.html5Mode(true);
 	}
 ]);

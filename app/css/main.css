@@ -90,6 +90,12 @@ Link:
 	margin-top: 2.5rem;
 }
 
+.badge-pink {
+	background-color: var(--pink);
+	color: #fff;
+	vertical-align: 2px;
+}
+
 .endpoint-title code {
 	font-size: 1.34em;
 }
