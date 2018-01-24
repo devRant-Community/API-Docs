@@ -42,15 +42,15 @@ Link:
 }
 
 .navbar-brand {
-	font-size: 1.75rem;
+	font-size: 1.6rem;
 }
 
 .nav-link {
-	font-size: 1.25rem
+	font-size: 1.15rem
 }
 
 .view {
-	margin: 5rem 1rem 0px 1rem;
+	margin: 2.6rem 1rem 2.6rem 1rem;
 }
 
 #docs-quicklinks a {
@@ -62,14 +62,18 @@ Link:
 }
 
 #docs-quicklinks {
-	margin-top: -5rem;
-	padding-top: 5rem;
+	position: fixed;
+	padding-top: 2rem;
 	margin-left: -1px;
 }
 
 @media (min-width: 768px) {
 	#docs-quicklinks {
 		height: 100vh;
+	}
+
+	#docs-content {
+		margin-left: 16.666667%;
 	}
 }
 
@@ -82,16 +86,20 @@ Link:
 	}
 }
 
+.endpoint {
+	margin-top: 2.5rem;
+}
+
 .endpoint-title code {
-	font-size: 1.5em;
+	font-size: 1.34em;
 }
 
 .endpoint-description {
-	font-size: 1.25rem;
+	font-size: 1.15rem;
 }
 
 .endpoint-parameters-list {
-	font-size: 19px;
+	font-size: 18px;
 	margin-left: 20px;
 }
 
@@ -100,13 +108,9 @@ Link:
 }
 
 .endpoint-tryout {
-	font-size: 19px;
+	font-size: 16px;
 }
 
 .endpoint-code-box pre {
 	border-radius: 0.25rem !important;
-}
-
-.endpoint-code-box pre > code {
-	font-size: 1.1rem;
 }
