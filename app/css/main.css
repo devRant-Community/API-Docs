@@ -1,0 +1,112 @@
+/*
+COLOR PALETTE
+Background:
+	Blue: #54556E
+	Dark Blue: #40415A
+Text:
+	Normal: #FFFFFF
+	Grey: #C1C1CA
+Buttons:
+	Red: #d55161
+	Red-Hover: #c14857
+	Grey: #7b7b7f
+	Grey-Hover: #6a6a6a
+Link:
+	Grey: #C1C1CA
+*/
+
+:root {
+	--devrant: #54556E;
+	--devrant-dark: #40415A;
+}
+
+.btn-red {
+	background-color: #d55161;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: background-color .15s ease-in-out;
+	color: #fff;
+}
+
+.btn-red:hover {
+	background-color: #c14857;
+	color: #fff;
+}
+
+.bg-devrant {
+	background-color: var(--devrant);
+}
+
+.bg-devrant-dark {
+	background-color: var(--devrant-dark);
+}
+
+.navbar-brand {
+	font-size: 1.75rem;
+}
+
+.nav-link {
+	font-size: 1.25rem
+}
+
+.view {
+	margin: 5rem 1rem 0px 1rem;
+}
+
+#docs-quicklinks a {
+	color: #C1C1CA !important;
+}
+
+#docs-quicklinks a:hover {
+	color: #fff !important;
+}
+
+#docs-quicklinks {
+	margin-top: -5rem;
+	padding-top: 5rem;
+	margin-left: -1px;
+}
+
+@media (min-width: 768px) {
+	#docs-quicklinks {
+		height: 100vh;
+	}
+}
+
+@media (max-width: 768px) {
+	#docs {
+		margin-right: -17px;
+	}
+	#docs-quicklinks {
+		padding-bottom: 20px;
+	}
+}
+
+.endpoint-title code {
+	font-size: 1.5em;
+}
+
+.endpoint-description {
+	font-size: 1.25rem;
+}
+
+.endpoint-parameters-list {
+	font-size: 19px;
+	margin-left: 20px;
+}
+
+.endpoint-parameters-list dd {
+	margin-left: 10px;
+}
+
+.endpoint-tryout {
+	font-size: 19px;
+}
+
+.endpoint-code-box pre {
+	border-radius: 0.25rem !important;
+}
+
+.endpoint-code-box pre > code {
+	font-size: 1.1rem;
+}

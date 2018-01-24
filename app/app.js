@@ -1,5 +1,5 @@
 // Create angular module
-var app = angular.module('DevRantDocs', ['ngRoute']);
+var app = angular.module('DevRantDocs', ['ngRoute', 'hljs']);
 
 // Routing-Configuration
 app.config(['$routeProvider', function ($routeProvider) {
@@ -8,8 +8,8 @@ app.config(['$routeProvider', function ($routeProvider) {
 				templateUrl: 'views/docs.html',
 				controller:  'DocsController'
 			})
-			.when('/try', {
-				templateUrl: 'views/testingArea.html',
+			.when('/playground', {
+				templateUrl: 'views/playground.html',
 				controller:  'TestingAreaController'
 			})
 			.when('/qa', {
