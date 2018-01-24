@@ -1,3 +1,2 @@
-app.controller('DocsController', function ($scope) {
-	// ...
+app.controller('DocsController', function ($scope, $location) {
 });
