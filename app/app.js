@@ -2,7 +2,7 @@
 var app = angular.module('DevRantDocs', ['ngRoute', 'hljs']);
 
 // Routing-Configuration
-app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', function ($routeProvider, $locationProvider, $sceDelegateProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'views/docs.html',
@@ -25,5 +25,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 
 		// use the HTML5 History API
 		$locationProvider.html5Mode(true);
+
+		$sceDelegateProvider.resourceUrlWhitelist([
+			'self',                    // trust all resources from the same origin
+			'*://devrant.com/**'
+		]);
 	}
 ]);

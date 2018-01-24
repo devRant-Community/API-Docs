@@ -1,1 +1,56 @@
-<h1>Playground</h1>
+<section id="playground" class="row">
+	<div class="playground-content col-md-8 mx-auto mt-5">
+		<div class="card">
+			<div class="card-body">
+				<h1 class="card-title text-center playground-title"><code>Playground</code></h1>
+				<div class="card-text mt-4">
+					<form>
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="api-baseurl">https://devrant.com/api/</span>
+							</div>
+							<input type="text" class="form-control" id="inputUrl" aria-describedby="api-baseurl" placeholder="Endpoint..." ng-model="url" ng-keypress="($event.charCode==13) ? $event.preventDefault() : return">
+						</div>
+
+						<div id="playground-parameters mb-5">
+							<h4 class="text-center playground-title">Parameters</h4>
+							<div class="row mb-2" ng-repeat="parameter in parameters">
+								<div class="col-md-7 row mx-auto">
+									<div class="col">
+										<input ng-model="parameter.key" type="text" class="form-control" placeholder="Key" value="app">
+									</div>
+									<span class="pt-1">=</span>
+									<div class="col">
+										<input ng-model="parameter.value" type="text" class="form-control" placeholder="Value" value="3">
+									</div>
+									<button type="button" class="close parameter-remove" aria-label="Close" ng-click="removeParameter(parameter.index)">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+							</div>
+							<div class="parameter-add text-center">
+								<button class="btn btn-red rounded text-center btn-sm" ng-click="addParameter()">+ Add Parameter</button>
+							</div>
+						</div>
+
+						<div class="btn-group float-right mt-4">
+							<button type="button" id="playground-submit" class="btn btn-red rounded-left" ng-click="doRequest()">{{method}}</button>
+							<button type="button" class="btn btn-red rounded-right dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="sr-only">Choose method</span>
+							</button>
+							<div class="dropdown-menu dropdown-menu-right">
+								<a class="dropdown-item" href="#" ng-click="setMethod('GET')">GET</a>
+								<a class="dropdown-item" href="#" ng-click="setMethod('POST')">POST</a>
+							</div>
+						</div>
+					</form>
+
+					<div id="playground-response" ng-show="response">
+						<h4>Response: </h4>
+						<div hljs hljs-language="json" class="hljs-code-box" hljs-source="response"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

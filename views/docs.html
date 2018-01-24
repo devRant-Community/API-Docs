@@ -1,9 +1,9 @@
 <section id="docs" class="row">
 	<aside id="docs-quicklinks" class="col-md-2 bg-devrant-dark">
 		<nav class="nav flex-column">
-			<a class="nav-link" href="#intro" ><code>Introduction</code></a>
-			<a class="nav-link" href="#endpoint-1" ><code>/end/point/</code></a>
-			<a class="nav-link" href="#endpoint-2" ><code>/end/point/</code></a>
+			<a class="nav-link" href="#intro"><code>Introduction</code></a>
+			<a class="nav-link" href="#endpoint-1"><code>/end/point/</code></a>
+			<a class="nav-link" href="#endpoint-2"><code>/end/point/</code></a>
 			<a class="nav-link" href="#"><code>/end/point/</code></a>
 			<a class="nav-link" href="#"><code>/end/point/</code></a>
 			<a class="nav-link" href="#errors"><code>Errors</code></a>
@@ -34,33 +34,37 @@
 							<h4>Parameters:</h4>
 							<dl class="endpoint-parameters-list">
 								<dt>app</dt>
-									<dd>Standart app parameter. Set to 3</dd>
+								<dd>Standard app parameter. Set to 3</dd>
 								<dt>id</dt>
-									<dd>ID of the user</dd>
+								<dd>ID of the user</dd>
 							</dl>
 						</div>
 
 						<div class="endpoint-example-code mt-5">
 							<h4>Example code:</h4>
-							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box">
+							<nav class="code-language-chooser nav">
+								<a class="nav-link code-language-option language-curl" href="#" ng-click="setLanguage('curl')">curl</a>
+								<a class="nav-link code-language-option language-php active" href="#" ng-click="setLanguage('php')">PHP</a>
+								<a class="nav-link code-language-option language-python" href="#" ng-click="setLanguage('python')">Python</a>
+								<a class="nav-link code-language-option language-ruby" href="#" ng-click="setLanguage('ruby')">Ruby</a>
+							</nav>
+							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box hljs-code-box">
 &lt;?php
 
- $response = file_get_contents("https://devrant.com/api/devrant/supporters?app=3");
+$response = file_get_contents("https://devrant.com/api/devrant/supporters?app=3");
 
-?&gt;
-</div>
+?&gt;</div>
 						</div>
 
 						<div class="endpoint-example-response mt-5">
 							<h4>Example response:</h4>
-							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box">
+							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box hljs-code-box">
 {
-  "test": "value",
-  "test2": true,
-  "test3": 12,
-  "test4": []
-}
-</div>
+"test": "value",
+"test2": true,
+"test3": 12,
+"test4": []
+}</div>
 						</div>
 
 						<div class="text-center">
@@ -83,7 +87,7 @@
 							<h4>Parameters:</h4>
 							<dl class="endpoint-parameters-list">
 								<dt>app</dt>
-								<dd>Standart app parameter. Set to 3</dd>
+								<dd>Standard app parameter. Set to 3</dd>
 
 								<dt>id</dt>
 								<dd>ID of the user</dd>
@@ -92,22 +96,28 @@
 
 						<div class="endpoint-example-code mt-5">
 							<h4>Example code:</h4>
-							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box">
+							<nav class="code-language-chooser nav">
+								<a class="nav-link code-language-option language-curl" href="#" ng-click="setLanguage('curl')">curl</a>
+								<a class="nav-link code-language-option language-php active" href="#" ng-click="setLanguage('php')">PHP</a>
+								<a class="nav-link code-language-option language-python" href="#" ng-click="setLanguage('python')">Python</a>
+								<a class="nav-link code-language-option language-ruby" href="#" ng-click="setLanguage('ruby')">Ruby</a>
+							</nav>
+							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box hljs-code-box">
 &lt;?php
 
- $response = file_get_contents("https://devrant.com/api/devrant/supporters?app=3");
+$response = file_get_contents("https://devrant.com/api/devrant/supporters?app=3");
 
 ?&gt;</div>
 						</div>
 
 						<div class="endpoint-example-response mt-5">
 							<h4>Example response:</h4>
-							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box">
+							<div hljs hljs-no-escape hljs-language="php" class="endpoint-code-box hljs-code-box">
 {
-  "test": "value",
-  "test2": true,
-  "test3": 12,
-  "test4": []
+"test": "value",
+"test2": true,
+"test3": 12,
+"test4": []
 }</div>
 						</div>
 

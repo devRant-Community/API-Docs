@@ -22,7 +22,7 @@ Link:
 }
 
 .btn-red {
-	background-color: #d55161;
+	background-color: var(--devrant-color-red);
 	border-radius: 10px;
 	cursor: pointer;
 	transition: background-color .15s ease-in-out;
@@ -93,6 +93,10 @@ Link:
 	    margin-left: auto;
 	    margin-right: auto;
     }
+
+	.input-group-prepend {
+		display: none;
+	}
 }
 
 .textbox-title code {
@@ -112,7 +116,7 @@ Link:
 
 .endpoint-title code {
 	font-size: 1.34em;
-	color: #d55161;
+	color: var(--devrant-color-red);
 }
 
 .endpoint-description {
@@ -132,6 +136,38 @@ Link:
 	font-size: 16px;
 }
 
-.endpoint-code-box pre {
+.hljs-code-box pre {
 	border-radius: 0.25rem !important;
+}
+
+.code-language-option {
+	color: #000;
+	font-size: 1em;
+	margin-bottom: -4px;
+}
+
+.code-language-option:hover {
+	color: #444;
+}
+
+.code-language-option.active {
+	color: #007bff;
+}
+
+.playground-title code {
+	color: var(--devrant-color-red);
+}
+
+#playground-submit {
+	width: 70px;
+}
+
+.parameter-remove {
+	position: absolute;
+	top: 4px;
+	right: 0;
+}
+
+#playground-response {
+	margin-top: 125px;
 }
