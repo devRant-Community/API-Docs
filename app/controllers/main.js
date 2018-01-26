@@ -6,4 +6,8 @@ app.controller('MainController', function ($scope, $location) {
 	$scope.getClassIfActive = function (path) {
 		return ($scope.isActive(path)) ? 'active' : '';
 	};
+
+	$scope.collapseMenu = function() {
+		$('.navbar-collapse').collapse('hide');
+	};
 });

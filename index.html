@@ -37,16 +37,16 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 					<div class="navbar-nav">
-						<a class="nav-item nav-link" ng-class="getClassIfActive('/')" href="/">
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/')" href="/" ng-click="collapseMenu()">
 							Documentation
 							<span ng-show="isActive('/')" class="sr-only"> (current)</span></a>
-						<a class="nav-item nav-link" ng-class="getClassIfActive('/playground')" href="/playground">
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/playground')" href="/playground" ng-click="collapseMenu()">
 							Playground
 							<span ng-show="isActive('/playground')" class="sr-only"> (current)</span></a>
-						<a class="nav-item nav-link" ng-class="getClassIfActive('/qa')" href="/qa">
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/qa')" href="/qa" ng-click="collapseMenu()">
 							Q&A
 							<span ng-show="isActive('/qa')" class="sr-only"> (current)</span></a>
-						<a class="nav-item nav-link" ng-class="getClassIfActive('/links')" href="/links">
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/links')" href="/links" ng-click="collapseMenu()">
 							Links
 							<span ng-show="isActive('/links')" class="sr-only"> (current)</span></a>
 					</div>
