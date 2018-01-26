@@ -94,9 +94,14 @@ Link:
 	    margin-right: auto;
     }
 
-	.input-group-prepend {
+	#playground .input-group-prepend {
 		display: none;
 	}
+
+    #playground #inputUrl {
+        border-top-left-radius: 0.25rem;
+	    border-bottom-left-radius: 0.25rem;
+    }
 }
 
 .textbox-title code {
@@ -117,6 +122,16 @@ Link:
 .endpoint-title code {
 	font-size: 1.34em;
 	color: var(--devrant-color-red);
+}
+
+.endpoint-permalink {
+	position: relative;
+	bottom: 3px;
+	opacity: 0;
+}
+
+.endpoint-title:hover .endpoint-permalink {
+	opacity: 1;
 }
 
 .endpoint-description {

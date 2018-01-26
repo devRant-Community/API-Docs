@@ -1,4 +1,4 @@
-app.controller('DocsController', function ($scope, $http, $timeout) {
+app.controller('DocsController', function ($scope, $http, $timeout, $anchorScroll) {
 	$scope.setLanguage = function (lang) {console.log(lang);
 		if (lang === $scope.language) {
 			return;
@@ -10,12 +10,9 @@ app.controller('DocsController', function ($scope, $http, $timeout) {
 		$('.language-' + $scope.language).addClass('active');
 	};
 
-	
-	$scope.getExampleCode = function(endpoint, lang) {
-		console.log(endpoint, lang);
-		return endpoint.exampleCode[lang];
+	$scope.getElementLink = function(elementID) {
+		return location.origin + '#' + elementID;
 	};
-
 
 	$http.get('content/docs/endpoints.json').then(function (response) {
 		$scope.endpoints = response.data;
@@ -50,13 +47,11 @@ app.controller('DocsController', function ($scope, $http, $timeout) {
 	$timeout(function () {
 		if (localStorage.getItem('examples-language') === null) {
 			$scope.language = 'shell';
-			localStorage.setItem('examples-language', $scope.language);        
-			$('.code-language-option.active').removeClass('active');
-			$('.language-' + $scope.language).addClass('active');
+			localStorage.setItem('examples-language', $scope.language);
 		} else {
 			$scope.language = localStorage.getItem('examples-language');
-			$('.code-language-option.active').removeClass('active');
-			$('.language-' + $scope.language).addClass('active');
 		}
+
+		$anchorScroll();
 	});
 });
