@@ -1,4 +1,4 @@
-app.controller('TestingAreaController', function ($scope, $http, $sce) {
+app.controller('TestingAreaController', function ($scope, $http, $sce, $timeout) {
 	$scope.method = 'GET';
 	$scope.url = '';
 	$scope.parameters = [
@@ -53,4 +53,74 @@ app.controller('TestingAreaController', function ($scope, $http, $sce) {
 			});
 		}
 	};
+
+	// Autocomplete Stuff
+	$scope.currentAutocomplete = [];
+	$scope.showDots = false;
+	$scope.dropdownHover = false;
+	var autocomplete = {};
+	var autocompleteList = null;
+
+	function getAutocompleteList() {
+		return Object.keys(autocomplete);
+	}
+
+	$scope.onInputKeyUp = function() {
+		var url = $scope.url;
+		var urlRegex = new RegExp('^(' + url.replace('/', '\\/') + ')', 'g');
+		$scope.showDots = false;
+		$scope.currentAutocomplete = [];
+		$('#playground-url-autocomplete').hide();
+
+		autocompleteList.forEach(function(item) {
+			var match = item.match(urlRegex);
+			if(match !== null) {
+				$scope.currentAutocomplete.push({pre: match[0], post: item.replace(match[0], "")});
+			}
+		});
+
+		if($scope.currentAutocomplete.length > 4) {
+			$scope.currentAutocomplete = $scope.currentAutocomplete.slice(0, 4);
+			$scope.showDots = true;
+		}
+
+		if($scope.currentAutocomplete.length > 0)
+			$('#playground-url-autocomplete').show();
+	};
+
+	$scope.autocompleteEndpoint = function(endpoint) {
+		$scope.url = endpoint;
+		var parameters = autocomplete[endpoint];
+		$scope.parameters = [];
+
+		Object.keys(parameters).forEach(function(item, index) {
+			var newParamter = {};
+			newParamter.key = item;
+			newParamter.value = parameters[item];
+			newParamter.index = index;
+			$scope.parameters.push(newParamter);
+		});
+
+		$('#playground-url-autocomplete').hide();
+	};
+
+	$http.get('content/playground/autocomplete.json').then(function(response) {
+		autocomplete = response.data;
+		autocompleteList = getAutocompleteList();
+	});
+
+	$('#playground-url-autocomplete')
+		.css('width', $('#inputUrl').outerWidth())
+		.hide();
+
+	$('#inputUrl')
+		.focusout(function() {
+			if(!$scope.dropdownHover)
+				$('#playground-url-autocomplete').hide();
+		})
+		.focusin(function() {
+			if($scope.currentAutocomplete.length > 0) {
+				$('#playground-url-autocomplete').show();
+			}
+		});
 });

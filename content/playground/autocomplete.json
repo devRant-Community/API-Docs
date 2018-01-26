@@ -1,0 +1,21 @@
+{
+	"devrant/supporters": {
+		"app": "3"
+	},
+	"devrant/user": {
+		"app": "3",
+		"userid": ""
+	},
+	"devrant/get-user-id": {
+		"app": "3",
+		"username": ""
+	},
+	"devrant/get-user-ida": {
+		"app": "3",
+		"username": ""
+	},
+	"devrant/get-user-idv": {
+		"app": "3",
+		"username": ""
+	}
+}
