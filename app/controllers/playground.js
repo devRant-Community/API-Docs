@@ -1,4 +1,4 @@
-app.controller('TestingAreaController', function ($scope, $http, $sce, $timeout) {
+app.controller('TestingAreaController', function ($scope, $http, $sce, $location) {
 	$scope.method = 'GET';
 	$scope.url = '';
 	$scope.parameters = [
@@ -107,6 +107,17 @@ app.controller('TestingAreaController', function ($scope, $http, $sce, $timeout)
 	$http.get('content/playground/autocomplete.json').then(function(response) {
 		autocomplete = response.data;
 		autocompleteList = getAutocompleteList();
+
+		if($location.search().endpoint) {
+			// If endpoint get-parameter passed, autofill form
+			var endpoint = $location.search().endpoint;
+
+			if(endpoint.startsWith('/'))
+				endpoint = endpoint.slice(1);
+
+			if(autocompleteList.indexOf(endpoint) > -1)
+				$scope.autocompleteEndpoint(endpoint);
+		}
 	});
 
 	$('#playground-url-autocomplete')

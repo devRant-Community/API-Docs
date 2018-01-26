@@ -169,7 +169,7 @@ Link:
 	color: #007bff;
 }
 
-.playground-title code {
+.playground-title code, .links-title code {
 	color: var(--devrant-color-red);
 }
 
