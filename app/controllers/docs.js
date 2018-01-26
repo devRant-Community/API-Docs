@@ -49,9 +49,10 @@ app.controller('DocsController', function ($scope, $http, $timeout) {
 
 	$timeout(function () {
 		if (localStorage.getItem('examples-language') === null) {
-			$scope.language = 
-'shell';
-			localStorage.setItem('examples-language', $scope.language);
+			$scope.language = 'shell';
+			localStorage.setItem('examples-language', $scope.language);        
+			$('.code-language-option.active').removeClass('active');
+			$('.language-' + $scope.language).addClass('active');
 		} else {
 			$scope.language = localStorage.getItem('examples-language');
 			$('.code-language-option.active').removeClass('active');
