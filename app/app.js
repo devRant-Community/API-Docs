@@ -17,7 +17,8 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', funct
 				controller:  'QAController'
 			})
 			.when('/links', {
-				templateUrl: 'views/links.html'
+				templateUrl: 'views/links.html',
+				controller:  'LinkController'
 			})
 			.otherwise({
 				redirectTo: '/'

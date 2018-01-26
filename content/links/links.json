@@ -1,0 +1,69 @@
+{
+	"libraries": [
+		{
+			"name": "devRant-JS",
+			"link": "https://github.com/danillouz/devrant",
+			"language": "JavaScript",
+			"author": "danillouz"
+		},
+		{
+			"name": "RantScript",
+			"link": "https://github.com/RekkyRek/RantScript",
+			"language": "JavaScript",
+			"author": "RekkyRek"
+		},
+		{
+			"name": "JavaRant",
+			"link": "https://github.com/LucaScorpion/JavaRant",
+			"language": "Java",
+			"author": "LucaScorpion"
+		},
+		{
+			"name": "devGoRant",
+			"link": "https://github.com/jayeshsolanki93/devgorant",
+			"language": "Go",
+			"author": "jayeshsolanki93"
+		},
+		{
+			"name": "pirant",
+			"link": "https://github.com/aayush26/pirant",
+			"language": "Python",
+			"author": "aayush26"
+		},
+		{
+			"name": "devRant-PHP",
+			"link": "https://github.com/pxgamer/devrant-php",
+			"language": "PHP",
+			"author": "pxgamer"
+		},
+		{
+			"name": "devRant-C#",
+			"link": "https://github.com/WichardRiezebos/devrant",
+			"language": "C#",
+			"author": "WichardRiezebos"
+		},
+		{
+			"name": "devRant-Crystal",
+			"link": "https://github.com/iostreamer-X/devRant-crystal",
+			"language": "Crystal",
+			"author": "iostreamer-X"
+		}
+	],
+	"other": [
+		{
+			"name": "This projects GitHub Page",
+			"linkName": "GitHub",
+			"link": "https://github.com/devRant-Docs/devrant-docs.github.io"
+		},
+		{
+			"name": "If you found a bug, report it here",
+			"linkName": "Issue Tracker",
+			"link": "https://github.com/devRant-Docs/devrant-docs.github.io/issues"
+		},
+		{
+			"name": "This site was made by Skayo",
+			"linkName": "devRant-Profile",
+			"link": "https://devrant.com/users/Skayo"
+		}
+	]
+}

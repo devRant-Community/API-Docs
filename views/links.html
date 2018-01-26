@@ -4,7 +4,33 @@
 			<div class="card-body">
 				<h1 class="card-title text-center links-title"><code>Links</code></h1>
 				<div class="card-text mt-4">
-					bla
+
+					<div id="links-libraries">
+						<h4>Libraries:</h4>
+						<table class="table table-striped table-responsive-sm">
+							<thead>
+								<tr>
+									<th scope="col">Name</th>
+									<th scope="col">Language</th>
+									<th scope="col">Author</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="library in links.libraries">
+									<td><a ng-href="{{library.link}}" target="_blank">{{library.name}}</a></td>
+									<td>{{library.language}}</td>
+									<td>{{library.author}}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div id="links-other" class="mt-5">
+						<h4>Other Links: </h4>
+						<ul>
+							<li ng-repeat="link in links.other">{{link.name}}: <a target="_blank" ng-href="{{link.link}}">{{link.linkName}}</a></li>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

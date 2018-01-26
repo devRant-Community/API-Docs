@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html ng-app="DevRantDocs">
-<head>
-	<meta charset="utf-8" />
-	<base href="/">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>DevRant-API Documentation</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="theme-color" content="#54556E">
+	<head>
+		<meta charset="utf-8" />
+		<base href="/">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>DevRant-API Documentation</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="theme-color" content="#54556E">
 
-	<!--[if lt IE 9]>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-	<![endif]-->
+		<!--[if lt IE 9]>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+		<![endif]-->
 
-	<link rel="icon" type="image/png" href="app/img/favicon-32x32.png" sizes="32x32" />
-	<link rel="icon" type="image/png" href="app/img/favicon-16x16.png" sizes="16x16" />
+		<link rel="icon" type="image/png" href="app/img/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="app/img/favicon-16x16.png" sizes="16x16" />
 
-	<link rel="stylesheet" type="text/css" media="screen" href="app/lib/Bootstrap/css/bootstrap.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
-	<link rel="stylesheet" href="app/lib/HighlightJS/styles/atom-one-dark.css">
-	<link rel="stylesheet" type="text/css" media="screen" href="app/css/main.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="app/lib/Bootstrap/css/bootstrap.min.css">
+		<link href="https://fonts.googleapis.com/css?family=Comfortaa:400,700" rel="stylesheet">
+		<link rel="stylesheet" href="app/lib/HighlightJS/styles/atom-one-dark.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="app/css/main.css" />
 
-	<!-- Libraries -->
-	<script src="app/lib/AngularJS/angular.min.js"></script>
-	<script src="app/lib/AngularJS/angular-route.min.js"></script>
-</head>
-<body ng-controller="MainController">
+		<!-- Libraries -->
+		<script src="app/lib/AngularJS/angular.min.js"></script>
+		<script src="app/lib/AngularJS/angular-route.min.js"></script>
+	</head>
+	<body ng-controller="MainController">
 
-<header id="navbar">
-	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-devrant">
-		<a class="navbar-brand mb-0 h1" href="/">
-			<img src="/app/img/logo-transparent.png" width="40" height="40" class="rounded d-inline-block align-top" alt="">
-			devRant-API
-		</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav">
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/')" href="/">
-					Documentation
-					<span ng-show="isActive('/')" class="sr-only"> (current)</span></a>
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/playground')" href="/playground">
-					Playground
-					<span ng-show="isActive('/playground')" class="sr-only"> (current)</span></a>
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/qa')" href="/qa">
-					Q&A
-					<span ng-show="isActive('/qa')" class="sr-only"> (current)</span></a>
-				<a class="nav-item nav-link" ng-class="getClassIfActive('/links')" href="/links">
-					Links
-					<span ng-show="isActive('/links')" class="sr-only"> (current)</span></a>
+		<header id="navbar">
+			<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-devrant">
+				<a class="navbar-brand mb-0 h1" href="/">
+					<img src="/app/img/logo-transparent.png" width="40" height="40" class="rounded d-inline-block align-top" alt="">
+					devRant-API
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div class="navbar-nav">
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/')" href="/">
+							Documentation
+							<span ng-show="isActive('/')" class="sr-only"> (current)</span></a>
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/playground')" href="/playground">
+							Playground
+							<span ng-show="isActive('/playground')" class="sr-only"> (current)</span></a>
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/qa')" href="/qa">
+							Q&A
+							<span ng-show="isActive('/qa')" class="sr-only"> (current)</span></a>
+						<a class="nav-item nav-link" ng-class="getClassIfActive('/links')" href="/links">
+							Links
+							<span ng-show="isActive('/links')" class="sr-only"> (current)</span></a>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<main>
+			<div ng-view class="view">
+				<h1 style="margin-top: 100px; text-align: center;">Loading...</h1>
 			</div>
-		</div>
-	</nav>
-</header>
-<main>
-	<div ng-view class="view">
-		<h1 style="margin-top: 100px; text-align: center;">Loading...</h1>
-	</div>
-</main>
+		</main>
 
-<!-- Module -->
-<script src="app/app.js"></script>
+		<!-- Module -->
+		<script src="app/app.js"></script>
 
-<!-- Controllers -->
-<script src="app/controllers/main.js"></script>
-<script src="app/controllers/docs.js"></script>
-<script src="app/controllers/playground.js"></script>
-<script src="app/controllers/qa.js"></script>
+		<!-- Controllers -->
+		<script src="app/controllers/main.js"></script>
+		<script src="app/controllers/docs.js"></script>
+		<script src="app/controllers/playground.js"></script>
+		<script src="app/controllers/qa.js"></script>
+		<script src="app/controllers/link.js"></script>
 
-<!-- Libraries -->
-<script src="app/lib/jQuery/jquery.min.js"></script>
-<script src="app/lib/Bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="app/lib/HighlightJS/highlight.pack.js"></script>
-<script src="app/lib/Angular-HighlightJS/angular-highlight.min.js"></script>
-</body>
+		<!-- Libraries -->
+		<script src="app/lib/jQuery/jquery.min.js"></script>
+		<script src="app/lib/Bootstrap/js/bootstrap.bundle.min.js"></script>
+		<script src="app/lib/HighlightJS/highlight.pack.js"></script>
+		<script src="app/lib/Angular-HighlightJS/angular-highlight.min.js"></script>
+	</body>
 </html>
