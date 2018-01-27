@@ -13,8 +13,16 @@ app.config(['$routeProvider', '$locationProvider', '$sceDelegateProvider', funct
 				controller:  'TestingAreaController'
 			})
 			.when('/qa', {
-				templateUrl: 'views/qa.html',
-				controller:  'QAController'
+				templateUrl: 'views/qa/allQuestions.html',
+				controller:  'QAController-Main'
+			})
+			.when('/qa/new', {
+				templateUrl: 'views/qa/newQuestion.html',
+				controller:  'QAController-New'
+			})
+			.when('/qa/:id', {
+				templateUrl: 'views/qa/viewQuestion.html',
+				controller:  'QAController-View'
 			})
 			.when('/links', {
 				templateUrl: 'views/links.html',

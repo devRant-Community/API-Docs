@@ -1,0 +1,65 @@
+<section id="qa" class="row">
+	<div id="qa-main-content" class="col-md-8 mx-auto mt-5 row">
+		<aside id="qa-main-sidebar" class="col-lg-2">
+			<a class="btn btn-red btn-lg btn-block mb-4" href="/qa/new">New Question</a>
+
+			<div class="input-group mb-4">
+				<input type="text" class="form-control" placeholder="Search..." aria-label="Search..." ng-model="search" ng-keypress="($event.charCode==13) ? searchQuestions() : return">
+				<div class="input-group-append">
+					<button class="btn btn-secondary" type="button" ng-click="searchQuestions()">Search</button>
+				</div>
+			</div>
+
+			<div class="alert alert-info mb-4" role="alert">
+				Welcome to the Q&A Section of this site!<br>
+				Here you can ask questions, help others, or just find answers!<br>
+				Please be nice to each other and don't be rude!<br>
+				Have fun!
+			</div>
+
+			<div class="card mb-4">
+				<div class="card-header categories-title">
+					Categories:
+				</div>
+				<div class="list-group list-group-flush">
+					<a href="#" ng-click="setCategory('all')" ng-class="{active : (activeCategory == 'all')}" class="list-group-item list-group-item-action">All</a>
+					<a href="#" ng-click="setCategory(category)" ng-class="{active : (activeCategory == category.toLowerCase())}" class="list-group-item list-group-item-action" ng-repeat="category in categories">{{category}}</a>
+				</div>
+			</div>
+		</aside>
+		<div id="qa-main-questions" class="col-lg-9">
+			<h5 class="qa-main-questions-title mb-3" ng-hide="isSearch">All questions:</h5>
+			<h5 class="qa-main-questions-title mb-3" ng-show="isSearch">Search results for '{{search}}': <a href="#" ng-click="deleteSearch()" class="float-right all">Delete Search</a></h5>
+
+			<div class="card mb-4 question-preview">
+				<div class="card-header question-preview-title" ng-click="viewQuestion(1)">
+					<h5 class="float-left">Title</h5>
+					<span class="float-right"><span class="text-muted">Asked by</span> @Username</span>
+				</div>
+				<div class="card-body question-preview-body" ng-click="viewQuestion(1)">
+					<p class="card-text">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam era...
+					</p>
+					<div class="question-answer-count text-muted float-right">
+						1 Answer
+					</div>
+				</div>
+			</div>
+
+			<div class="card mb-4 question-preview">
+				<div class="card-header question-preview-title" ng-click="viewQuestion(2)">
+					<h5 class="float-left">Title2</h5>
+					<span class="float-right"><span class="text-muted">Asked by</span> @Username2</span>
+				</div>
+				<div class="card-body question-preview-body" ng-click="viewQuestion(2)">
+					<p class="card-text">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam era...
+					</p>
+					<div class="question-answer-count text-muted float-right">
+						2 Answers
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

@@ -26,7 +26,7 @@ Link:
 	border-radius: 10px;
 	cursor: pointer;
 	transition: background-color .15s ease-in-out;
-	color: #fff;
+	color: #fff !important;
 }
 
 .btn-red:hover {
@@ -194,4 +194,34 @@ Link:
 	border-top-left-radius: 0px;
 	left: auto;
 	display: initial;
+}
+
+@media (min-width: 992px) {
+	#qa-main-sidebar {
+		position: fixed;
+	}
+
+	#qa-main-questions {
+		margin-left: 25%;
+	}
+}
+
+.qa-main-questions-title .all {
+	font-weight: normal;
+	font-size: .85em;
+	margin-bottom: -2px;
+}
+
+.categories-title {
+	font-weight: bolder;
+	font-size: 1.1em;
+}
+
+.question-preview-title {
+	padding-bottom: .5rem;
+	cursor: pointer;
+}
+
+.question-preview-body {
+	cursor: pointer;
 }
