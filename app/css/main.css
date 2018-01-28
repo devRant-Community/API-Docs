@@ -262,3 +262,7 @@ Link:
 	top: 6px;
 	font-weight: 500;
 }
+
+button[type="submit"]:disabled:hover {
+	cursor: unset;
+}

@@ -29,7 +29,7 @@
 			</div>
 
 			<div class="col-md-5 order-1 order-md-2 mb-4">
-				<div>
+				<div ng-show="loggedIn">
 					<h4>New Answer:</h4>
 					<form id="new-answer-form" ng-submit="postQuestion()">
 						<div class="form-group">
@@ -39,14 +39,13 @@
 					</form>
 				</div>
 
-				<div ng-show="loggedIn">
+				<div>
 					<h4>Log in to post an answer:</h4>
-					<a href="#" class="btn btn-red">Log In</a>
+					<a href="#" class="btn btn-red" ng-click="showModal()">Log In</a>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<ng-include src="'views/qa/auth/login.html'"></ng-include>
-	<ng-include src="'views/qa/auth/register.html'"></ng-include>
 </section>
