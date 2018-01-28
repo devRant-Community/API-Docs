@@ -43,7 +43,7 @@ app.controller('QAController-View', function ($scope, $routeParams, $location) {
 });
 
 
-app.controller('QAController-New', function ($scope, $http) {
+app.controller('QAController-New', function ($scope, $http, $location) {
 	$scope.categories = [];
 	$scope.question = {};
 
@@ -68,6 +68,10 @@ app.controller('QAController-New', function ($scope, $http) {
 
 		// Post to API
 		/* ... */
+	};
+
+	$scope.cancel = function() {
+		$location.path('/qa');
 	};
 
 	$http.get('content/qa/categories.json').then(function(response) {

@@ -1,5 +1,5 @@
 <section id="qa" class="row">
-	<div id="qa-main-content" class="col-md-4 mx-auto mt-5">
+	<div class="col-md-4 mx-auto mt-5">
 		<h3>New Question</h3>
 		<form id="new-question-form" ng-submit="postQuestion()">
 			<div class="form-group">
@@ -14,7 +14,9 @@
 					<option ng-repeat="category in categories">{{category}}</option>
 				</select>
 			</div>
+
 			<button type="submit" id="new-question-submit" class="btn btn-red btn-lg float-right">Submit</button>
+			<button ng-click="cancel()" id="new-question-cancel" class="btn btn-secondary btn-lg float-right mr-3">Cancel</button>
 		</form>
 	</div>
 </section>

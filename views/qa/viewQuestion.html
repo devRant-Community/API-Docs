@@ -1,0 +1,47 @@
+<section id="qa" class="row">
+	<div class="col-md-6 mx-auto mt-5">
+		<div class="card mb-4 question">
+			<div class="card-header question-title">
+				<h5 class="float-left">Title</h5>
+				<span class="float-right"><span class="text-muted">Asked by</span> @Username</span>
+			</div>
+			<div class="card-body">
+				<p class="card-text">
+					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam era...
+				</p>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-7 mb-4 answers order-2 order-md-1">
+				<h4>Answers:</h4>
+
+				<div class="card mb-4 answer">
+					<h6 class="card-subtitle pl-3 pt-4 pb-2">@Username</h6>
+					<div class="card-body pt-0">
+						<p class="card-text float-left">
+							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-5 order-1 order-md-2 mb-4">
+				<div>
+					<h4>New Answer:</h4>
+					<form id="new-answer-form" ng-submit="postQuestion()">
+						<div class="form-group">
+							<textarea class="form-control" rows="4" ng-model="answer.body" placeholder="Enter Answer..." required></textarea>
+						</div>
+						<button type="submit" id="new-answer-submit" class="btn btn-red float-right">Submit</button>
+					</form>
+				</div>
+
+				<div ng-show="loggedIn">
+					<h4>Log in to post an answer:</h4>
+					<a href="#" class="btn btn-red">Log In</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

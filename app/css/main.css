@@ -76,6 +76,10 @@ Link:
 	#docs-content {
 		margin-left: 25%;
 	}
+
+	.answers {
+		border-right: 1px solid #e9ecef!important;
+	}
 }
 
 @media (max-width: 768px) {
@@ -230,4 +234,12 @@ Link:
 	cursor: not-allowed;
 	pointer-events: none;
 	opacity: .65;
+}
+
+.question-title {
+	padding-bottom: .3rem;
+}
+
+#new-question-cancel {
+	border-radius: 10px;
 }
