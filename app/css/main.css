@@ -225,3 +225,9 @@ Link:
 .question-preview-body {
 	cursor: pointer;
 }
+
+#new-question-form.ng-invalid #new-question-submit {
+	cursor: not-allowed;
+	pointer-events: none;
+	opacity: .65;
+}

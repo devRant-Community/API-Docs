@@ -36,5 +36,25 @@ app.controller('QAController-View', function ($scope, $routeParams) {
 
 
 app.controller('QAController-New', function ($scope) {
-	// ...
+	$scope.question = {};
+
+	$scope.postQuestion = function() {
+		var newQuestion = angular.copy($scope.question);
+
+		// Validate
+		if(newQuestion.title === '' || newQuestion.title === undefined) {
+			return;
+		}
+
+		if(newQuestion.body === '' || newQuestion.body === undefined) {
+			return;
+		}
+
+		if(newQuestion.category === '' || newQuestion.category === undefined) {
+			newQuestion.category = 'other';
+		}
+
+		// Post to API
+		/* ... */
+	};
 });
