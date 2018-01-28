@@ -78,7 +78,7 @@ Link:
 	}
 
 	.answers {
-		border-right: 1px solid #e9ecef!important;
+		border-right: 1px solid rgba(0,0,0,.1) !important;
 	}
 }
 
@@ -106,6 +106,15 @@ Link:
         border-top-left-radius: 0.25rem;
 	    border-bottom-left-radius: 0.25rem;
     }
+
+    .question-preview-title h5, .question-preview-title span {
+	    float: none !important;
+    }
+
+	.qa-main-questions-title .all {
+		display: block;
+		float: none !important;
+	}
 }
 
 .textbox-title code {
@@ -240,6 +249,12 @@ Link:
 	padding-bottom: .3rem;
 }
 
-#new-question-cancel {
+.cancel-btn {
 	border-radius: 10px;
+}
+
+.switch-auth {
+	position: relative;
+	top: 6px;
+	font-weight: 500;
 }

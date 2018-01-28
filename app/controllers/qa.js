@@ -24,6 +24,24 @@ app.controller('QAController-Main', function ($scope, $http, $location) {
 		$location.search('search', null);
 	};
 
+	$scope.newQuestion = function($event) {
+		if (false) {
+			$event.preventDefault();
+
+			$('#loginModal').modal('show');
+		}
+	};
+
+	$scope.switchModal = function(modal) {
+		if(modal === 'signup') {
+			$('#loginModal').modal('hide');
+			$('#signupModal').modal('show');
+		} else if(modal === 'login') {
+			$('#signupModal').modal('hide');
+			$('#loginModal').modal('show');
+		}
+	};
+
 	$http.get('content/qa/categories.json').then(function(response) {
 		$scope.categories = response.data;
 	});
@@ -37,8 +55,33 @@ app.controller('QAController-View', function ($scope, $routeParams, $location) {
 		$location.path('/qa');
 	}
 
-	$scope.postAnswer = function() {
+	// -------------------------------
+	$scope.answer = {submitted: false};
 
+	$scope.checkAuth = function() {
+		if(false) { // if(loggedin)
+			return true;
+		} else {
+			$('#loginModal').modal('show');
+			return false;
+		}
+	};
+
+	$scope.postAnswer = function() {
+		$scope.answer.submitted = true;
+
+		if(!$scope.checkAuth())
+			return;
+	};
+
+	$scope.switchModal = function(modal) {
+		if(modal === 'signup') {
+			$('#loginModal').modal('hide');
+			$('#signupModal').modal('show');
+		} else if(modal === 'login') {
+			$('#signupModal').modal('hide');
+			$('#loginModal').modal('show');
+		}
 	};
 });
 
@@ -77,4 +120,8 @@ app.controller('QAController-New', function ($scope, $http, $location) {
 	$http.get('content/qa/categories.json').then(function(response) {
 		$scope.categories = response.data;
 	});
+
+	if(false) { // if (notloggedin)
+		$location.path('/qa');
+	}
 });

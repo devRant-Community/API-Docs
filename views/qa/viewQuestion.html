@@ -13,8 +13,10 @@
 		</div>
 
 		<div class="row">
-			<div class="col-md-7 mb-4 answers order-2 order-md-1">
+			<div class="col-md-7 answers order-2 order-md-1">
 				<h4>Answers:</h4>
+
+				<h6 class="text-muted" ng-show="asd">No Answers yet</h6>
 
 				<div class="card mb-4 answer">
 					<h6 class="card-subtitle pl-3 pt-4 pb-2">@Username</h6>
@@ -44,4 +46,7 @@
 			</div>
 		</div>
 	</div>
+
+	<ng-include src="'views/qa/auth/login.html'"></ng-include>
+	<ng-include src="'views/qa/auth/register.html'"></ng-include>
 </section>
