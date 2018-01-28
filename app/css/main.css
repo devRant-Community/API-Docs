@@ -230,6 +230,10 @@ Link:
 	font-size: 1.1em;
 }
 
+#search-btn svg {
+	vertical-align: -2px;
+}
+
 .question-preview-title {
 	padding-bottom: .5rem;
 	cursor: pointer;
