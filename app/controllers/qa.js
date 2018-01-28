@@ -30,12 +30,21 @@ app.controller('QAController-Main', function ($scope, $http, $location) {
 });
 
 
-app.controller('QAController-View', function ($scope, $routeParams) {
-	// ...
+app.controller('QAController-View', function ($scope, $routeParams, $location) {
+	var questionID = parseInt($routeParams.id);
+
+	if(!Number.isInteger(questionID)) {
+		$location.path('/qa');
+	}
+
+	$scope.postAnswer = function() {
+
+	};
 });
 
 
-app.controller('QAController-New', function ($scope) {
+app.controller('QAController-New', function ($scope, $http) {
+	$scope.categories = [];
 	$scope.question = {};
 
 	$scope.postQuestion = function() {
@@ -54,7 +63,14 @@ app.controller('QAController-New', function ($scope) {
 			newQuestion.category = 'other';
 		}
 
+		// Format
+		newQuestion.category = newQuestion.category.toLowerCase();
+
 		// Post to API
 		/* ... */
 	};
+
+	$http.get('content/qa/categories.json').then(function(response) {
+		$scope.categories = response.data;
+	});
 });

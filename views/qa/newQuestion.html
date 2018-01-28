@@ -11,9 +11,7 @@
 			<div class="form-group">
 				<select class="form-control form-control-lg" ng-model="question.category" required>
 					<option value="">Choose Category...</option>
-					<option>Cat1</option>
-					<option>Cat2</option>
-					<option>Cat3</option>
+					<option ng-repeat="category in categories">{{category}}</option>
 				</select>
 			</div>
 			<button type="submit" id="new-question-submit" class="btn btn-red btn-lg float-right">Submit</button>

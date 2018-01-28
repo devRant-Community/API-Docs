@@ -1,4 +1,4 @@
-app.controller('TestingAreaController', function ($scope, $http, $sce, $location) {
+app.controller('TestingAreaController', function ($scope, $http, $location) {
 	$scope.method = 'GET';
 	$scope.url = '';
 	$scope.parameters = [
@@ -25,28 +25,25 @@ app.controller('TestingAreaController', function ($scope, $http, $sce, $location
 		});
 
 		var url = 'https://devrant.com/api/' + $scope.url;
-		$sce.trustAsResourceUrl('https://devrant.com/api/**');
 
-		console.log(url);
-
-		if ($scope.method == 'POST') {
+		if ($scope.method === 'POST') {
 			$http({
 				method: $scope.method,
 				url:    url,
 				data:   parameters
 			}).then(function successCallback(response) {
-				$scope.response = JSON.stringify(response, null, '  ');
+				$scope.response = JSON.stringify(response.data, null, '  ');
 			}, function errorCallback(response) {
 				console.log(response);
 				$scope.response = 'An error occurred';
 			});
 		} else {
 			$http({
-					method: $scope.method,
-					url:    url,
-					params: parameters
-				}).then(function successCallback(response) {
-				$scope.response = JSON.stringify(response, null, '  ');
+				method: $scope.method,
+				url:    url,
+				params: parameters
+			}).then(function successCallback(response) {
+				$scope.response = JSON.stringify(response.data, null, '  ');
 			}, function errorCallback(response) {
 				console.log(response);
 				$scope.response = 'An error occurred';
