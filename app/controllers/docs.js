@@ -4,10 +4,9 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 			return;
 		}
 
-		$('.language-' + $scope.language).removeClass('active');
+		$('code.hljs').removeClass($scope.language);
 		$scope.language = lang;
 		localStorage.setItem('examples-language', $scope.language);
-		$('.language-' + $scope.language).addClass('active');
 	};
 
 	$scope.getElementLink = function(elementID) {
@@ -21,7 +20,7 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 		$scope.endpoints.forEach(function (endpoint, i) {
 			$scope.endpoints[i].langs = [];
 
-			endpoint.exampleCode.forEach(function (lang, j) {
+			endpoint.exampleCode.forEach(function (lang) {
 				$scope.endpoints[i].exampleCode[lang.langCode] = lang.code.join('\n');
 
 				$scope.endpoints[i].langs.push({

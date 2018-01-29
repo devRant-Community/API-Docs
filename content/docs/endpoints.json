@@ -14,7 +14,7 @@
 				"name": "curl",
 				"langCode": "shell",
 				"code": [
-					"curl -X GET 'https://devrant.com/api/devrant/supporters?app=3'"
+					"$ curl -X GET 'https://devrant.com/api/devrant/supporters?app=3'"
 				]
 			},
 			{
