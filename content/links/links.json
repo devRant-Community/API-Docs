@@ -13,6 +13,12 @@
 			"author": "RekkyRek"
 		},
 		{
+			"name": "devRant-API",
+			"link": "https://github.com/nblackburn/devrant-api",
+			"language": "JavaScript",
+			"author": "nblackburn"
+		},
+		{
 			"name": "JavaRant",
 			"link": "https://github.com/LucaScorpion/JavaRant",
 			"language": "Java",
