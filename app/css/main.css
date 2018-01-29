@@ -237,10 +237,21 @@ Link:
 .question-preview-title {
 	padding-bottom: .5rem;
 	cursor: pointer;
+	color: inherit;
+}
+
+.question-preview-title:hover {
+	color: inherit;
 }
 
 .question-preview-body {
 	cursor: pointer;
+	color: inherit;
+}
+
+.question-preview-body:hover {
+	color: inherit;
+	text-decoration: none;
 }
 
 #new-question-form.ng-invalid #new-question-submit {
