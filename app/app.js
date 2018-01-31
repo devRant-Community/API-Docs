@@ -44,4 +44,4 @@ app.config(['$routeProvider', '$locationProvider', '$sceProvider', '$httpProvide
 ]);
 
 // Constants
-const API = 'https://skayo.lima-city.at';
+const API = 'https://skayo.lima-city.de';
