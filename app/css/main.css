@@ -242,6 +242,7 @@ Link:
 
 .question-preview-title:hover {
 	color: inherit;
+	text-decoration: none;
 }
 
 .question-preview-body {
