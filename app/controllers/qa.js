@@ -43,7 +43,7 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 		$scope.categories = response.data;
 	});
 
-	$http.get(API + '/questions').then(function (response) {
+	$http.get(API + '/questions?category=' + $scope.activeCategory + '&search=' + $scope.search).then(function (response) {
 		$scope.questions = response.data.questions;
 		$scope.loading = false;
 	}, function (response) {
