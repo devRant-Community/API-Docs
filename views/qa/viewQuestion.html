@@ -6,9 +6,7 @@
 				<span class="float-right"><span class="text-muted">Asked by</span> @{{question.username}}</span>
 			</div>
 			<div class="card-body">
-				<p class="card-text">
-					{{question.body}}
-				</p>
+				<p class="card-text fakePre">{{question.body}}</p>
 			</div>
 		</div>
 
@@ -21,9 +19,7 @@
 				<div class="card mb-4 answer" ng-repeat="answer in question.answers">
 					<h6 class="card-subtitle pl-3 pt-4 pb-2">@{{answer.username}}</h6>
 					<div class="card-body pt-0">
-						<p class="card-text float-left">
-							{{answer.body}}
-						</p>
+						<p class="card-text float-left fakePre">{{answer.body}}</p>
 					</div>
 				</div>
 			</div>

@@ -281,3 +281,7 @@ button[type="submit"]:disabled:hover {
 .new-question-error {
 	font-size: 1.15rem;
 }
+
+.fakePre {
+	white-space: pre;
+}
