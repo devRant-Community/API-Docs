@@ -5,6 +5,7 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 	$scope.search = ($location.search().search === undefined) ? '' : $location.search().search;
 	$scope.searchCopy = angular.copy($scope.search); // Copy so the ng-model doesn't affect it.
 	$scope.isSearch = !($location.search().search === undefined);
+	$scope.loading = true;
 
 	$scope.viewQuestion = function (id) {
 		$location.path('/qa/' + id);
@@ -44,8 +45,10 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 
 	$http.get(API + '/questions').then(function (response) {
 		$scope.questions = response.data.questions;
+		$scope.loading = false;
 	}, function (response) {
 		console.log(response);
+		$scope.loading = false;
 	});
 });
 
@@ -56,6 +59,7 @@ app.controller('QAController-View', function ($scope, $routeParams, $location, $
 	var questionID = parseInt($routeParams.id);
 	$scope.question = {};
 	$scope.answer = {};
+	$scope.loading = true;
 
 	if (!Number.isInteger(questionID)) {
 		$location.path('/qa');
@@ -104,6 +108,7 @@ app.controller('QAController-View', function ($scope, $routeParams, $location, $
 	$http.get(API + '/question?id=' + questionID).then(function (response) {
 		if (response.data.success) {
 			$scope.question = response.data.question;
+			$scope.loading = false;
 		} else {
 			$location.path('/qa');
 		}

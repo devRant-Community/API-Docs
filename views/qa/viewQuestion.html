@@ -1,6 +1,7 @@
 <section id="qa" class="row">
 	<div class="col-md-6 mx-auto mt-5">
-		<div class="card mb-4 question">
+		<h4 ng-show="loading" class="text-center mb-4 text-muted">Loading...</h4>
+		<div class="card mb-4 question" ng-hide="loading">
 			<div class="card-header question-title">
 				<h5 class="float-left">{{question.title}}</h5>
 				<span class="float-right"><span class="text-muted">Asked by</span> @{{question.username}}</span>
@@ -14,7 +15,8 @@
 			<div class="col-md-7 answers order-2 order-md-1">
 				<h4>Answers:</h4>
 
-				<h6 class="text-muted" ng-show="question.answers.length == 0">No Answers yet</h6>
+				<h6 class="text-muted" ng-show="question.answers.length == 0 && !loading">No Answers yet</h6>
+				<h6 class="text-muted" ng-show="!question.answers.length && loading">Loading...</h6>
 
 				<div class="card mb-4 answer" ng-repeat="answer in question.answers">
 					<h6 class="card-subtitle pl-3 pt-4 pb-2">@{{answer.username}}</h6>

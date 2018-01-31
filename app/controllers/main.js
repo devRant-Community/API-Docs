@@ -1,6 +1,6 @@
 app.controller('MainController', function ($scope, $location) {
 	$scope.isActive = function (path) {
-		return ($location.path() === path);
+		return ('/' + $location.path().split("/")[1] === path);
 	};
 
 	$scope.getClassIfActive = function (path) {
