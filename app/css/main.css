@@ -287,5 +287,5 @@ button[type="submit"]:disabled:hover {
 }
 
 .fakePre {
-	white-space: pre;
+	white-space: pre-line;
 }

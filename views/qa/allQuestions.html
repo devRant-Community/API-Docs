@@ -43,7 +43,7 @@
 					<span class="float-right"><span class="text-muted">Asked by</span> @{{question.username}}</span>
 				</a>
 				<a class="card-body question-preview-body" ng-href="/qa/{{question.id}}">
-					<p class="card-text fakePre">{{question.body | limitTo: 100}}</p>
+					<p class="card-text fakePre">{{question.body | limitToReplace: 200 : '...'}}</p>
 					<div class="question-answer-count text-muted float-right">
 						{{question.answerCount}} Answer<span ng-hide="question.answerCount == 1">s</span>
 					</div>
