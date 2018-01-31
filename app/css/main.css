@@ -249,6 +249,10 @@ Link:
 	color: inherit;
 }
 
+.question-preview-body p {
+	margin-bottom: 0px !important;
+}
+
 .question-preview-body:hover {
 	color: inherit;
 	text-decoration: none;
