@@ -277,3 +277,7 @@ Link:
 button[type="submit"]:disabled:hover {
 	cursor: unset;
 }
+
+.new-question-error {
+	font-size: 1.15rem;
+}

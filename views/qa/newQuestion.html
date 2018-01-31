@@ -3,17 +3,19 @@
 		<h3>New Question</h3>
 		<form id="new-question-form" ng-submit="postQuestion()">
 			<div class="form-group">
-				<input type="text" class="form-control form-control-lg" placeholder="Enter Title..." ng-model="question.title" required>
+				<input type="text" class="form-control form-control-lg" placeholder="Enter Title..." ng-model="question.title" >
 			</div>
 			<div class="form-group">
-				<textarea class="form-control form-control-lg" rows="7" ng-model="question.body" placeholder="Enter Question..." required></textarea>
+				<textarea class="form-control form-control-lg" rows="7" ng-model="question.body" placeholder="Enter Question..." ></textarea>
 			</div>
 			<div class="form-group">
-				<select class="form-control form-control-lg" ng-model="question.category" required>
+				<select class="form-control form-control-lg" ng-model="question.category" >
 					<option value="">Choose Category...</option>
 					<option ng-repeat="category in categories">{{category}}</option>
 				</select>
 			</div>
+
+			<div class="text-danger new-question-error" ng-show="question.error">{{question.error}}</div>
 
 			<button type="submit" id="new-question-submit" class="btn btn-red btn-lg float-right">Submit</button>
 			<button ng-click="cancel()" class="btn btn-secondary btn-lg float-right mr-3 cancel-btn">Cancel</button>

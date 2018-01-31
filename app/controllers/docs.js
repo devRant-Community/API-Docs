@@ -1,5 +1,6 @@
 app.controller('DocsController', function ($scope, $http, $timeout, $anchorScroll) {
-	$scope.setLanguage = function (lang) {console.log(lang);
+	$scope.setLanguage = function (lang) {
+		console.log(lang);
 		if (lang === $scope.language) {
 			return;
 		}
@@ -9,7 +10,7 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 		localStorage.setItem('examples-language', $scope.language);
 	};
 
-	$scope.getElementLink = function(elementID) {
+	$scope.getElementLink = function (elementID) {
 		return location.origin + '#' + elementID;
 	};
 
@@ -24,20 +25,22 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 				$scope.endpoints[i].exampleCode[lang.langCode] = lang.code.join('\n');
 
 				$scope.endpoints[i].langs.push({
-					                            name: lang.name, langCode: lang.langCode
-				                            });
+					name: lang.name, langCode: lang.langCode
+				});
 			});
 
 			$scope.endpoints[i].exampleResponse = endpoint.exampleResponse.join('\n');
 
-			$scope.endpointsList.push(endpoint.endpoint)
+			$scope.endpointsList.push(endpoint.endpoint);
 		});
 
-		$scope.endpoints.sort(function(a,b) {
-			if (a.endpoint < b.endpoint)
+		$scope.endpoints.sort(function (a, b) {
+			if (a.endpoint < b.endpoint) {
 				return -1;
-			if (a.endpoint > b.endpoint)
+			}
+			if (a.endpoint > b.endpoint) {
 				return 1;
+			}
 			return 0;
 		});
 	});

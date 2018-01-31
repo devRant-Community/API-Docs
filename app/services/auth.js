@@ -7,7 +7,7 @@ class Auth {
 		// ...
 	}
 
-	getUsername() {
+	getUserID() {
 		// ...
 	}
 

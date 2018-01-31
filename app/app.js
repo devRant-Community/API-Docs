@@ -2,7 +2,7 @@
 var app = angular.module('DevRantDocs', ['ngRoute', 'hljs']);
 
 // Routing-Configuration
-app.config(['$routeProvider', '$locationProvider', '$sceProvider', function ($routeProvider, $locationProvider, $sceProvider) {
+app.config(['$routeProvider', '$locationProvider', '$sceProvider', '$httpProvider', function ($routeProvider, $locationProvider, $sceProvider, $httpProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'views/docs.html',
@@ -36,5 +36,12 @@ app.config(['$routeProvider', '$locationProvider', '$sceProvider', function ($ro
 		$locationProvider.html5Mode(true);
 
 		$sceProvider.enabled(false);
+
+		$httpProvider.defaults.headers.post = {
+			'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+		};
 	}
 ]);
+
+// Constants
+const API = 'https://skayo.lima-city.at';

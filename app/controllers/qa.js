@@ -1,5 +1,6 @@
 app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 	$scope.categories = [];
+	$scope.questions = [];
 	$scope.activeCategory = ($location.search().category === undefined) ? 'all' : $location.search().category;
 	$scope.search = ($location.search().search === undefined) ? '' : $location.search().search;
 	$scope.searchCopy = angular.copy($scope.search); // Copy so the ng-model doesn't affect it.
@@ -18,6 +19,10 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 	};
 
 	$scope.searchQuestions = function () {
+		if ($scope.search == '') {
+			return;
+		}
+
 		$location.search('search', $scope.search);
 	};
 
@@ -36,23 +41,28 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 	$http.get('content/qa/categories.json').then(function (response) {
 		$scope.categories = response.data;
 	});
+
+	$http.get(API + '/questions').then(function (response) {
+		$scope.questions = response.data.questions;
+	}, function (response) {
+		console.log(response);
+	});
 });
 
 
 
 
-app.controller('QAController-View', function ($scope, $routeParams, $location, $auth) {
+app.controller('QAController-View', function ($scope, $routeParams, $location, $http, $auth) {
 	var questionID = parseInt($routeParams.id);
+	$scope.question = {};
+	$scope.answer = {};
 
 	if (!Number.isInteger(questionID)) {
 		$location.path('/qa');
 	}
 
-	// -------------------------------
-	$scope.answer = {submitted: false};
-
 	$scope.checkAuth = function () {
-		if (false) { // if(loggedin)
+		if (true) { // if(loggedin)
 			return true;
 		} else {
 			$('.loginModal').modal('show');
@@ -61,16 +71,45 @@ app.controller('QAController-View', function ($scope, $routeParams, $location, $
 	};
 
 	$scope.postAnswer = function () {
-		$scope.answer.submitted = true;
-
 		if (!$scope.checkAuth()) {
 			return;
 		}
+
+		$http.post(API + '/answers', $.param({
+			questionid: questionID,
+			userid:     1,
+			body:       $scope.answer.body
+		})).then(function (response) {
+			if (response.data.success) {
+				// Reset Form
+				$scope.answer = {};
+
+				// Refresh
+				$http.get(API + '/question?id=' + questionID).then(function (response) {
+					$scope.question = response.data.question;
+				});
+			} else {
+				$scope.answer.error = response.data.error || 'Unknown Error';
+			}
+		}, function (response) {
+			$scope.answer.error = 'Request failed';
+			console.log(response);
+		});
 	};
 
 	$scope.showModal = function () {
 		$('.loginModal').modal('show');
 	};
+
+	$http.get(API + '/question?id=' + questionID).then(function (response) {
+		if (response.data.success) {
+			$scope.question = response.data.question;
+		} else {
+			$location.path('/qa');
+		}
+	}, function () {
+		$location.path('/qa');
+	});
 });
 
 
@@ -85,10 +124,12 @@ app.controller('QAController-New', function ($scope, $http, $location, $auth) {
 
 		// Validate
 		if (newQuestion.title === '' || newQuestion.title === undefined) {
+			$scope.question.error = 'Title is required';
 			return;
 		}
 
 		if (newQuestion.body === '' || newQuestion.body === undefined) {
+			$scope.question.error = 'Question is required';
 			return;
 		}
 
@@ -100,7 +141,21 @@ app.controller('QAController-New', function ($scope, $http, $location, $auth) {
 		newQuestion.category = newQuestion.category.toLowerCase();
 
 		// Post to API
-		/* ... */
+		$http.post(API + '/questions', $.param({
+			userid:   1,
+			title:    newQuestion.title,
+			body:     newQuestion.body,
+			category: newQuestion.category
+		})).then(function (response) {
+			if (response.data.success) {
+				$location.path('/qa');
+			} else {
+				$scope.question.error = response.data.error || 'Unknown error';
+			}
+		}, function (response) {
+			$scope.question.error = 'Request failed';
+			console.log(response);
+		});
 	};
 
 	$scope.cancel = function () {
