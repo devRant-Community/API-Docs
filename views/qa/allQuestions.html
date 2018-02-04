@@ -1,6 +1,7 @@
 <section id="qa" class="row">
 	<div id="qa-main-content" class="col-md-8 mx-auto mt-5 row">
 		<aside id="qa-main-sidebar" class="col-lg-2">
+			<!-- TODO: Logout Button -->
 			<a class="btn btn-red btn-lg btn-block mb-4" href="/qa/new" ng-click="newQuestion($event)">New Question</a>
 
 			<div class="input-group mb-4">
@@ -37,7 +38,7 @@
 			<h6 class="text-muted" ng-show="questions.length == 0 && !loading">No Questions yet</h6>
 			<h6 class="text-muted" ng-show="questions.length == 0 && loading">Loading...</h6>
 
-			<div class="card mb-4 question-preview" ng-repeat="question in questions">
+			<div class="card mb-4 question-preview" ng-repeat="question in questions | orderBy: '-date'">
 				<a class="card-header question-preview-title" ng-href="/qa/{{question.id}}">
 					<h5 class="float-left">{{question.title}}</h5>
 					<span class="float-right"><span class="text-muted">Asked by</span> @{{question.username}}</span>

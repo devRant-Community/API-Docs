@@ -27,7 +27,7 @@
 			</div>
 
 			<div class="col-md-5 order-1 order-md-2 mb-4">
-				<div>
+				<div ng-show="isLoggedIn">
 					<h4>New Answer:</h4>
 					<form id="new-answer-form" ng-submit="postAnswer()">
 						<div class="form-group">
@@ -39,7 +39,7 @@
 					</form>
 				</div>
 
-				<div ng-show="loggedIn">
+				<div ng-hide="isLoggedIn">
 					<h4>Log in to post an answer:</h4>
 					<a href="#" class="btn btn-red" ng-click="showModal()">Log In</a>
 				</div>

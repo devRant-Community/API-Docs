@@ -34,6 +34,10 @@ Link:
 	color: #fff;
 }
 
+.btn-red:focus {
+	box-shadow: 0 0 0 0.2rem rgba(193,72,87,.5);
+}
+
 .bg-devrant {
 	background-color: var(--devrant);
 }
@@ -259,24 +263,12 @@ Link:
 	text-decoration: none;
 }
 
-#new-question-form.ng-invalid #new-question-submit {
-	cursor: not-allowed;
-	pointer-events: none;
-	opacity: .65;
-}
-
 .question-title {
 	padding-bottom: .3rem;
 }
 
 .cancel-btn {
 	border-radius: 10px;
-}
-
-.switch-auth {
-	position: relative;
-	top: 6px;
-	font-weight: 500;
 }
 
 button[type="submit"]:disabled:hover {

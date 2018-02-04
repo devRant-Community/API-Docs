@@ -9,19 +9,29 @@
 				</button>
 			</div>
 			<div class="modal-body">
-				<form>
+				<form id="login-form" name="login" ng-show="!login.confirmNeeded" ng-submit="auth.login(login)">
 					<div class="form-group">
 						<label for="usernameInput">Username</label>
-						<input type="text" class="form-control" id="usernameInput" placeholder="Enter Username..." autocomplete="username" required>
+						<input type="text" class="form-control" id="usernameInput" placeholder="Enter Username..." autocomplete="username" ng-model="login.username" required>
 					</div>
 					<div class="form-group">
 						<label for="passwordInput">Password</label>
-						<input type="password" class="form-control" id="passwordInput" placeholder="Enter Password..." autocomplete="current-password" required>
+						<input type="password" class="form-control" id="passwordInput" placeholder="Enter Password..." autocomplete="current-password" ng-model="login.password" required>
+
+						<div class="text-danger login-error mt-2" ng-show="login.error">{{login.error}}</div>
 					</div>
 
-					<button type="submit" class="btn btn-red float-right" disabled>Login / Register</button>
+					<button type="submit" class="btn btn-red float-right" id="login-submit" ng-disabled="!login.$valid">Login / Register</button>
 					<button type="button" class="btn btn-secondary float-right cancel-btn mr-2" data-dismiss="modal">Cancel</button>
 				</form>
+
+				<div class="registerConfirm text-center" ng-show="login.confirmNeeded">
+					<h6 class="text-muted mb-3">This User does not exist.<br>
+						Create a new User?</h6>
+
+					<button class="btn btn-red" ng-click="auth.login(login, true)">Yes</button>
+					<button class="btn btn-secondary cancel-btn mr-2" ng-click="login.confirmNeeded = false">No</button>
+				</div>
 			</div>
 		</div>
 	</div>

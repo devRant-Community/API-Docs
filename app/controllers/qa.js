@@ -1,4 +1,4 @@
-app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
+app.controller('QAController-Main', function ($scope, $http, $location) {
 	$scope.categories = [];
 	$scope.questions = [];
 	$scope.activeCategory = ($location.search().category === undefined) ? 'all' : $location.search().category;
@@ -32,7 +32,7 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 	};
 
 	$scope.newQuestion = function ($event) {
-		if (true) {
+		if (!$scope.isLoggedIn) {
 			$event.preventDefault();
 
 			$('.loginModal').modal('show');
@@ -55,7 +55,7 @@ app.controller('QAController-Main', function ($scope, $http, $location, $auth) {
 
 
 
-app.controller('QAController-View', function ($scope, $routeParams, $location, $http, $auth) {
+app.controller('QAController-View', function ($scope, $routeParams, $location, $http, $auth, $rootScope) {
 	var questionID = parseInt($routeParams.id);
 	$scope.question = {};
 	$scope.answer = {};
@@ -65,24 +65,20 @@ app.controller('QAController-View', function ($scope, $routeParams, $location, $
 		$location.path('/qa');
 	}
 
-	$scope.checkAuth = function () {
-		if (true) { // if(loggedin)
-			return true;
-		} else {
-			$('.loginModal').modal('show');
-			return false;
-		}
-	};
-
 	$scope.postAnswer = function () {
-		if (!$scope.checkAuth()) {
+		if (!$scope.isLoggedIn) {
 			return;
 		}
 
+		// Get token
+		var token = $auth.getTokenData();
+
 		$http.post(API + '/answers', $.param({
 			questionid: questionID,
-			userid:     1,
-			body:       $scope.answer.body
+			body:       $scope.answer.body,
+
+			token_id:  token.id,
+			token_key: token.key
 		})).then(function (response) {
 			if (response.data.success) {
 				// Reset Form
@@ -127,17 +123,6 @@ app.controller('QAController-New', function ($scope, $http, $location, $auth) {
 	$scope.postQuestion = function () {
 		var newQuestion = angular.copy($scope.question);
 
-		// Validate
-		if (newQuestion.title === '' || newQuestion.title === undefined) {
-			$scope.question.error = 'Title is required';
-			return;
-		}
-
-		if (newQuestion.body === '' || newQuestion.body === undefined) {
-			$scope.question.error = 'Question is required';
-			return;
-		}
-
 		if (newQuestion.category === '' || newQuestion.category === undefined) {
 			newQuestion.category = 'other';
 		}
@@ -145,12 +130,17 @@ app.controller('QAController-New', function ($scope, $http, $location, $auth) {
 		// Format
 		newQuestion.category = newQuestion.category.toLowerCase();
 
+		// Get token
+		var token = $auth.getTokenData();
+
 		// Post to API
 		$http.post(API + '/questions', $.param({
-			userid:   1,
 			title:    newQuestion.title,
 			body:     newQuestion.body,
-			category: newQuestion.category
+			category: newQuestion.category,
+
+			token_id:  token.id,
+			token_key: token.key
 		})).then(function (response) {
 			if (response.data.success) {
 				$location.path('/qa');
@@ -170,8 +160,4 @@ app.controller('QAController-New', function ($scope, $http, $location, $auth) {
 	$http.get('content/qa/categories.json').then(function (response) {
 		$scope.categories = response.data;
 	});
-
-	if (false) { // if (notloggedin)
-		$location.path('/qa');
-	}
 });
