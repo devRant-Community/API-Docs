@@ -20,7 +20,7 @@ app.controller('QAController-Main', function ($scope, $http, $location) {
 	};
 
 	$scope.searchQuestions = function () {
-		if ($scope.search == '') {
+		if ($scope.search === '') {
 			return;
 		}
 
@@ -55,7 +55,7 @@ app.controller('QAController-Main', function ($scope, $http, $location) {
 
 
 
-app.controller('QAController-View', function ($scope, $routeParams, $location, $http, $auth, $rootScope) {
+app.controller('QAController-View', function ($scope, $routeParams, $location, $http, $auth) {
 	var questionID = parseInt($routeParams.id);
 	$scope.question = {};
 	$scope.answer = {};

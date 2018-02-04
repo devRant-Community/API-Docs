@@ -14,7 +14,6 @@ function Auth($rootScope, $http) {
 			password: loginForm.password,
 			confirmSignUp: confirmSignUp
 		})).then(function(response) {
-			console.log(response);
 			if(response.data.success === true) {
 				loginForm.username = loginForm.password = "";
 				self.setTokenData(response.data.token);

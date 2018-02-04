@@ -29,13 +29,13 @@
 			<div class="col-md-5 order-1 order-md-2 mb-4">
 				<div ng-show="isLoggedIn">
 					<h4>New Answer:</h4>
-					<form id="new-answer-form" ng-submit="postAnswer()">
+					<form id="new-answer-form" name="newAnswer" ng-submit="postAnswer()">
 						<div class="form-group">
 							<textarea class="form-control" rows="4" ng-model="answer.body" placeholder="Enter Answer..." required></textarea>
 							<div class="text-danger" ng-show="answer.error">{{answer.error}}</div>
 						</div>
 
-						<button type="submit" id="new-answer-submit" class="btn btn-red float-right">Submit</button>
+						<button type="submit" id="new-answer-submit" class="btn btn-red float-right" ng-disabled="!newAnswer.$valid">Submit</button>
 					</form>
 				</div>
 
