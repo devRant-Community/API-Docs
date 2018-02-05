@@ -2,7 +2,7 @@
 	<div id="qa-main-content" class="col-md-8 mx-auto mt-5 row">
 		<aside id="qa-main-sidebar" class="col-lg-2">
 			<!-- TODO: Logout Button -->
-			<a class="btn btn-red btn-lg btn-block mb-4" href="/qa/new" ng-click="newQuestion($event)">New Question</a>
+			<a class="btn btn-red btn-lg btn-block mb-4" href="/qa/new" title="Create a new Question" ng-click="newQuestion($event)">New Question</a>
 
 			<div class="input-group mb-4">
 				<input type="text" class="form-control" placeholder="Search..." aria-label="Search..." ng-model="search" ng-keypress="($event.charCode==13) ? searchQuestions() : return">
@@ -26,7 +26,7 @@
 				</div>
 				<div class="list-group list-group-flush">
 					<a href="#" ng-click="setCategory('all')" ng-class="{active : (activeCategory == 'all')}" class="list-group-item list-group-item-action">All</a>
-					<a href="#" ng-click="setCategory(category)" ng-class="{active : (activeCategory == category.toLowerCase())}" class="list-group-item list-group-item-action" ng-repeat="category in categories">{{category}}</a>
+					<a href="#" ng-click="setCategory(category)" ng-class="{active : (activeCategory == category.toLowerCase())}" title="Show Questions in Category: '{{category}}'" class="list-group-item list-group-item-action" ng-repeat="category in categories">{{category}}</a>
 				</div>
 			</div>
 		</aside>
@@ -39,11 +39,11 @@
 			<h6 class="text-muted" ng-show="questions.length == 0 && loading">Loading...</h6>
 
 			<div class="card mb-4 question-preview" ng-repeat="question in questions | orderBy: '-date'">
-				<a class="card-header question-preview-title" ng-href="/qa/{{question.id}}">
+				<a class="card-header question-preview-title" ng-href="/qa/{{question.id}}" title="View Question">
 					<h5 class="float-left">{{question.title}}</h5>
 					<span class="float-right"><span class="text-muted">Asked by</span> @{{question.username}}</span>
 				</a>
-				<a class="card-body question-preview-body" ng-href="/qa/{{question.id}}">
+				<a class="card-body question-preview-body" ng-href="/qa/{{question.id}}" title="View Question">
 					<p class="card-text fakePre">{{question.body | limitToReplace: 200 : '...'}}</p>
 					<div class="question-answer-count text-muted float-right">
 						{{question.answerCount}} Answer<span ng-hide="question.answerCount == 1">s</span>
