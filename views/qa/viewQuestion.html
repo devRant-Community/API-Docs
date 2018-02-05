@@ -32,7 +32,8 @@
 					<form id="new-answer-form" name="newAnswer" ng-submit="postAnswer()">
 						<div class="form-group">
 							<textarea class="form-control" rows="4" ng-model="answer.body" placeholder="Enter Answer..." required></textarea>
-							<div class="text-danger" ng-show="answer.error">{{answer.error}}</div>
+
+							<div class="text-danger mt-2" ng-show="answer.error">{{answer.error}}</div>
 						</div>
 
 						<button type="submit" id="new-answer-submit" class="btn btn-red float-right" ng-disabled="!newAnswer.$valid">Submit</button>
