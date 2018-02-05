@@ -17,7 +17,7 @@
 							</thead>
 							<tbody>
 								<tr ng-repeat="library in links.libraries">
-									<td><a ng-href="{{library.link}}" target="_blank">{{library.name}}</a></td>
+									<td><a title="Link to GitHub" ng-href="{{library.link}}" target="_blank">{{library.name}}</a></td>
 									<td>{{library.language}}</td>
 									<td>{{library.author}}</td>
 								</tr>
@@ -28,9 +28,15 @@
 					<div id="links-other" class="mt-5">
 						<h4>Other Links: </h4>
 						<ul>
-							<li ng-repeat="link in links.other">{{link.name}}: <a target="_blank" ng-href="{{link.link}}">{{link.linkName}}</a></li>
+							<li ng-repeat="link in links.other">
+								<a title="{{link.name}}" target="_blank" ng-href="{{link.link}}">{{link.name}}</a>
+							</li>
 						</ul>
 					</div>
+
+					<footer id="links-footer" class="text-center">
+						This site was made by <a href="https://github.com/Skayo" title="GitHub Profile" target="_blank">Skayo</a>
+					</footer>
 				</div>
 			</div>
 		</div>

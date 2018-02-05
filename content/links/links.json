@@ -57,19 +57,16 @@
 	],
 	"other": [
 		{
-			"name": "This projects GitHub Page",
-			"linkName": "GitHub",
+			"name": "GitHub (Front-End)",
 			"link": "https://github.com/devRant-Docs/devrant-docs.github.io"
 		},
 		{
-			"name": "If you found a bug, report it here",
-			"linkName": "Issue Tracker",
-			"link": "https://github.com/devRant-Docs/devrant-docs.github.io/issues"
+			"name": "GitHub (Back-End)",
+			"link": "https://github.com/devRant-Docs/Backend"
 		},
 		{
-			"name": "This site was made by Skayo",
-			"linkName": "devRant-Profile",
-			"link": "https://devrant.com/users/Skayo"
+			"name": "Issue Tracker",
+			"link": "https://github.com/devRant-Docs/devrant-docs.github.io/issues"
 		}
 	]
 }
