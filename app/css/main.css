@@ -79,10 +79,23 @@ Link:
 
 	#docs-content {
 		margin-left: 25%;
+		padding-left: 5%;
 	}
 
 	.answers {
 		border-right: 1px solid rgba(0,0,0,.1) !important;
+	}
+}
+
+@media (min-width: 992px) {
+	#docs-content {
+		margin-left: 25%;
+	}
+}
+
+@media (min-width: 1200px) {
+	#docs-content {
+		margin-left: 21%;
 	}
 }
 
