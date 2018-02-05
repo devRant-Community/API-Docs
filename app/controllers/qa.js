@@ -1,4 +1,4 @@
-app.controller('QAController-Main', function ($scope, $http, $location) {
+app.controller('QAController-Main', function ($scope, $http, $location, $rootScope) {
 	$scope.categories = [];
 	$scope.questions = [];
 	$scope.activeCategory = ($location.search().category === undefined) ? 'all' : $location.search().category;
@@ -37,6 +37,13 @@ app.controller('QAController-Main', function ($scope, $http, $location) {
 
 			$('.loginModal').modal('show');
 		}
+	};
+
+	$scope.logOut = function () {
+		localStorage.removeItem('token_id');
+		localStorage.removeItem('token_key');
+
+		$rootScope.isLoggedIn = false;
 	};
 
 	$http.get('content/qa/categories.json').then(function (response) {

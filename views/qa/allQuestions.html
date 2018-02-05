@@ -1,14 +1,20 @@
 <section id="qa" class="row">
 	<div id="qa-main-content" class="col-md-8 mx-auto mt-5 row">
 		<aside id="qa-main-sidebar" class="col-lg-2">
-			<!-- TODO: Logout Button -->
+			<div class="logout text-center mb-3" ng-show="isLoggedIn">
+				Logged in as {{username}}.
+				<a ng-show="isLoggedIn" href="#" title="Log out" ng-click="logOut()"> Log out</a>
+			</div>
+
 			<a class="btn btn-red btn-lg btn-block mb-4" href="/qa/new" title="Create a new Question" ng-click="newQuestion($event)">New Question</a>
 
 			<div class="input-group mb-4">
 				<input type="text" class="form-control" placeholder="Search..." aria-label="Search..." ng-model="search" ng-keypress="($event.charCode==13) ? searchQuestions() : return">
 				<div class="input-group-append">
 					<button id="search-btn" class="btn btn-secondary" type="button" ng-click="searchQuestions()">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="16" height="16" viewBox="0 0 24 24"><path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z"/></svg>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="16" height="16" viewBox="0 0 24 24">
+							<path d="M23.822 20.88l-6.353-6.354c.93-1.465 1.467-3.2 1.467-5.059.001-5.219-4.247-9.467-9.468-9.467s-9.468 4.248-9.468 9.468c0 5.221 4.247 9.469 9.468 9.469 1.768 0 3.421-.487 4.839-1.333l6.396 6.396 3.119-3.12zm-20.294-11.412c0-3.273 2.665-5.938 5.939-5.938 3.275 0 5.94 2.664 5.94 5.938 0 3.275-2.665 5.939-5.94 5.939-3.274 0-5.939-2.664-5.939-5.939z" />
+						</svg>
 					</button>
 				</div>
 			</div>
@@ -33,7 +39,8 @@
 
 		<div id="qa-main-questions" class="col-lg-9">
 			<h5 class="qa-main-questions-title mb-3" ng-hide="isSearch">All questions:</h5>
-			<h5 class="qa-main-questions-title mb-3" ng-show="isSearch">Search results for '{{searchCopy}}': <a href="#" ng-click="deleteSearch()" class="float-right all" ng-show="isSearch">Delete Search</a></h5>
+			<h5 class="qa-main-questions-title mb-3" ng-show="isSearch">Search results for '{{searchCopy}}':
+				<a href="#" ng-click="deleteSearch()" class="float-right all" ng-show="isSearch">Delete Search</a></h5>
 
 			<h6 class="text-muted" ng-show="questions.length == 0 && !loading">No Questions yet</h6>
 			<h6 class="text-muted" ng-show="questions.length == 0 && loading">Loading...</h6>
@@ -50,7 +57,7 @@
 					</div>
 				</a>
 			</div>
-	</div>
+		</div>
 
-	<ng-include src="'views/qa/auth/login.html'"></ng-include>
+		<ng-include src="'views/qa/auth/login.html'"></ng-include>
 </section>

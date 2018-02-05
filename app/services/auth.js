@@ -7,24 +7,28 @@ function Auth($rootScope, $http) {
 	// Login
 	this.login = function (loginForm, confirmSignUp = false) {
 		var self = this;
-		loginForm.error = "";
+		loginForm.error = '';
 
 		$http.post(this.URLs.login, $.param({
-			username: loginForm.username,
-			password: loginForm.password,
+			username:      loginForm.username,
+			password:      loginForm.password,
 			confirmSignUp: confirmSignUp
-		})).then(function(response) {
-			if(response.data.success === true) {
-				loginForm.username = loginForm.password = "";
+		})).then(function (response) {
+			if (response.data.success === true) {
+				loginForm.username = loginForm.password = '';
+
 				self.setTokenData(response.data.token);
+
 				$rootScope.isLoggedIn = true;
+				$rootScope.username = response.data.token.username;
+
 				$('.loginModal').modal('hide');
-			} else if(response.data.confirmNeeded) {
+			} else if (response.data.confirmNeeded) {
 				loginForm.confirmNeeded = true;
 			} else {
 				loginForm.error = response.data.error;
 			}
-		}, function(response) {
+		}, function (response) {
 			console.log(response);
 		});
 
@@ -37,7 +41,7 @@ function Auth($rootScope, $http) {
 		var token = this.getTokenData();
 
 		return $http.post(this.URLs.checkToken, $.param({
-			token_id: token.id,
+			token_id:  token.id,
 			token_key: token.key
 		}));
 	};
