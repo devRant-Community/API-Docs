@@ -7,8 +7,9 @@
 		<script type="text/javascript">
 			var path = window.location.pathname;
 
-			if(path.startsWith('/'))
+			if (path.startsWith('/')) {
 				path = path.slice(1);
+			}
 
 			path = '/#!/' + path;
 

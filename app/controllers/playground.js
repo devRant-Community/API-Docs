@@ -62,35 +62,36 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 		return Object.keys(autocomplete);
 	}
 
-	$scope.onInputKeyUp = function() {
+	$scope.onInputKeyUp = function () {
 		var url = $scope.url;
 		var urlRegex = new RegExp('^(' + url.replace('/', '\\/') + ')', 'g');
 		$scope.showDots = false;
 		$scope.currentAutocomplete = [];
 		$('#playground-url-autocomplete').hide();
 
-		autocompleteList.forEach(function(item) {
+		autocompleteList.forEach(function (item) {
 			var match = item.match(urlRegex);
-			if(match !== null) {
-				$scope.currentAutocomplete.push({pre: match[0], post: item.replace(match[0], "")});
+			if (match !== null) {
+				$scope.currentAutocomplete.push({pre: match[0], post: item.replace(match[0], '')});
 			}
 		});
 
-		if($scope.currentAutocomplete.length > 4) {
+		if ($scope.currentAutocomplete.length > 4) {
 			$scope.currentAutocomplete = $scope.currentAutocomplete.slice(0, 4);
 			$scope.showDots = true;
 		}
 
-		if($scope.currentAutocomplete.length > 0)
+		if ($scope.currentAutocomplete.length > 0) {
 			$('#playground-url-autocomplete').show();
+		}
 	};
 
-	$scope.autocompleteEndpoint = function(endpoint) {
+	$scope.autocompleteEndpoint = function (endpoint) {
 		$scope.url = endpoint;
 		var parameters = autocomplete[endpoint];
 		$scope.parameters = [];
 
-		Object.keys(parameters).forEach(function(item, index) {
+		Object.keys(parameters).forEach(function (item, index) {
 			var newParamter = {};
 			newParamter.key = item;
 			newParamter.value = parameters[item];
@@ -101,19 +102,21 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 		$('#playground-url-autocomplete').hide();
 	};
 
-	$http.get('content/playground/autocomplete.json').then(function(response) {
+	$http.get('content/playground/autocomplete.json').then(function (response) {
 		autocomplete = response.data;
 		autocompleteList = getAutocompleteList();
 
-		if($location.search().endpoint) {
+		if ($location.search().endpoint) {
 			// If endpoint get-parameter passed, autofill form
 			var endpoint = $location.search().endpoint;
 
-			if(endpoint.startsWith('/'))
+			if (endpoint.startsWith('/')) {
 				endpoint = endpoint.slice(1);
+			}
 
-			if(autocompleteList.indexOf(endpoint) > -1)
+			if (autocompleteList.indexOf(endpoint) > -1) {
 				$scope.autocompleteEndpoint(endpoint);
+			}
 		}
 	});
 
@@ -122,12 +125,13 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 		.hide();
 
 	$('#inputUrl')
-		.focusout(function() {
-			if(!$scope.dropdownHover)
+		.focusout(function () {
+			if (!$scope.dropdownHover) {
 				$('#playground-url-autocomplete').hide();
+			}
 		})
-		.focusin(function() {
-			if($scope.currentAutocomplete.length > 0) {
+		.focusin(function () {
+			if ($scope.currentAutocomplete.length > 0) {
 				$('#playground-url-autocomplete').show();
 			}
 		});

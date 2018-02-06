@@ -2,7 +2,12 @@
 var app = angular.module('DevRantDocs', ['ngRoute', 'hljs']);
 
 // Routing-Configuration
-app.config(['$routeProvider', '$locationProvider', '$sceProvider', '$httpProvider', function ($routeProvider, $locationProvider, $sceProvider, $httpProvider) {
+app.config([
+	'$routeProvider',
+	'$locationProvider',
+	'$sceProvider',
+	'$httpProvider',
+	function ($routeProvider, $locationProvider, $sceProvider, $httpProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'views/docs.html',
