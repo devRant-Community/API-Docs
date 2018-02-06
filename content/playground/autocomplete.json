@@ -5,5 +5,51 @@
 	"get-user-id": {
 		"app": "3",
 		"username": ""
+	},
+	"users/<userID>": {
+		"app": "3"
+	},
+	"devrant/rants/<rantID>": {
+		"app": "3"
+	},
+	"devrant/rants": {
+		"app": "3",
+		"sort": "recent",
+		"range": "week",
+		"limit": "20",
+		"skip": "0"
+	},
+	"devrant/search": {
+		"app": "3",
+		"term": ""
+	},
+	"devrant/search/tags": {
+		"app": "3"
+	},
+	"devrant/collabs": {
+		"app": "3",
+		"sort": "recent",
+		"limit": "20",
+		"skip": "0"
+	},
+	"devrant/story-rants": {
+		"app": "3",
+		"sort": "recent",
+		"range": "week",
+		"limit": "20",
+		"skip": "0"
+	},
+	"devrant/weekly-rants": {
+		"app": "3",
+		"week": "90",
+		"sort": "recent",
+		"limit": "20",
+		"skip": "0"
+	},
+	"devrant/weekly-list": {
+		"app": "3"
+	},
+	"devrant/rants/surprise": {
+		"app": "3"
 	}
 }
