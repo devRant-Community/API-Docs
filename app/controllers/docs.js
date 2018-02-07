@@ -1,4 +1,6 @@
-app.controller('DocsController', function ($scope, $http, $timeout, $anchorScroll) {
+app.controller('DocsController', function ($scope, $http, $timeout, $anchorScroll, $location) {
+	$anchorScroll.yOffset = 90;
+
 	$scope.setLanguage = function (lang) {
 		console.log(lang);
 		if (lang === $scope.language) {
@@ -12,6 +14,11 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 
 	$scope.getElementLink = function (elementID) {
 		return location.origin + '#' + elementID;
+	};
+
+	$scope.scrollTo = function(event, id) {
+		event.preventDefault();
+		$anchorScroll(id);
 	};
 
 	$http.get('content/docs/endpoints.json').then(function (response) {
@@ -44,7 +51,7 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 			return 0;
 		});
 
-		$anchorScroll();
+		$scope.scrollTo($location.hash());
 	});
 
 

@@ -61,7 +61,7 @@
 	{
 		"method": "GET",
 		"endpoint": "/get-user-id",
-		"description": "Get the ID of a user.\nThe userID is used by other endpoints, so it's widely needed!",
+		"description": "Get the ID of a user.\nThe UserID is used by other endpoints, so it's widely needed!",
 		"parameters": [
 			{
 				"name": "app",
