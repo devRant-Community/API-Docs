@@ -59,7 +59,7 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 	var autocompleteList = null;
 
 	function getAutocompleteList() {
-		return Object.keys(autocomplete);
+		return Object.keys(autocomplete).sort();
 	}
 
 	$scope.onInputKeyUp = function () {
