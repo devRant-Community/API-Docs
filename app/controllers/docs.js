@@ -16,8 +16,11 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 		return location.origin + '#' + elementID;
 	};
 
-	$scope.scrollTo = function(event, id) {
-		event.preventDefault();
+	$scope.scrollTo = function (id, $event = null) {
+		if ($event) {
+			$event.preventDefault();
+		}
+
 		$anchorScroll(id);
 	};
 
