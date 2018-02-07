@@ -57,5 +57,47 @@
 			"  ]",
 			"}"
 		]
+	},
+	{
+		"method": "GET",
+		"endpoint": "/get-user-id",
+		"description": "Get the ID of a user.\nThe userID is used by other endpoints, so it's widely needed!",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "username",
+				"description": "Username of the user."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/get-user-id?app=3&username=User1'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"$username = \"User1\";",
+					"$response = file_get_contents(\"https://devrant.com/api/get-user-id?app=3&username=\" . $username);",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"user_id\": 12301",
+			"}"
+		]
 	}
 ]

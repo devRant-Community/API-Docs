@@ -43,6 +43,8 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 			}
 			return 0;
 		});
+
+		$anchorScroll();
 	});
 
 
@@ -53,7 +55,5 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 		} else {
 			$scope.language = localStorage.getItem('examples-language');
 		}
-
-		$anchorScroll();
 	});
 });
