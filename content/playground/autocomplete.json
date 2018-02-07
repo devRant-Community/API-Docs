@@ -7,7 +7,9 @@
 		"username": ""
 	},
 	"users/<userID>": {
-		"app": "3"
+		"app": "3",
+		"content": "all",
+		"skip": "0"
 	},
 	"devrant/rants/<rantID>": {
 		"app": "3"

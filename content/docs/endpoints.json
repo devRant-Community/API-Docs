@@ -23,7 +23,10 @@
 				"code": [
 					"<?php",
 					"",
+					"// Do request",
 					"$response = file_get_contents(\"https://devrant.com/api/devrant/supporters?app=3\");",
+					"",
+					"echo $response;",
 					"",
 					"?>"
 				]
@@ -58,6 +61,8 @@
 			"}"
 		]
 	},
+
+
 	{
 		"method": "GET",
 		"endpoint": "/get-user-id",
@@ -86,8 +91,13 @@
 				"code": [
 					"<?php",
 					"",
+					"// Parameters",
 					"$username = \"User1\";",
+					"",
+					"// Do request",
 					"$response = file_get_contents(\"https://devrant.com/api/get-user-id?app=3&username=\" . $username);",
+					"",
+					"echo $response;",
 					"",
 					"?>"
 				]
@@ -97,6 +107,100 @@
 			"{",
 			"  \"success\": true,",
 			"  \"user_id\": 12301",
+			"}"
+		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/users/<userID>",
+		"description": "Get the profile of a user.\nReplace <userID> with the user's ID.",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "skip",
+				"description": "How many rants to skip."
+			},
+			{
+				"name": "content",
+				"description": "What content to load. Either 'all', 'rants', 'upvoted', 'comments', 'viewed', 'favorites' or 'collabs'."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/get-user-id?app=3&username=User1'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Parameters",
+					"$userID = \"12301\";",
+					"$skip = \"0\";",
+					"$content = \"all\";",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/users/\" . $userID . \"?app=3&content=\" . $content . \"&skip=\" . $skip);",
+					"",
+					"echo $response;",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"profile\": {",
+			"    \"username\": \"User1\",",
+			"    \"score\": 1234,",
+			"    \"about\": \"Bla bla I'm a dev.\",",
+			"    \"location\": \"Idk\",",
+			"    \"created_time\": 1514824661,",
+			"    \"skills\": \"No skills :/\",",
+			"    \"github\": \"User1\",",
+			"    \"website\": \"www.user1.com\",",
+			"    \"content\": {",
+			"      \"content\": {",
+			"        \"rants\": [",
+			"          // Rants ...",
+			"        ],",
+			"        \"upvoted\": [",
+			"          // Upvoted Rants ...",
+			"        ],",
+			"        \"comments\": [",
+			"          // Comments ...",
+			"        ],",
+			"        \"favorites\": []",
+			"      },",
+			"      \"counts\": {",
+			"        \"rants\": 12,",
+			"        \"upvoted\": 123,",
+			"        \"comments\": 12,",
+			"        \"favorites\": 1,",
+			"        \"collabs\": 2",
+			"      }",
+			"    },",
+			"    \"avatar\": {",
+			"      \"b\": \"2a8b9d\",",
+			"      \"i\": \"v-18_c-1_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.png\"",
+			"    },",
+			"    \"avatar_sm\": {",
+			"      \"b\": \"2a8b9d\",",
+			"      \"i\": \"v-18_c-3_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.jpg\"",
+			"    },",
+			"    \"dpp\": 0       // Btw thats a bool if the user is a devRant++ Member or not",
+			"  }",
 			"}"
 		]
 	}
