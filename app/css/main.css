@@ -313,3 +313,27 @@ button[type="submit"]:disabled:hover {
 #links-other li span {
 	margin-top: 10px
 }
+
+.delete:hover {
+	cursor: pointer;
+}
+
+.delete svg {
+	fill: #868e96;
+}
+
+.delete:hover svg {
+	fill: var(--devrant-color-red);
+}
+
+.delete-question {
+	position: absolute;
+	bottom: 0.85rem;
+	left: 1.25rem;
+}
+
+.delete-answer {
+	position: absolute;
+	right: 8px;
+	top: 5px;
+}

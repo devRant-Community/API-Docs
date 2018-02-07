@@ -1,4 +1,4 @@
-app.controller('QAController-Main', function ($scope, $http, $location, $rootScope) {
+app.controller('QAController-Main', function ($scope, $http, $location, $rootScope, $auth) {
 	$scope.categories = [];
 	$scope.questions = [];
 	$scope.activeCategory = ($location.search().category === undefined) ? 'all' : $location.search().category;
@@ -44,6 +44,35 @@ app.controller('QAController-Main', function ($scope, $http, $location, $rootSco
 		localStorage.removeItem('token_key');
 
 		$rootScope.isLoggedIn = false;
+	};
+
+	$scope.deleteQuestion = function (questionID) {
+		var confirmed = window.confirm('Are you sure you want to delete this Question?\n(ID: ' + questionID + ')');
+
+		if (confirmed) {
+			// Get token
+			var token = $auth.getTokenData();
+
+			$http.delete(API + '/questions?questionid=' + questionID + '&token_id=' + token.id + '&token_key=' + token.key).then(function (response) {
+				if(response.data.success) {
+					window.alert('Question successfully deleted.');
+
+					// Refresh
+					$http.get(API + '/questions?category=' + $scope.activeCategory + '&search=' + $scope.search).then(function (response) {
+						$scope.questions = response.data.questions;
+						$scope.loading = false;
+					}, function (response) {
+						console.log(response);
+						$scope.loading = false;
+					});
+				} else {
+					window.alert(response.data.error);
+				}
+			}, function (response) {
+				window.alert('An error occurred while deleting question.');
+				console.log(response);
+			});
+		}
 	};
 
 	$http.get('content/qa/categories.json').then(function (response) {
@@ -106,6 +135,31 @@ app.controller('QAController-View', function ($scope, $routeParams, $location, $
 
 	$scope.showModal = function () {
 		$('.loginModal').modal('show');
+	};
+
+	$scope.deleteAnswer = function (answerID) {
+		var confirmed = window.confirm('Are you sure you want to delete this Answer?\n(ID: ' + answerID + ')');
+
+		if (confirmed) {
+			// Get token
+			var token = $auth.getTokenData();
+
+			$http.delete(API + '/answers?answerid=' + answerID + '&token_id=' + token.id + '&token_key=' + token.key).then(function (response) {
+				if(response.data.success) {
+					window.alert('Answer successfully deleted.');
+
+					// Refresh
+					$http.get(API + '/question?id=' + questionID).then(function (response) {
+						$scope.question = response.data.question;
+					});
+				} else {
+					window.alert(response.data.error);
+				}
+			}, function (response) {
+				window.alert('An error occurred while deleting answer.');
+				console.log(response);
+			});
+		}
 	};
 
 	$http.get(API + '/question?id=' + questionID).then(function (response) {
