@@ -127,7 +127,7 @@
 			},
 			{
 				"name": "content",
-				"description": "What content to load. Either 'all', 'rants', 'upvoted', 'comments', 'viewed', 'favorites' or 'collabs'."
+				"description": "What content to load.\nEither 'all', 'rants', 'upvoted', 'comments', 'viewed', 'favorites' or 'collabs'."
 			}
 		],
 		"exampleCode": [
