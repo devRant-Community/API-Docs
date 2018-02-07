@@ -28,6 +28,16 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 		$scope.endpoints = response.data;
 		$scope.endpointsList = [];
 
+		$scope.endpoints.sort(function (a, b) {
+			if (a.endpoint < b.endpoint) {
+				return -1;
+			}
+			if (a.endpoint > b.endpoint) {
+				return 1;
+			}
+			return 0;
+		});
+
 		$scope.endpoints.forEach(function (endpoint, i) {
 			$scope.endpoints[i].langs = [];
 
@@ -42,16 +52,6 @@ app.controller('DocsController', function ($scope, $http, $timeout, $anchorScrol
 			$scope.endpoints[i].exampleResponse = endpoint.exampleResponse.join('\n');
 
 			$scope.endpointsList.push(endpoint.endpoint);
-		});
-
-		$scope.endpoints.sort(function (a, b) {
-			if (a.endpoint < b.endpoint) {
-				return -1;
-			}
-			if (a.endpoint > b.endpoint) {
-				return 1;
-			}
-			return 0;
 		});
 
 		$scope.scrollTo($location.hash());

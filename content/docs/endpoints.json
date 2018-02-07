@@ -135,7 +135,7 @@
 				"name": "curl",
 				"langCode": "shell",
 				"code": [
-					"$ curl -X GET 'https://devrant.com/api/get-user-id?app=3&username=User1'"
+					"$ curl -X GET 'https://devrant.com/api/users/<userID>?app=3&content=rants&skip=0'"
 				]
 			},
 			{
@@ -147,7 +147,7 @@
 					"// Parameters",
 					"$userID = \"12301\";",
 					"$skip = \"0\";",
-					"$content = \"all\";",
+					"$content = \"rants\";",
 					"",
 					"// Do request",
 					"$response = file_get_contents(\"https://devrant.com/api/users/\" . $userID . \"?app=3&content=\" . $content . \"&skip=\" . $skip);",

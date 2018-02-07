@@ -8,7 +8,7 @@
 	},
 	"users/<userID>": {
 		"app": "3",
-		"content": "all",
+		"content": "rants",
 		"skip": "0"
 	},
 	"devrant/rants/<rantID>": {
