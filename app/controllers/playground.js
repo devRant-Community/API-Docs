@@ -116,6 +116,8 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 
 			if (autocompleteList.indexOf(endpoint) > -1) {
 				$scope.autocompleteEndpoint(endpoint);
+			} else {
+				$scope.url = endpoint;
 			}
 		}
 	});
