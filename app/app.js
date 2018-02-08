@@ -49,4 +49,4 @@ app.config([
 ]);
 
 // Constants
-const API = 'http://localhost:8088';//'https://skayo.2ix.at';
+const API = 'https://skayo.2ix.at';
