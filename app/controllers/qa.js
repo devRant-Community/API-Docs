@@ -47,7 +47,7 @@ app.controller('QAController-Main', function ($scope, $http, $location, $rootSco
 	};
 
 	$scope.deleteQuestion = function (questionID) {
-		var confirmed = window.confirm('Are you sure you want to delete this Question?\n(ID: ' + questionID + ')');
+		var confirmed = window.confirm('Are you sure you want to delete this Question?');
 
 		if (confirmed) {
 			// Get token
@@ -138,7 +138,7 @@ app.controller('QAController-View', function ($scope, $routeParams, $location, $
 	};
 
 	$scope.deleteAnswer = function (answerID) {
-		var confirmed = window.confirm('Are you sure you want to delete this Answer?\n(ID: ' + answerID + ')');
+		var confirmed = window.confirm('Are you sure you want to delete this Answer?');
 
 		if (confirmed) {
 			// Get token

@@ -17,6 +17,7 @@ app.controller('MainController', function ($rootScope, $scope, $location, $auth)
 	$rootScope.isLoggedIn = false;
 	$rootScope.userIsAdmin = false;
 	$rootScope.username = '...';
+	$rootScope.userID = null;
 
 	// Check if user is logged in. Due to Async HTTP Requests I have to use the .then() method
 	$auth.isLoggedIn().then(function (response) {
@@ -25,6 +26,7 @@ app.controller('MainController', function ($rootScope, $scope, $location, $auth)
 		if (response.data.success) {
 			$rootScope.username = response.data.token.username;
 			$rootScope.userIsAdmin = (response.data.token.isAdmin === '1') ? true : false;
+			$rootScope.userID = response.data.token.userid;
 		}
 
 		// Special redirection (need it here because the HTTP Request is asynchronous)
