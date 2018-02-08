@@ -375,5 +375,58 @@
 			"  ]",
 			"}"
 		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/devrant/search/tags",
+		"description": "Get a list of popular search terms.",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/devrant/search/tags?app=3'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/search/tags?app=3\");",
+					"",
+					"echo $response;",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"tags\": [",
+			"    \"devrant\",",
+			"    \"linux\",",
+			"    \"java\",",
+			"    \"windows\",",
+			"    \"fml\",",
+			"    \"android\",",
+			"    \"javascript\",",
+			"    \"php\",",
+			"    \"js\",",
+			"    \"programming\"",
+			"  ]",
+			"}"
+		]
 	}
 ]
