@@ -342,10 +342,10 @@
 			"  \"success\": true,",
 			"  \"results\": [",
 			"    {",
-			"      \"id\": 10123,",
+			"      \"id\": 30123,",
 			"      \"text\": \"Hehe. FUCK.\",",
 			"      \"score\": 123,",
-			"      \"created_time\": 1487173080,",
+			"      \"created_time\": 1487173080,   // When the rant was created",
 			"      \"attached_image\": {   // Empty string if there is no image",
 			"        \"url\": \"https://img.devrant.com/devrant/rant/imageName.jpg\",",
 			"        \"width\": 753,",
@@ -381,7 +381,7 @@
 	{
 		"method": "GET",
 		"endpoint": "/devrant/search/tags",
-		"description": "Get a list of popular search terms.",
+		"description": "Get a list of frequent used search terms.",
 		"parameters": [
 			{
 				"name": "app",
@@ -426,6 +426,114 @@
 			"    \"js\",",
 			"    \"programming\"",
 			"  ]",
+			"}"
+		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/devrant/rants",
+		"description": "Get a list of rants. (Rant feed)",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "sort",
+				"description": "Sort rants by 'algo', 'top' or 'recent'."
+			},
+			{
+				"name": "range",
+				"description": "In what time spectrum the rants should be. Either 'day', 'week', 'month' or 'all'."
+			},
+			{
+				"name": "limit",
+				"description": "Limit the amount of rants to load."
+			},
+			{
+				"name": "skip",
+				"description": "How many rants to skip."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/devrant/rants?app=3&sort=top&range=day&limit=20&skip=0'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Parameters",
+					"$sort = 'top';",
+					"$range = 'day';",
+					"$limit = 20;",
+					"$skip = 0;",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants?app=3&sort=\" . $sort . \"&range=\" . $range . \"&limit=\" . $limit . \"&skip=\" . $skip);",
+					"",
+					"echo $response;",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"rants\": [",
+			"    {",
+			"      \"id\": 20123,",
+			"      \"text\": \"Bla bla I hate my life\",",
+			"      \"score\": 123,",
+			"      \"created_time\": 1518160633,   // When the rant was created",
+			"      \"attached_image\": {   // Empty string if there is no image",
+			"        \"url\": \"https://img.devrant.com/devrant/rant/imageName.jpg\",",
+			"        \"width\": 753,",
+			"        \"height\": 546",
+			"      },",
+			"      \"num_comments\": 12,",
+			"      \"tags\": [",
+			"        \"some-tag\"",
+			"      ],",
+			"      \"vote_state\": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote",
+			"      \"edited\": false,",
+			"      \"rt\": 1,   // No clue what this is",
+			"      \"rc\": 1,   // No clue what this is",
+			"      \"user_id\": 12301,",
+			"      \"user_username\": \"User1\",",
+			"      \"user_score\": 1234,",
+			"      \"user_avatar\": {",
+			"        \"b\": \"2a8b9d\",",
+			"        \"i\": \"v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg\"",
+			"      },",
+			"      \"user_avatar_lg\": {",
+			"        \"b\": \"2a8b9d\",",
+			"        \"i\": \"v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png\"",
+			"      },",
+			"      \"user_dpp\": 1    // Bool indicator if the user is a devRant++ Member or not",
+			"    }",
+			"  ],",
+			"  \"settings\": [],   // Not sure what this contains",
+			"  \"set\": \"5a7df097a5dfa\",   // No clue what this is",
+			"  \"wrw\": 90,   // Weekly-Rant Week",
+			"  \"news\": {",
+			"    \"id\": 123,",
+			"    \"type\": \"intlink\",    // Not sure (Maybe if it's an announcement rant or the weekly rant topic)",
+			"    \"headline\": \"Weekly Group Rant\",",
+			"    \"body\": \"Worst interview rejection?\",",
+			"    \"footer\": \"Add tag 'wk90' to your rant\",",
+			"    \"height\": 100,",
+			"    \"action\": \"grouprant\"     // Not sure (What to do when clicked)",
+			"  }",
 			"}"
 		]
 	}

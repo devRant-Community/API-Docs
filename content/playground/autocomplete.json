@@ -16,8 +16,8 @@
 	},
 	"devrant/rants": {
 		"app": "3",
-		"sort": "recent",
-		"range": "week",
+		"sort": "top",
+		"range": "day",
 		"limit": "20",
 		"skip": "0"
 	},
