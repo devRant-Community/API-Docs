@@ -204,7 +204,7 @@ app.controller('QAController-New', function ($scope, $http, $location, $auth) {
 			token_key: token.key
 		})).then(function (response) {
 			if (response.data.success) {
-				$location.path('/qa');
+				$location.path('/qa/' + response.data.id);
 			} else {
 				$scope.question.error = response.data.error || 'Unknown error';
 			}
