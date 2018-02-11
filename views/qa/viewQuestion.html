@@ -1,7 +1,9 @@
 <section id="qa" class="row">
 	<div class="col-md-6 mx-auto mt-5">
-		<h4 ng-show="loading" class="text-center mb-4 text-muted">Loading...</h4>
-		<div class="card mb-4 question" ng-hide="loading">
+		<a class="backBtn" href="/qa" title="Go back">&lt; Back</a>
+
+		<h4 ng-show="loading" class="text-center mb-4 mt-2 text-muted">Loading...</h4>
+		<div class="card mb-4 mt-2 question" ng-hide="loading">
 			<div class="card-header question-title">
 				<h5 class="float-left">{{question.title}}</h5>
 				<span class="float-right"><span class="text-muted">Asked by</span> @{{question.username}}</span>

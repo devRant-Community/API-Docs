@@ -337,3 +337,7 @@ button[type="submit"]:disabled:hover {
 	right: 8px;
 	top: 5px;
 }
+
+.backBtn {
+	text-decoration: none !important;
+}
