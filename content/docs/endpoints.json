@@ -56,7 +56,8 @@
 			"        }",
 			"      },",
 			"      \"start\": 1496924123      // Time since the user is a member",
-			"    }",
+			"    },",
+			"    // ...",
 			"  ]",
 			"}"
 		]
@@ -534,6 +535,62 @@
 			"    \"height\": 100,",
 			"    \"action\": \"grouprant\"     // Not sure (What to do when clicked)",
 			"  }",
+			"}"
+		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/devrant/weekly-list",
+		"description": "Get a list of weekly rant topics.",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/devrant/weekly-list?app=3'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/weekly-list?app=3\");",
+					"",
+					"echo $response;",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"weeks\": [",
+			"    {",
+			"      \"week\": 91,",
+			"      \"prompt\": \"Story of your most successful project?\",",
+			"      \"date\": \"2/12/18\",",
+			"      \"num_rants\": 103",
+			"    },",
+			"    {",
+			"      \"week\": 90,",
+			"      \"prompt\": \"Worst interview rejection?\",",
+			"      \"date\": \"2/5/18\",",
+			"      \"num_rants\": 105",
+			"    }, ",
+			"    // ...",
+			"  ]",
 			"}"
 		]
 	}
