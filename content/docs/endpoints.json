@@ -425,7 +425,8 @@
 			"    \"javascript\",",
 			"    \"php\",",
 			"    \"js\",",
-			"    \"programming\"",
+			"    \"programming\",",
+			"    // ...",
 			"  ]",
 			"}"
 		]
