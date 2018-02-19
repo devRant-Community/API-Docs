@@ -594,5 +594,89 @@
 			"  ]",
 			"}"
 		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/devrant/rants/surprise",
+		"description": "Get a random rant.",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/devrant/rants/surprise?app=3'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants/surprise?app=3\");",
+					"",
+					"echo $response;",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"rant\": {",
+			"    \"id\": 20123,",
+			"    \"text\": \"Such random. Much wow\",",
+			"    \"score\": 13,",
+			"    \"created_time\": 1517755155,",
+			"    \"attached_image\": {   // Empty string if there is no image",
+			"      \"url\": \"https://img.devrant.com/devrant/rant/imageName.jpg\",",
+			"      \"width\": 753,",
+			"      \"height\": 546",
+			"    },",
+			"    \"num_comments\": 8,",
+			"    \"tags\": [",
+			"      \"some-tag\"",
+			"    ],",
+			"    \"vote_state\": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote",
+			"    \"edited\": true,",
+			"    \"rt\": 1,   // No clue what this is",
+			"    \"rc\": 7,   // No clue what this is",
+			"    \"links\": [",
+			"      {",
+			"        \"type\": \"url\",",
+			"        \"url\": \"https://github.com/User1/SomeRepo\",",
+			"        \"short_url\": \"https://github.com/User...\",",
+			"        \"title\": \"https://github.com/User...\",",
+			"        \"start\": 278,    // Starting position of the link",
+			"        \"end\": 313,      // Ending position of the link",
+			"        \"special\": 1     // No clue what this is",
+			"      }",
+			"    ],",
+			"    \"special\": true,   // No clue what this is",
+			"    \"user_id\": 12302,",
+			"    \"user_username\": \"User2\",",
+			"    \"user_score\": 123,",
+			"    \"user_avatar\": {",
+			"      \"b\": \"69c9cd\",",
+			"      \"i\": \"v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg\"",
+			"    },",
+			"    \"user_avatar_lg\": {",
+			"      \"b\": \"69c9cd\",",
+			"      \"i\": \"v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png\"",
+			"    },",
+			"    \"user_dpp\": 1    // Bool indicator if the user is a devRant++ Member or not",
+			"  }",
+			"}"
+		]
 	}
 ]
