@@ -341,3 +341,7 @@ button[type="submit"]:disabled:hover {
 .backBtn {
 	text-decoration: none !important;
 }
+
+.no-overflow {
+	overflow: hidden;
+}

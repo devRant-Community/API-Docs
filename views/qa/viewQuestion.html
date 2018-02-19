@@ -36,7 +36,7 @@
 					<h4>New Answer:</h4>
 					<form id="new-answer-form" name="newAnswer" ng-submit="postAnswer()">
 						<div class="form-group">
-							<textarea class="form-control" rows="4" ng-model="answer.body" placeholder="Enter Answer..." required></textarea>
+							<textarea class="form-control no-overflow" rows="4" ng-model="answer.body" placeholder="Enter Answer..." required></textarea>
 
 							<div class="text-danger mt-2" ng-show="answer.error">{{answer.error}}</div>
 						</div>
