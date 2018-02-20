@@ -53,5 +53,8 @@
 	},
 	"devrant/rants/surprise": {
 		"app": "3"
+	},
+	"devrant/rants/<collabID>": {
+		"app": "3"
 	}
 }
