@@ -708,7 +708,7 @@
 				"name": "curl",
 				"langCode": "shell",
 				"code": [
-					"$ curl -X GET 'https://devrant.com/api/devrant/collabs?app=3&sort=top&limit=20&skip=0'"
+					"$ curl -X GET 'https://devrant.com/api/devrant/collabs?app=3&sort=recent&limit=20&skip=0'"
 				] 
 			},
 			{
