@@ -480,7 +480,7 @@
 					"$skip = 0;",
 					"",
 					"// Do request",
-					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants?app=3&sort=\" . $sort . \"&range=\" . $range . \"&limit=\" . $limit . \"&skip=\" . $skip);",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants?app=3&sort=\" . $sort . \"&range=\" . $range . \"&limit=\" . $limit . \"&skip=\" . $skip\");",
 					"",
 					"echo $response;",
 					"",
@@ -770,7 +770,7 @@
 			"      \"user_dpp\": 1    // Bool indicator if the user is a devRant++ Member or not",
 			"    }",
 			"  ]",
-			"}",
+			"}"
 		]
 	}
 ]
