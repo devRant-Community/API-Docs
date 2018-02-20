@@ -723,7 +723,7 @@
 					"$skip = 0;",
 					"",
 					"// Do request",
-					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants?app=3&sort=\" . $sort . \"&limit=\" . $limit . \"&skip=\" . $skip\");",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants?app=3&sort=\" . $sort . \"&limit=\" . $limit . \"&skip=\" . $skip);",
 					"",
 					"echo $response;",
 					"",
