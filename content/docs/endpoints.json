@@ -678,5 +678,99 @@
 			"  }",
 			"}"
 		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/devrant/collabs",
+		"description": "Get a list of collabs.",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "sort",
+				"description": "Sort collabs by 'algo', 'top' or 'recent'. (Currently not affecting anything, I think)"
+			},
+			{
+				"name": "limit",
+				"description": "Limit the amount of collabs to load."
+			},
+			{
+				"name": "skip",
+				"description": "How many collabs to skip."
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/devrant/collabs?app=3&sort=top&limit=20&skip=0'"
+				] 
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Parameters",
+					"$sort = 'top';",
+					"$limit = 20;",
+					"$skip = 0;",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/devrant/rants?app=3&sort=\" . $sort . \"&limit=\" . $limit . \"&skip=\" . $skip);",
+					"",
+					"echo $response;",
+					"",
+					"?>",
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"rants\": [",
+			"    {",
+			"      \"id\": 12311,",
+			"      \"text\": \"devRant-Docs Page [more details]\",",
+			"      \"score\": 1234567,",
+			"      \"created_time\": 1519068050,",
+			"      \"attached_image\": {   // Empty string if there is no image",
+			"        \"url\": \"https://img.devrant.com/devrant/rant/imageName.jpg\",",
+			"        \"width\": 753,",
+			"        \"height\": 546",
+			"      },",
+			"      \"num_comments\": 123,",
+			"      \"tags\": [",
+			"        \"some-tag\"",
+			"      ],",
+			"      \"vote_state\": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote",
+			"      \"edited\": false,",
+			"      \"link\": \"collabs/12311/some-strange-text-for-seo\",",
+			"      \"rt\": 2,  // No clue what this is",
+			"      \"rc\": 2,  // No clue what this is",
+			"      \"c_type\": 2,   // 1 = \"Open source idea\", 2 = \"Existing open source project\", 3 = \"Project idea\", 4 = \"Existing project\"",
+			"      \"c_type_long\": \"Existing open source project\", // Collab type as string (see above)",
+			"      \"user_id\": 12301,",
+			"      \"user_username\": \"User1\",",
+			"      \"user_score\": 1234568,",
+			"      \"user_avatar\": {",
+			"        \"b\": \"69c9cd\",",
+			"        \"i\": \"v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg\"",
+			"      },",
+			"      \"user_avatar_lg\": {",
+			"        \"b\": \"69c9cd\",",
+			"        \"i\": \"v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png\"",
+			"      },",
+			"      \"user_dpp\": 1    // Bool indicator if the user is a devRant++ Member or not",
+			"    }",
+			"  ]",
+			"}",
+		]
 	}
 ]
