@@ -56,7 +56,8 @@
 
 					<div id="playground-response" ng-show="response">
 						<h4>Response: </h4>
-						<div hljs hljs-language="json" class="hljs-code-box" hljs-source="response"></div>
+						<div class="spinner" ng-show="doingRequest"></div>
+						<div ng-hide="doingRequest" hljs hljs-language="json" class="hljs-code-box" hljs-source="response"></div>
 					</div>
 				</div>
 			</div>

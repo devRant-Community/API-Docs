@@ -5,6 +5,7 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 		{index: 0, key: 'app', value: '3'}
 	];
 	$scope.response = null;
+	$scope.doingRequest = false;
 
 	$scope.setMethod = function (method) {
 		$scope.method = method;
@@ -19,6 +20,7 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 	};
 
 	$scope.doRequest = function () {
+		$scope.doingRequest = true;
 		var parameters = {};
 		$scope.parameters.forEach(function (item) {
 			parameters[item.key] = item.value;
@@ -33,9 +35,11 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 				data:   parameters
 			}).then(function successCallback(response) {
 				$scope.response = JSON.stringify(response.data, null, '  ');
+				$scope.doingRequest = false;
 			}, function errorCallback(response) {
 				console.log(response);
 				$scope.response = 'An error occurred';
+				$scope.doingRequest = false;
 			});
 		} else {
 			$http({
@@ -44,9 +48,11 @@ app.controller('TestingAreaController', function ($scope, $http, $location) {
 				params: parameters
 			}).then(function successCallback(response) {
 				$scope.response = JSON.stringify(response.data, null, '  ');
+				$scope.doingRequest = false;
 			}, function errorCallback(response) {
 				console.log(response);
 				$scope.response = 'An error occurred';
+				$scope.doingRequest = false;
 			});
 		}
 	};

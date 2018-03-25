@@ -345,3 +345,38 @@ button[type="submit"]:disabled:hover {
 .no-overflow {
 	overflow: hidden;
 }
+
+.spinner {
+	border-width: 10px;
+	border-radius: 200px;
+	border-color: lightgrey;
+	border-style: solid;
+	width: 50px;
+	height: 50px;
+	border-left-color: #000;
+	-webkit-animation: spin8 1.1s infinite linear;
+	animation: spin8 1.1s infinite linear;
+	margin: 0 auto;
+}
+
+@-webkit-keyframes spin8 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes spin8 {
+	0% {
+		-webkit-transform: rotate(0deg);
+		transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+		transform: rotate(360deg);
+	}
+}
