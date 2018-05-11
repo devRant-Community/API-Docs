@@ -53,6 +53,30 @@
 			"link": "https://github.com/iostreamer-X/devRant-crystal",
 			"language": "Crystal",
 			"author": "iostreamer-X"
+		},
+		{
+			"name": "devRant-Ruby",
+			"link": "https://github.com/alexdovzhanyn/devrant",
+			"language": "Ruby",
+			"author": "alexdovzhanyn"
+		},
+		{
+			"name": "devRant-Haskell",
+			"link": "https://github.com/Supernerd11/devrant-haskell",
+			"language": "Haskell",
+			"author": "Supernerd11"
+		},
+		{
+			"name": "devRant-Rust",
+			"link": "https://github.com/flyingP0tat0/devrant",
+			"language": "Rust",
+			"author": "flyingP0tat0"
+		},
+		{
+			"name": "devRant-Swift",
+			"link": "https://github.com/troligtvis/devRant",
+			"language": "Swift",
+			"author": "troligtvis"
 		}
 	],
 	"other": [
