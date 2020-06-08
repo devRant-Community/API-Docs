@@ -539,8 +539,9 @@
 			"    }",
 			"  ],",
 			"  \"settings\": [],   // Contatins amount of notifications when all optional value are provided",
-			"  \"set\": \"5a7df097a5dfa\",   // No clue what this is",
+			"  \"set\": \"5a7df097a5dfa\",   // Session hash",
 			"  \"wrw\": 90,   // Weekly-Rant Week",
+			"  \"dpp\": 0, // Only has value if all optional fields are provided. tells if user is dpp or not for filters etc...", 
 			"  \"news\": {",
 			"    \"id\": 123,",
 			"    \"type\": \"intlink\",    // Not sure (Maybe if it's an announcement rant or the weekly rant topic)",
@@ -1048,13 +1049,96 @@
 		],
 		"exampleResponse": [
 			"{",
-			"    \"success\": true",
+			"    \"success\": true,",
 			"    \"auth_token\": {",
 			"        \"id\": 6712386, //Keep super secure",
 			"        \"key\": \"tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M\", //Keep super secure",
 			"        \"expire_time\": 6712386, //Keep super secure",
 			"        \"user_id\": 1085040, //Keep super secure",
 			"    }",
+			"}"
+		]
+	},
+
+
+	{
+		"method": "GET",
+		"endpoint": "/users/me/notif-feed",
+		"description": "Get user notifications",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "token_id",
+				"description": "ID of the user token"
+			},
+			{
+				"name": "token_key",
+				"description": "The actual token key"
+			},
+			{
+				"name": "user_id",
+				"description": "ID of the user, on whose behalf you are acting"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X GET 'https://devrant.com/api/users/me/notif-feed?app=3&token_id=<TOKEN_ID>&token_key=<TOKEN_KEY>&user_id=<USER_ID>'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"",
+					"// Parameters",
+					"$t_id = <TOKEN_ID>;",
+					"$t_key = <TOKEN_KEY>;",
+					"$u_id = <USER_ID>;",
+					"",
+					"// Do request",
+					"$response = file_get_contents(\"https://devrant.com/api/users/me/notif-feed?app=3&token_id=\" . $t_id . \"&token_key=\" . $t_key . \"&user_id=\" . $u_id);",
+					"",
+					"echo $response;",
+					"",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true",
+			"  \"data\": {",
+			"    \"items\": [",
+			"      {",
+			"         \"created_time\":1591546309,",
+			"         \"type\":\"content_vote\",  //Type of ++ (form x_y where x is content/comment and y is vote/discuss)",
+			"         \"read\":0, //0 = unread, 1 = read",
+			"         \"rant_id\":2619313,",
+			"         \"uid\":2451362,",
+			"      },",
+			"      //There is going to be 100 total",
+			"    ]",
+			"    \"check_time\":1591546309",
+			"    \"username_map\": {",
+			"      \"2451362\":'\"frogstair\", // \"notif id\": \"username\"",
+			"      \"...\":\"...\"",
+			"    },",
+			"    \"unread\": {",
+			"      \"all\": 1,",
+			"      \"upvotes\": 1,",
+			"      \"mentions\": 0,",
+			"      \"comments\": 0,",
+			"      \"subs\": 0,",
+			"      \"total\": 1",
+			"    }",
+			"  }",
 			"}"
 		]
 	}
