@@ -461,15 +461,15 @@
 				"description": "How many rants to skip."
 			},
 			{
-				"name": "(optional) token_id",
+				"name": "token_id (optional)",
 				"description": "Token ID of the user"
 			},
 			{
-				"name": "(optional) token_key",
+				"name": "token_key (optional)",
 				"description": "Token key belonging to the user"
 			},
 			{
-				"name": "(optional) user_id",
+				"name": "user_id (optional)",
 				"description": "ID of the user on whose behalf the action is done"
 			}
 		],
@@ -538,7 +538,7 @@
 			"      \"user_dpp\": 1    // Bool indicator if the user is a devRant++ Member or not",
 			"    }",
 			"  ],",
-			"  \"settings\": [],   // Contatins amount of notifications when a user is logged in",
+			"  \"settings\": [],   // Contatins amount of notifications when all optional value are provided",
 			"  \"set\": \"5a7df097a5dfa\",   // No clue what this is",
 			"  \"wrw\": 90,   // Weekly-Rant Week",
 			"  \"news\": {",
@@ -987,6 +987,74 @@
 			"    \"height\": 65,",
 			"    \"action\": \"none\"     // Not sure (What to do when clicked)",
 			"  }",
+			"}"
+		]
+	},
+
+
+	{
+		"method": "POST",
+		"endpoint": "/users/auth-token/",
+		"description": "Get user authentication tokens",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "username",
+				"description": "Username to login with"
+			},
+			{
+				"name": "password",
+				"description": "Password to login with"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl --location --request POST 'https://devrant.com/api/users/auth-token' \\",
+					"--header 'Content-Type: application/x-www-form-urlencoded' \\",
+					"--data-urlencode 'app=3' \\",
+					"--data-urlencode 'username=username' \\",
+					"--data-urlencode 'password=password'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"$url = 'https://devrant.com/api/users/auth-token';",
+					"$data = array('app' => '3', 'username' => 'username', 'password' => 'password');",
+					"",
+					"$options = array(",
+					"    'http' => array(",
+					"        'header'  => \"Content-type: application/x-www-form-urlencoded\r\n\"",
+					"        'method'  => 'POST',",
+					"        'content' => http_build_query($data)",
+					"    )",
+					");",
+					"$context  = stream_context_create($options);",
+					"$result = file_get_contents($url, false, $context);",
+					"if ($result === FALSE) { /* Handle error */ }",
+					"",
+					"var_dump($result);",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"    \"success\": true",
+			"    \"auth_token\": {",
+			"        \"id\": 6712386, //Keep super secure",
+			"        \"key\": \"tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M\", //Keep super secure",
+			"        \"expire_time\": 6712386, //Keep super secure",
+			"        \"user_id\": 1085040, //Keep super secure",
+			"    }",
 			"}"
 		]
 	}
