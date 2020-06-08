@@ -58,6 +58,10 @@ Link:
 	margin: 2.6rem 1rem 2.6rem 1rem;
 }
 
+aside {
+	line-height: 24px;
+}
+
 #docs-quicklinks a {
 	color: #C1C1CA !important;
 }

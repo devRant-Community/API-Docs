@@ -1147,7 +1147,7 @@
 
 	{
 		"method": "POST",
-		"endpoint": "/devrant/rants",
+		"endpoint": " /devrant/rants",
 		"description": "Post a rant",
 		"parameters": [
 			{
@@ -1400,7 +1400,7 @@
 
 	{
 		"method": "DELETE",
-		"endpoint": "/devrant/rants/<rantID>",
+		"endpoint": "  /devrant/rants/<rantID>",
 		"description": "Delete a rant",
 		"parameters": [
 			{
