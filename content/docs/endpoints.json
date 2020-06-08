@@ -1281,6 +1281,7 @@
 					"    'comment => 'I hate PHP!'," ,
 					"    'token_id' => '<TOKEN_ID>'",
 					"    'token_key' => '<TOKEN_KEY>'",
+					"    'user_id' => '<USER_ID>'",
 					");",
 					"",
 					"$options = array(",
@@ -1304,6 +1305,89 @@
 			"{",
 			"  \"success\": true,",
 			"  \"rant_id\": 2625559",
+			"}"			
+		]
+	},
+
+
+	{
+		"method": "POST",
+		"endpoint": "/devrant/rants/<RANT_ID>/vote",
+		"description": "Vote on a rant",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "vote",
+				"description": "Vote state (1, 0, -1)"
+			},
+			{
+				"name": "reason (optional)",
+				"description": "Reason for downvote<br>0 - not for me<br>1 - repost<br>2 - offensive/spam"
+			},
+			{
+				"name": "token_id",
+				"description": "ID of the user token"
+			},
+			{
+				"name": "token_key",
+				"description": "The actual token key"
+			},
+			{
+				"name": "user_id",
+				"description": "ID of the user, on whose behalf you are acting"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants/2626238/vote' \\",
+					"--header 'Content-Type: application/x-www-form-urlencoded' \\",
+					"--data-urlencode 'app=3' \\",
+					"--data-urlencode 'vote=1' \\",
+					"--data-urlencode 'token_id=<TOKEN_ID>' \\",
+					"--data-urlencode 'token_key=<TOKEN_KEY>' \\",
+					"--data-urlencode 'user_id=<USER_ID>' \\"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"$url = 'https://devrant.com/api/devrant/rants/2626238/vote';",
+					"$data = array(",
+					"    'app' => '3',", 
+					"    'vote => '1'," ,
+					"    'token_id' => '<TOKEN_ID>'",
+					"    'token_key' => '<TOKEN_KEY>'",
+					"    'user_id' => '<USER_ID>'",
+					");",
+					"",
+					"$options = array(",
+					"    'http' => array(",
+					"        'header'  => \"Content-type: application/x-www-form-urlencoded\r\n\"",
+					"        'method'  => 'POST',",
+					"        'content' => http_build_query($data)",
+					"    )",
+					");",
+					"$context  = stream_context_create($options);",
+					"$result = file_get_contents($url, false, $context);",
+					"if ($result === FALSE) { /* Handle error */ }",
+					"",
+					"var_dump($result);",
+					"echo $result;",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true",
 			"}"			
 		]
 	}
