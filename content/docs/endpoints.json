@@ -177,12 +177,14 @@
 			"          // Rants ...",
 			"        ],",
 			"        \"upvoted\": [",
-			"          // Upvoted Rants ...",
+			"          // Upvoted Rants...",
 			"        ],",
 			"        \"comments\": [",
-			"          // Comments ...",
+			"          // Comments...",
 			"        ],",
-			"        \"favorites\": []",
+			"        \"favorites\": [",
+			"          // Favorited Rants...",
+			"        ]",
 			"      },",
 			"      \"counts\": {",
 			"        \"rants\": 12,",
@@ -457,6 +459,18 @@
 			{
 				"name": "skip",
 				"description": "How many rants to skip."
+			},
+			{
+				"name": "(optional) token_id",
+				"description": "Token ID of the user"
+			},
+			{
+				"name": "(optional) token_key",
+				"description": "Token key belonging to the user"
+			},
+			{
+				"name": "(optional) user_id",
+				"description": "ID of the user on whose behalf the action is done"
 			}
 		],
 		"exampleCode": [
@@ -506,7 +520,7 @@
 			"      \"tags\": [",
 			"        \"some-tag\"",
 			"      ],",
-			"      \"vote_state\": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote",
+			"      \"vote_state\": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote",
 			"      \"edited\": false,",
 			"      \"rt\": 1,   // No clue what this is",
 			"      \"rc\": 1,   // No clue what this is",
@@ -524,7 +538,7 @@
 			"      \"user_dpp\": 1    // Bool indicator if the user is a devRant++ Member or not",
 			"    }",
 			"  ],",
-			"  \"settings\": [],   // Not sure what this contains",
+			"  \"settings\": [],   // Contatins amount of notifications when a user is logged in",
 			"  \"set\": \"5a7df097a5dfa\",   // No clue what this is",
 			"  \"wrw\": 90,   // Weekly-Rant Week",
 			"  \"news\": {",
@@ -534,7 +548,7 @@
 			"    \"body\": \"Worst interview rejection?\",",
 			"    \"footer\": \"Add tag 'wk90' to your rant\",",
 			"    \"height\": 100,",
-			"    \"action\": \"grouprant\"     // Not sure (What to do when clicked)",
+			"    \"action\": \"grouprant\"     // What to do when clicked",
 			"  }",
 			"}"
 		]

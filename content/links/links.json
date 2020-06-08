@@ -31,6 +31,12 @@
 			"author": "jayeshsolanki93"
 		},
 		{
+			"name": "godevrant",
+			"link": "https://github.com/frogstair/godevrant",
+			"language": "Go",
+			"author": "frogstair"
+		},
+		{
 			"name": "pirant",
 			"link": "https://github.com/aayush26/pirant",
 			"language": "Python",
