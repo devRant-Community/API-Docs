@@ -1043,6 +1043,7 @@
 					"if ($result === FALSE) { /* Handle error */ }",
 					"",
 					"var_dump($result);",
+					"echo $result;",
 					"?>"
 				]
 			}
@@ -1053,8 +1054,8 @@
 			"    \"auth_token\": {",
 			"        \"id\": 6712386, //Keep super secure",
 			"        \"key\": \"tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M\", //Keep super secure",
-			"        \"expire_time\": 6712386, //Keep super secure",
-			"        \"user_id\": 1085040, //Keep super secure",
+			"        \"expire_time\": 6712386,",
+			"        \"user_id\": 1085040,",
 			"    }",
 			"}"
 		]
@@ -1064,7 +1065,7 @@
 	{
 		"method": "GET",
 		"endpoint": "/users/me/notif-feed",
-		"description": "Get user notifications",
+		"description": "Get user notifications<br><b>Note: it won't work if some other source is checking for notifications</b>",
 		"parameters": [
 			{
 				"name": "app",
@@ -1140,6 +1141,170 @@
 			"    }",
 			"  }",
 			"}"
+		]
+	},
+
+
+	{
+		"method": "POST",
+		"endpoint": "/devrant/rants",
+		"description": "Post a rant",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "rant",
+				"description": "Text in the rant"
+			},
+			{
+				"name": "tags",
+				"description": "Tags (comma separated)"
+			},
+			{
+				"name": "token_id",
+				"description": "ID of the user token"
+			},
+			{
+				"name": "token_key",
+				"description": "The actual token key"
+			},
+			{
+				"name": "user_id",
+				"description": "ID of the user, on whose behalf you are acting"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants' \\",
+					"--header 'Content-Type: application/x-www-form-urlencoded' \\",
+					"--data-urlencode 'app=3' \\",
+					"--data-urlencode 'rant=Bla bla bla I hate everything' \\",
+					"--data-urlencode 'tags=separate, with, commas, idiot' \\",
+					"--data-urlencode 'token_id=<TOKEN_ID>' \\",
+					"--data-urlencode 'token_key=<TOKEN_KEY>' \\",
+					"--data-urlencode 'user_id=<USER_ID>' \\"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"$url = 'https://devrant.com/api/users/auth-token';",
+					"$data = array(",
+					"    'app' => '3',", 
+					"    'rant => 'Bla bla bla I hate everything'," ,
+					"    'tags' => 'separate, with, commas, idiot'",
+					"    'token_id' => '<TOKEN_ID>'",
+					"    'token_key' => '<TOKEN_KEY>'",
+					");",
+					"",
+					"$options = array(",
+					"    'http' => array(",
+					"        'header'  => \"Content-type: application/x-www-form-urlencoded\r\n\"",
+					"        'method'  => 'POST',",
+					"        'content' => http_build_query($data)",
+					"    )",
+					");",
+					"$context  = stream_context_create($options);",
+					"$result = file_get_contents($url, false, $context);",
+					"if ($result === FALSE) { /* Handle error */ }",
+					"",
+					"var_dump($result);",
+					"echo $result;",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"rant_id\": 2625559",
+			"}"			
+		]
+	},
+
+
+	{
+		"method": "POST",
+		"endpoint": "/devrant/rants/<RANT_ID>/comments",
+		"description": "Post a rant",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "comment",
+				"description": "Text in the comment"
+			},
+			{
+				"name": "token_id",
+				"description": "ID of the user token"
+			},
+			{
+				"name": "token_key",
+				"description": "The actual token key"
+			},
+			{
+				"name": "user_id",
+				"description": "ID of the user, on whose behalf you are acting"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants/<RANT_ID>/comments' \\",
+					"--header 'Content-Type: application/x-www-form-urlencoded' \\",
+					"--data-urlencode 'app=3' \\",
+					"--data-urlencode 'comment=I hate PHP!' \\",
+					"--data-urlencode 'token_id=<TOKEN_ID>' \\",
+					"--data-urlencode 'token_key=<TOKEN_KEY>' \\",
+					"--data-urlencode 'user_id=<USER_ID>' \\"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"$url = 'https://devrant.com/api/devrant/rants/<RANT_ID>/comments';",
+					"$data = array(",
+					"    'app' => '3',", 
+					"    'comment => 'I hate PHP!'," ,
+					"    'token_id' => '<TOKEN_ID>'",
+					"    'token_key' => '<TOKEN_KEY>'",
+					");",
+					"",
+					"$options = array(",
+					"    'http' => array(",
+					"        'header'  => \"Content-type: application/x-www-form-urlencoded\r\n\"",
+					"        'method'  => 'POST',",
+					"        'content' => http_build_query($data)",
+					"    )",
+					");",
+					"$context  = stream_context_create($options);",
+					"$result = file_get_contents($url, false, $context);",
+					"if ($result === FALSE) { /* Handle error */ }",
+					"",
+					"var_dump($result);",
+					"echo $result;",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true,",
+			"  \"rant_id\": 2625559",
+			"}"			
 		]
 	}
 ]
