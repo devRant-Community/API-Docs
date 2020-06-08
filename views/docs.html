@@ -2,7 +2,7 @@
 	<aside id="docs-quicklinks" class="col-md-4 col-lg-3 bg-devrant-dark">
 		<nav class="nav flex-column">
 			<a title="Jump to Introduction" class="nav-link" href="#" ng-click="scrollTo('intro', $event)"><code>Introduction</code></a>
-			<a title="Jump to {{endpoint}}" class="nav-link" ng-repeat="endpoint in endpointsList" href="#" ng-click="scrollTo(endpoint, $event)"><code>{{endpoint}}</code></a>
+			<a title="Jump to {{endpoint.endpoint}}" class="nav-link" ng-repeat="endpoint in endpoints" ng-href="{{getElementLink(endpoint.endpoint+'_'+endpoint.method)}}"><code>{{endpoint.endpoint}}</code></a>
 			<a title="Jump to Errors" class="nav-link" href="#" ng-click="scrollTo('errors', $event)"><code>Errors</code></a>
 		</nav>
 	</aside>
