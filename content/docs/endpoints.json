@@ -1077,7 +1077,7 @@
 			},
 			{
 				"name": "token_key",
-				"description": "The actual token key"
+				"description": "Token key belonging to the user"
 			},
 			{
 				"name": "user_id",
@@ -1172,7 +1172,7 @@
 			},
 			{
 				"name": "token_key",
-				"description": "The actual token key"
+				"description": "Token key belonging to the user"
 			},
 			{
 				"name": "user_id",
@@ -1253,7 +1253,7 @@
 			},
 			{
 				"name": "token_key",
-				"description": "The actual token key"
+				"description": "Token key belonging to the user"
 			},
 			{
 				"name": "user_id",
@@ -1337,7 +1337,7 @@
 			},
 			{
 				"name": "token_key",
-				"description": "The actual token key"
+				"description": "Token key belonging to the user"
 			},
 			{
 				"name": "user_id",
@@ -1385,6 +1385,127 @@
 					"",
 					"var_dump($result);",
 					"echo $result;",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true",
+			"  ... // Rant that you have voted on",
+			"}"			
+		]
+	},
+
+
+	{
+		"method": "DELETE",
+		"endpoint": "/devrant/rants/<rantID>",
+		"description": "Delete a rant",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "token_id",
+				"description": "ID of the user token"
+			},
+			{
+				"name": "token_key",
+				"description": "Token key belonging to the user"
+			},
+			{
+				"name": "user_id",
+				"description": "ID of the user, on whose behalf you are acting"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X DELETE 'https://devrant.com/api/devrant/rants/<rantID>?app=3&token_id=<tokenID>&token_key=<tokenKey>&user_id=<userID>'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"$t_id = '<tokenID>'",
+					"$t_key = '<tokenKey>'",
+					"$u_id = '<userID>'",
+					"$client = new http\\Client;",
+					"$request = new http\\Client\\Request;",
+					"",
+					"$request->setRequestUrl('https://devrant.com/api/devrant/rants/2626238?app=3&token_id='.$t_id.'&token_key='.$t_key.'&user_id='.$u_id);",
+					"$request->setRequestMethod('DELETE');",
+					"$request->setOptions(array());,",
+					"",
+					"$client->enqueue($request)->send();",
+					"$response = $client->getResponse();",
+					"echo $response->getBody();",
+					"?>"
+				]
+			}
+		],
+		"exampleResponse": [
+			"{",
+			"  \"success\": true",
+			"}"			
+		]
+	},
+
+
+	{
+		"method": "DELETE",
+		"endpoint": "/devrant/comments/<commentID>",
+		"description": "Delete a comment",
+		"parameters": [
+			{
+				"name": "app",
+				"description": "Standard app parameter. Just set it to 3."
+			},
+			{
+				"name": "token_id",
+				"description": "ID of the user token"
+			},
+			{
+				"name": "token_key",
+				"description": "Token key belonging to the user"
+			},
+			{
+				"name": "user_id",
+				"description": "ID of the user, on whose behalf you are acting"
+			}
+		],
+		"exampleCode": [
+			{
+				"name": "curl",
+				"langCode": "shell",
+				"code": [
+					"$ curl -X DELETE 'https://devrant.com/api/devrant/comments/<commentID>?app=3&token_id=<tokenID>&token_key=<tokenKey>&user_id=<userID>'"
+				]
+			},
+			{
+				"name": "PHP",
+				"langCode": "php",
+				"code": [
+					"<?php",
+					"$t_id = '<tokenID>'",
+					"$t_key = '<tokenKey>'",
+					"$u_id = '<userID>'",
+					"$client = new http\\Client;",
+					"$request = new http\\Client\\Request;",
+					"",
+					"$request->setRequestUrl('https://devrant.com/api/devrant/comments/<commentID>?app=3&token_id='.$t_id.'&token_key='.$t_key.'&user_id='.$u_id);",
+					"$request->setRequestMethod('DELETE');",
+					"$request->setOptions(array());,",
+					"",
+					"$client->enqueue($request)->send();",
+					"$response = $client->getResponse();",
+					"echo $response->getBody();",
 					"?>"
 				]
 			}
