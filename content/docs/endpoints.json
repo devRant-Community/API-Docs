@@ -707,7 +707,7 @@
 			},
 			{
 				"name": "sort",
-				"description": "Sort collabs by 'algo', 'top' or 'recent'. (Currently not affecting anything, I think)"
+				"description": "Sort collabs by 'algo', 'top' or 'recent'. (Currently not affecting anything)"
 			},
 			{
 				"name": "limit",
@@ -1033,7 +1033,7 @@
 					"",
 					"$options = array(",
 					"    'http' => array(",
-					"        'header'  => \"Content-type: application/x-www-form-urlencoded\r\n\"",
+					"        'header'  => \"Content-type: application/x-www-form-urlencoded\"",
 					"        'method'  => 'POST',",
 					"        'content' => http_build_query($data)",
 					"    )",
@@ -1065,7 +1065,7 @@
 	{
 		"method": "GET",
 		"endpoint": "/users/me/notif-feed",
-		"description": "Get user notifications<br><b>Note: it won't work if some other source is checking for notifications</b>",
+		"description": "Get user notifications\nNote: it won't work if some other source is checking for notifications",
 		"parameters": [
 			{
 				"name": "app",
@@ -1089,7 +1089,7 @@
 				"name": "curl",
 				"langCode": "shell",
 				"code": [
-					"$ curl -X GET 'https://devrant.com/api/users/me/notif-feed?app=3&token_id=<TOKEN_ID>&token_key=<TOKEN_KEY>&user_id=<USER_ID>'"
+					"$ curl -X GET 'https://devrant.com/api/users/me/notif-feed?app=3&token_id=<tokenID>&token_key=<tokenKey>&user_id=<userID>'"
 				]
 			},
 			{
@@ -1099,9 +1099,9 @@
 					"<?php",
 					"",
 					"// Parameters",
-					"$t_id = <TOKEN_ID>;",
-					"$t_key = <TOKEN_KEY>;",
-					"$u_id = <USER_ID>;",
+					"$t_id = <tokenID>;",
+					"$t_key = <tokenKey>;",
+					"$u_id = <userID>;",
 					"",
 					"// Do request",
 					"$response = file_get_contents(\"https://devrant.com/api/users/me/notif-feed?app=3&token_id=\" . $t_id . \"&token_key=\" . $t_key . \"&user_id=\" . $u_id);",
@@ -1159,6 +1159,10 @@
 				"description": "Text in the rant"
 			},
 			{
+				"name": "type",
+				"description": "Type of rant\n1=rant\n2=undefined\n3=joke/meme\n4=question\n5=devRant\n6=random"
+			},
+			{
 				"name": "tags",
 				"description": "Tags (comma separated)"
 			},
@@ -1185,9 +1189,9 @@
 					"--data-urlencode 'app=3' \\",
 					"--data-urlencode 'rant=Bla bla bla I hate everything' \\",
 					"--data-urlencode 'tags=separate, with, commas, idiot' \\",
-					"--data-urlencode 'token_id=<TOKEN_ID>' \\",
-					"--data-urlencode 'token_key=<TOKEN_KEY>' \\",
-					"--data-urlencode 'user_id=<USER_ID>' \\"
+					"--data-urlencode 'token_id=<tokenID>' \\",
+					"--data-urlencode 'token_key=<tokenKey>' \\",
+					"--data-urlencode 'user_id=<userID>' \\"
 				]
 			},
 			{
@@ -1198,15 +1202,15 @@
 					"$url = 'https://devrant.com/api/users/auth-token';",
 					"$data = array(",
 					"    'app' => '3',", 
-					"    'rant => 'Bla bla bla I hate everything'," ,
+					"    'rant' => 'Bla bla bla I hate everything'," ,
 					"    'tags' => 'separate, with, commas, idiot'",
-					"    'token_id' => '<TOKEN_ID>'",
-					"    'token_key' => '<TOKEN_KEY>'",
+					"    'token_id' => '<tokenID>'",
+					"    'token_key' => '<tokenKey>'",
 					");",
 					"",
 					"$options = array(",
 					"    'http' => array(",
-					"        'header'  => \"Content-type: application/x-www-form-urlencoded\r\n\"",
+					"        'header'  => \"Content-type: application/x-www-form-urlencoded\"",
 					"        'method'  => 'POST',",
 					"        'content' => http_build_query($data)",
 					"    )",
@@ -1224,7 +1228,7 @@
 		"exampleResponse": [
 			"{",
 			"  \"success\": true,",
-			"  \"rant_id\": 2625559",
+			"  \"rant_id\": 2619313",
 			"}"			
 		]
 	},
@@ -1232,7 +1236,7 @@
 
 	{
 		"method": "POST",
-		"endpoint": "/devrant/rants/<RANT_ID>/comments",
+		"endpoint": "/devrant/rants/<rantID>/comments",
 		"description": "Post a rant",
 		"parameters": [
 			{
@@ -1261,13 +1265,13 @@
 				"name": "curl",
 				"langCode": "shell",
 				"code": [
-					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants/<RANT_ID>/comments' \\",
+					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants/<rantID>/comments' \\",
 					"--header 'Content-Type: application/x-www-form-urlencoded' \\",
 					"--data-urlencode 'app=3' \\",
 					"--data-urlencode 'comment=I hate PHP!' \\",
-					"--data-urlencode 'token_id=<TOKEN_ID>' \\",
-					"--data-urlencode 'token_key=<TOKEN_KEY>' \\",
-					"--data-urlencode 'user_id=<USER_ID>' \\"
+					"--data-urlencode 'token_id=<tokenID>' \\",
+					"--data-urlencode 'token_key=<tokenKey>' \\",
+					"--data-urlencode 'user_id=<userID>' \\"
 				]
 			},
 			{
@@ -1275,13 +1279,13 @@
 				"langCode": "php",
 				"code": [
 					"<?php",
-					"$url = 'https://devrant.com/api/devrant/rants/<RANT_ID>/comments';",
+					"$url = 'https://devrant.com/api/devrant/rants/<rantID>/comments';",
 					"$data = array(",
 					"    'app' => '3',", 
-					"    'comment => 'I hate PHP!'," ,
-					"    'token_id' => '<TOKEN_ID>'",
-					"    'token_key' => '<TOKEN_KEY>'",
-					"    'user_id' => '<USER_ID>'",
+					"    'comment' => 'I hate PHP!'," ,
+					"    'token_id' => '<tokenID>'",
+					"    'token_key' => '<tokenKey>'",
+					"    'user_id' => '<userID>'",
 					");",
 					"",
 					"$options = array(",
@@ -1304,7 +1308,7 @@
 		"exampleResponse": [
 			"{",
 			"  \"success\": true,",
-			"  \"rant_id\": 2625559",
+			"  \"rant_id\": 2619313",
 			"}"			
 		]
 	},
@@ -1312,7 +1316,7 @@
 
 	{
 		"method": "POST",
-		"endpoint": "/devrant/rants/<RANT_ID>/vote",
+		"endpoint": "/devrant/rants/<rantID>/vote",
 		"description": "Vote on a rant",
 		"parameters": [
 			{
@@ -1325,7 +1329,7 @@
 			},
 			{
 				"name": "reason (optional)",
-				"description": "Reason for downvote<br>0 - not for me<br>1 - repost<br>2 - offensive/spam"
+				"description": "Reason for downvote\n0 - not for me\n1 - repost\n2 - offensive/spam"
 			},
 			{
 				"name": "token_id",
@@ -1345,13 +1349,13 @@
 				"name": "curl",
 				"langCode": "shell",
 				"code": [
-					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants/2626238/vote' \\",
+					"$ curl --location --request POST 'https://devrant.com/api/devrant/rants/2619313/vote' \\",
 					"--header 'Content-Type: application/x-www-form-urlencoded' \\",
 					"--data-urlencode 'app=3' \\",
 					"--data-urlencode 'vote=1' \\",
-					"--data-urlencode 'token_id=<TOKEN_ID>' \\",
-					"--data-urlencode 'token_key=<TOKEN_KEY>' \\",
-					"--data-urlencode 'user_id=<USER_ID>' \\"
+					"--data-urlencode 'token_id=<tokenID>' \\",
+					"--data-urlencode 'token_key=<tokenKey>' \\",
+					"--data-urlencode 'user_id=<userID>' \\"
 				]
 			},
 			{
@@ -1359,13 +1363,13 @@
 				"langCode": "php",
 				"code": [
 					"<?php",
-					"$url = 'https://devrant.com/api/devrant/rants/2626238/vote';",
+					"$url = 'https://devrant.com/api/devrant/rants/2619313/vote';",
 					"$data = array(",
 					"    'app' => '3',", 
-					"    'vote => '1'," ,
-					"    'token_id' => '<TOKEN_ID>'",
-					"    'token_key' => '<TOKEN_KEY>'",
-					"    'user_id' => '<USER_ID>'",
+					"    'vote' => '1'," ,
+					"    'token_id' => '<tokenID>'",
+					"    'token_key' => '<tokenKey>'",
+					"    'user_id' => '<userID>'",
 					");",
 					"",
 					"$options = array(",
