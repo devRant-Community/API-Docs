@@ -9,9 +9,8 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
 
 Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant)
 
-# /devrant/rants
-
-## Get rant feed [GET /devrant/rants{?app}{?limit}{?sort}{?range}{?skip}{?token_id}{?token_key}{?user_id}]
+# Rants [/devrant/rants]
+## Get rant feed [GET /devrant/rants{?app}{&limit}{&sort}{&range}{&skip}{&token_id}{&token_key}{&user_id}]
 Get rant feed
 If provided with keys it will get rants tailored to user
 
@@ -218,7 +217,54 @@ This doesn't work on playground
     }
     ```
 
-# /devrant/collabs
+## Get a rant with long text [GET /devrant/story-rants{?app}{?limit}{?sort}{?range}{?skip}{?token_id}{?token_key}{?user_id}]
+
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+    + sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
+    + range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+    + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
+    + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "rants": [
+            {
+            "id": 40123,
+            "text": "Bla bla I hate my life, but this is a very long rant fuck yeah!",
+            "score": 123,
+            "created_time": 1518160633,   // When the rant was created
+            "attached_image": {   // Empty string if there is no image
+                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                "width": 753,
+                "height": 546
+            },
+            "num_comments": 12,
+            "tags": [
+                "some-tag"
+            ],
+            "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+            "edited": false,
+            "rt": 1,   // No clue what this is
+            "rc": 1,   // No clue what this is
+            "user_id": 12301,
+            "user_username": "User1",
+            "user_score": 1234,
+            "user_avatar": {
+                "b": "2a8b9d",
+                "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg"
+            },
+            "user_avatar_lg": {
+                "b": "2a8b9d",
+                "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png"
+            },
+            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+            }
+        ]
+    }
+    ```
 
 ## Get list of collabs [GET /devrant/collabs{?app}{?limit}{?sort}{?range}{?skip}]
 
