@@ -28,7 +28,7 @@ jobs:
     - name: Install ♻
       run: npm install
     - name: Generate 🏗
-      run: snowboard html -o dist API.apib
+      run: npm run generate
     - name: Create CNAME 🔗
       run: echo "devrant-api.skayo.dev" > ./dist/CNAME
     - name: Deploy 🚀

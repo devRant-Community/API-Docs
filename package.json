@@ -1,4 +1,8 @@
 {
+	"scripts": {
+		"generate": "snowboard html -o dist API.apib",
+		"watch": "snowboard http -w API.apib"
+	},
 	"dependencies": {
 		"snowboard": "^4.1.13"
 	}
