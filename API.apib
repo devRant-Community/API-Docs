@@ -1,7 +1,7 @@
 FORMAT: 1A
 HOST: https://devrant.com/api
 
-# Introduction
+# devRant API
 Welcome to the unofficial devRant API Documentation!
 Here you will find documentation for all known endpoints
 
@@ -86,9 +86,141 @@ If provided with keys it will get rants tailored to user
     }
     ```
 
+## Get a single rant [GET /devrant/rants/{id}{?app}]
+
++ Parameters
+    + id (required, number) - ID of the rant
+    + app: 3 (required, number) - App ID parameter
+
++ Response 200 (application/json)
+    ```js
+    {
+        "rant": {
+            "id": 10123,
+            "text": "Bla bla fuck everything",
+            "score": 12,
+            "created_time": 1517755150,
+            "attached_image": {   // Empty string if there is no image
+            "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+            "width": 753,
+            "height": 546
+            },
+            "num_comments": 8,
+            "tags": [
+            "some-tag"
+            ],
+            "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+            "edited": true,
+            "link": "rants/10123/some-strange-text-for-seo",
+            "rt": 1,   // No clue what this is
+            "rc": 7,   // No clue what this is
+            "links": [
+            {
+                "type": "url",
+                "url": "https://github.com/User1/SomeRepo",
+                "short_url": "https://github.com/User...",
+                "title": "https://github.com/User...",
+                "start": 278,    // Starting position of the link
+                "end": 313,      // Ending position of the link
+                "special": 1     // No clue what this is
+            }
+            ],
+            "special": true,   // No clue what this is
+            "user_id": 12301,
+            "user_username": "User1",
+            "user_score": 1234,
+            "user_avatar": {
+            "b": "69c9cd",
+            "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
+            },
+            "user_avatar_lg": {
+            "b": "69c9cd",
+            "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
+            },
+            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+        },
+        "comments": [
+            {
+                "id": 2639015,
+                "rant_id": 10123,
+                "body": "This rant sucks!",
+                "score": -100,
+                "created_time": 1591901533,
+                "vote_state": 0,
+                "user_id": 5125,
+                "user_username": "User2",
+                "user_score": 10000,
+                "user_avatar": {
+                    "b": "69c9cd",
+                    "i": "v-37_c-3_b-6_g-m_9-1_1-6_16-4_3-13_8-1_7-1_5-1_12-6_17-2_6-2_10-5_2-26_22-2_15-10_11-3_18-2_19-1_4-1.jpg"
+                }
+            }
+            // ....
+        ],
+        "success": true
+    }
+    ```
+
+## Get a random rant [GET /devrant/rants/surprise{?app}]
+
+This doesn't work on playground
+
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "rant": {
+            "id": 20123,
+            "text": "Such random. Much wow",
+            "score": 13,
+            "created_time": 1517755155,
+            "attached_image": {   // Empty string if there is no image
+            "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+            "width": 753,
+            "height": 546
+            },
+            "num_comments": 8,
+            "tags": [
+            "some-tag"
+            ],
+            "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+            "edited": true,
+            "rt": 1,   // No clue what this is
+            "rc": 7,   // No clue what this is
+            "links": [
+            {
+                "type": "url",
+                "url": "https://github.com/User1/SomeRepo",
+                "short_url": "https://github.com/User...",
+                "title": "https://github.com/User...",
+                "start": 278,    // Starting position of the link
+                "end": 313,      // Ending position of the link
+                "special": 1     // No clue what this is
+            }
+            ],
+            "special": true,   // No clue what this is
+            "user_id": 12302,
+            "user_username": "User2",
+            "user_score": 123,
+            "user_avatar": {
+            "b": "69c9cd",
+            "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
+            },
+            "user_avatar_lg": {
+            "b": "69c9cd",
+            "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
+            },
+            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+        }
+    }
+    ```
+
 # /devrant/collabs
 
-## Get list of collabs [GET /devrant/collabs {?app}{?limit}{?sort}{?range}{?skip}]
+## Get list of collabs [GET /devrant/collabs{?app}{?limit}{?sort}{?range}{?skip}]
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
