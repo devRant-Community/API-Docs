@@ -7,18 +7,24 @@ Here you will find documentation for all known endpoints
 
 Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair](https://github.com/frogstair)
 
-# /devrant/rants
+# Group Rants
 
-## Get Rant Feed [GET]
+## Get Rant Feed [GET /devrant/rants/]
 
-+ app: 3 (required, number) - App Parameter
-+ sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
-+ range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
-+ limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll
-+ skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
-+ token_id (optional, number) - Token ID of the user. Used for authentication
-+ token_key (optional, string) - Token key of the user. Used for authentication
-+ user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
++ Parameters
+    + app (required, number) - App Parameter
+        + Default: `3`
+    + sort (optional, string) - Sort rants by 'algo', 'top' or 'recent'
+        + Default: `algo`
+    + range (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+        + Default: `week`
+    + limit (optional, number) - The maximum number of results to return. Used for pagination/infinite scroll
+        + Default: `20`
+    + skip: 0 (optional, number) - The amount of results to skip before returning. Used for pagination/infinite scroll
+        + Default: `0`
+    + token_id (optional, number) - Token ID of the user. Used for authentication
+    + token_key (optional, string) - Token key of the user. Used for authentication
+    + user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
     ```js
