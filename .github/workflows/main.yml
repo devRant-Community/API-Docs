@@ -19,11 +19,9 @@ jobs:
         path: |
           package-lock.json
           node_modules
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
         restore-keys: |
-          ${{ runner.OS }}-node-${{ env.cache-name }}-
           ${{ runner.OS }}-node-
-          ${{ runner.OS }}-
 
     - name: Setup 🔧
       uses: actions/setup-node@v1.4.2
