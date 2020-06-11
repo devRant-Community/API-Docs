@@ -1,23 +1,87 @@
 FORMAT: 1A
+HOST: https://devrant.com/api
 
-# The Simplest API
-This is one of the simplest APIs written in the **API Blueprint**. One plain
-resource combined with a method and that's it! We will explain what is going on
-in the next installment - 
-[Resource and Actions](02.%20Resource%20and%20Actions.md).
+# devRant API
+Welcome to the unofficial devRant API Documentation!
+Here you will find documentation for all known endpoints
 
-**Note:** As we progress through the examples, do not also forget to view the
-[Raw](https://raw.github.com/apiaryio/api-blueprint/master/examples/01.%20Simplest%20API.md)
-code to see what is really going on in the API Blueprint, as opposed to just
-seeing the output of the Github Markdown parser.
-
-Also please keep in mind that every single example in this course is a **real
-API Blueprint** and as such you can **parse** it with the 
-[API Blueprint parser](https://github.com/apiaryio/drafter) or one of its
-[bindings](https://github.com/apiaryio/drafter#bindings).
+Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair](https://github.com/frogstair)
 
 
-# GET /message
-+ Response 200 (text/plain)
+# Group Rants
 
-        Hello World!
+Resources relating to rants in the API.
+
+## Get Rant Feed [GET /devrant/rants]
+
++ app: 3 (required, number) - App Parameter
+
++ sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
++ range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
++ limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll
++ skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
+
++ token_id (optional, number) - Token ID of the user. Used for authentication
++ token_key (optional, string) - Token key of the user. Used for authentication
++ user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "rants": [
+            {
+                "id": 20123,
+                "text": "Bla bla some long rant text with emojis and \n's",
+                "score": 123,
+                "created_time": 1518160633, // When the rant was created
+                "attached_image": { // Empty string if there is no image
+                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                    "width": 753,
+                    "height": 546
+                },
+                "num_comments": 12,
+                "tags": [
+                    "some-tag"
+                ],
+                "vote_state": 0, // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+                "edited": false,
+                "rt": 1, // No clue what this is
+                "rc": 1, // No clue what this is
+                "user_id": 12301,
+                "user_username": "User1",
+                "user_score": 1234,
+                "user_avatar": {
+                    "b": "2a8b9d", // Avatar background color
+                    "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg" // Avatar filename
+                },
+                "user_avatar_lg": {
+                    "b": "2a8b9d", // Avatar background color
+                    "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png" // Avatar filename
+                },
+                "user_dpp": 1 // 1 if user is devRant++, 0 if not devRant++
+            },
+            // ...
+        ],
+        "settings": { // Empty array when not authenticated
+            "notif_state": "1", // 
+            "notif_token": ""
+        },
+        "set": "5ee254ee76f3e", // Session hash
+        "wrw": 212, // Weekly-Rant Week
+        "dpp": 0, // 1 if devRant++, 0 if not devRant++, not set when not authenticated
+        "num_notifs": 2, // Not set when not authenticated
+        "unread": { // Not set when not authenticated
+            "total": 2 // Same as "num_notifs"
+        },
+        "news": {
+            "id": 321,
+            "type": "intlink", // Internal Link (intlink) most of the time, not sure what other values are possible
+            "headline": "Weekly Group Rant",
+            "body": "Story of screenshare gone wrong?",
+            "footer": "Add tag 'wk212' to your rant",
+            "height": 100,
+            "action": "grouprant" // What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")
+        }
+    }
+    ```
