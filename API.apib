@@ -10,14 +10,26 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
 Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant)
 
 # Rants [/devrant/rants]
+
 ## Get rant feed [GET /devrant/rants{?app}{&limit}{&sort}{&range}{&skip}{&token_id}{&token_key}{&user_id}]
 Get rant feed
 If provided with keys it will get rants tailored to user
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
-    + sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
-    + range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+    + sort: `top` (optional, enum[string])
+        Sort rants
+        + Members
+            + `algo`
+            + `top`
+            + `recent`
+    + range: `all` (optional, enum[string])
+        Time range of the rants to load
+        + Members
+            + `day`
+            + `week`
+            + `month`
+            + `all`
     + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
     + token_id (optional, number) - Token ID of the user. Used for authentication
@@ -221,8 +233,19 @@ This doesn't work on playground
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
-    + sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
-    + range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+    + sort: `top` (optional, enum[string])
+        Sort rants
+        + Members
+            + `algo`
+            + `top`
+            + `recent`
+    + range: `all` (optional, enum[string])
+        Time range of the rants to load
+        + Members
+            + `day`
+            + `week`
+            + `month`
+            + `all`
     + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
 
@@ -270,8 +293,19 @@ This doesn't work on playground
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
-    + sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
-    + range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+    + sort: `top` (optional, enum[string])
+        Sort rants
+        + Members
+            + `algo`
+            + `top`
+            + `recent`
+    + range: `all` (optional, enum[string])
+        Time range of the rants to load
+        + Members
+            + `day`
+            + `week`
+            + `month`
+            + `all`
     + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
 
