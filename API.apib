@@ -1,24 +1,29 @@
 FORMAT: 1A
 HOST: https://devrant.com/api
 
-# devRant API
+# Introduction
 Welcome to the unofficial devRant API Documentation!
 Here you will find documentation for all known endpoints
 
 Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair](https://github.com/frogstair)
 
+Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant)
+
 # /devrant/rants
 
-## Get Rant Feed [GET]
+## Get rant feed [GET /devrant/rants{?app}{?limit}{?sort}{?range}{?skip}{?token_id}{?token_key}{?user_id}]
+Get rant feed
+If provided with keys it will get rants tailored to user
 
-+ app: 3 (required, number) - App Parameter
-+ sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
-+ range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
-+ limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll
-+ skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
-+ token_id (optional, number) - Token ID of the user. Used for authentication
-+ token_key (optional, string) - Token key of the user. Used for authentication
-+ user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+    + sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
+    + range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+    + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
+    + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
+    + token_id (optional, number) - Token ID of the user. Used for authentication
+    + token_key (optional, string) - Token key of the user. Used for authentication
+    + user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
     ```js
@@ -30,7 +35,7 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
                 "text": "Bla bla some long rant text with emojis and \n's",
                 "score": 123,
                 "created_time": 1518160633, // When the rant was created
-                "attached_image": { // Empty string if there is no image
+                "attached_image": {         // Empty string if there is no image
                     "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
                     "width": 753,
                     "height": 546
@@ -39,7 +44,7 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
                 "tags": [
                     "some-tag"
                 ],
-                "vote_state": 0, // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+                "vote_state": 0, // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
                 "edited": false,
                 "rt": 1, // No clue what this is
                 "rc": 1, // No clue what this is
@@ -59,15 +64,15 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
             // ...
         ],
         "settings": { // Empty array when not authenticated
-            "notif_state": "1", // 
+            "notif_state": "1", // If notifications are available
             "notif_token": ""
         },
         "set": "5ee254ee76f3e", // Session hash
-        "wrw": 212, // Weekly-Rant Week
-        "dpp": 0, // 1 if devRant++, 0 if not devRant++, not set when not authenticated
-        "num_notifs": 2, // Not set when not authenticated
-        "unread": { // Not set when not authenticated
-            "total": 2 // Same as "num_notifs"
+        "wrw": 212,         // Weekly-Rant Week
+        "dpp": 0,           // 1 if devRant++, 0 if not devRant++, not set when not authenticated
+        "num_notifs": 2,    // Not set when not authenticated
+        "unread": {         // Not set when not authenticated
+            "total": 2      // Same as "num_notifs"
         },
         "news": {
             "id": 321,
@@ -78,5 +83,59 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
             "height": 100,
             "action": "grouprant" // What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")
         }
+    }
+    ```
+
+# /devrant/collabs
+
+## Get list of collabs [GET /devrant/collabs {?app}{?limit}{?sort}{?range}{?skip}]
+
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+    + sort: `top` (optional, string) - Sort rants by 'algo', 'top' or 'recent'
+    + range: `all` (optional, string) - Time range of the rants to load. Either 'day', 'week', 'month' or 'all'
+    + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
+    + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "rants": [
+            {
+            "id": 12311,
+            "text": "devRant-Docs Page [more details]",
+            "score": 1234567,
+            "created_time": 1519068050,
+            "attached_image": {   // Empty string if there is no image
+                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                "width": 753,
+                "height": 546
+            },
+            "num_comments": 123,
+            "tags": [
+                "some-tag"
+            ],
+            "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+            "edited": false,
+            "link": "collabs/12311/some-strange-text-for-seo",
+            "rt": 2,  // No clue what this is
+            "rc": 2,  // No clue what this is
+            "c_type": 2,   // 1 = Open source idea, 2 = Existing open source project, 3 = Project idea, 4 = Existing project
+            "c_type_long": "Existing open source project", // Collab type as string (see above)
+            "user_id": 12301,
+            "user_username": "User1",
+            "user_score": 1234568,
+            "user_avatar": {
+                "b": "69c9cd",
+                "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
+            },
+            "user_avatar_lg": {
+                "b": "69c9cd",
+                "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
+            },
+            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+            }
+        ]
     }
     ```
