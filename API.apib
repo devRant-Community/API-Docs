@@ -11,7 +11,7 @@ Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant
 
 # Rants [/devrant/rants]
 
-## Get rant feed [GET /devrant/rants{?app}{&limit}{&sort}{&range}{&skip}{&token_id}{&token_key}{&user_id}]
+## Get rant feed [GET /devrant/rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
 Get rant feed
 If provided with keys it will get rants tailored to user
 
@@ -229,7 +229,7 @@ This doesn't work on playground
     }
     ```
 
-## Get a rant with long text [GET /devrant/story-rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
+## Get list of stories [GET /devrant/story-rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
