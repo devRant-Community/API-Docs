@@ -112,7 +112,10 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    + Attributes (Rant)
+    + Attributes (object)
+        + rant (Rant)
+        + comments (array[Comment])
+        + success: `true` (boolean)
 
     + Body
         ```js
@@ -382,25 +385,39 @@ If provided with keys it will get rants tailored to user
 + Request (application/x-form-urlencoded)
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "auth-token": {
-            "id": 6712386,
-            "key": tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M,
-            "expire_time": 6712386,
-            "user_id": 1085040
+    + Attributes (object)
+        + success: `true` (boolean)
+        + auth_token (object)
+            + id: 6712386 (number)
+            + key: `tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M` (string)
+            + expire_time: 6712386 (number)
+            + user_id: 1085040 (number)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "auth_token": {
+                "id": 6712386,
+                "key": "tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M",
+                "expire_time": 6712386,
+                "user_id": 1085040
+            }
         }
-    }
-    ```
+        ```
 
 + Response 400 (application/json)
-    ```js
-    {
-        "success": false,
-        "error": "Invalid login credentials entered. Please try again."
-    }
-    ```
+    + Attributes (object)
+        + success: `true` (boolean)
+        + error: `Invalid login credentials entered. Please try again.` (string)
+
+    + Body
+        ```js
+        {
+            "success": false,
+            "error": "Invalid login credentials entered. Please try again."
+        }
+        ```
 
 ## Get user information [GET /users/{id}{?app,skip,content}]
 
@@ -916,3 +933,17 @@ If provided with keys it will get rants tailored to user
     + b: `2a8b9d` (string) - Avatar background color
     + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
 + user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
+
+## Comment (object)
++ id: 2639015 (number)
++ rand_id: 10123 (number)
++ body: `This rant sucks!` (string)
++ score: -100 (number)
++ created_time: 1591901533 (number)
++ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ user_id: 5125 (number)
++ user_username: `User2` (string)
++ user_score: 10000 (number)
++ user_avatar (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-37_c-3_b-6_g-m_9-1_1-6_16-4_3-13_8-1_7-1_5-1_12-6_17-2_6-2_10-5_2-26_22-2_15-10_11-3_18-2_19-1_4-1.jpg` (string) - Avatar filename
