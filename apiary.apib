@@ -15,7 +15,6 @@ Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant
 # Rants [/devrant/rants]
 
 ## Get rant feed [GET /devrant/rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
-Get rant feed<br>
 If provided with keys it will get rants tailored to user
 
 + Parameters
@@ -40,65 +39,68 @@ If provided with keys it will get rants tailored to user
     + user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "rants": [
-            {
-                "id": 20123,
-                "text": "Bla bla some long rant text with emojis and \n's",
-                "score": 123,
-                "created_time": 1518160633, // When the rant was created
-                "attached_image": {         // Empty string if there is no image
-                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-                    "width": 753,
-                    "height": 546
+    + Attributes (RantFeed)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "rants": [
+                {
+                    "id": 20123,
+                    "text": "Bla bla some long rant text with emojis and \n's",
+                    "score": 123,
+                    "created_time": 1518160633, // When the rant was created
+                    "attached_image": {         // Empty string if there is no image
+                        "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                        "width": 753,
+                        "height": 546
+                    },
+                    "num_comments": 12,
+                    "tags": [
+                        "some-tag"
+                    ],
+                    "vote_state": 0, // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+                    "edited": false,
+                    "rt": 1, // No clue what this is
+                    "rc": 1, // No clue what this is
+                    "user_id": 12301,
+                    "user_username": "User1",
+                    "user_score": 1234,
+                    "user_avatar": {
+                        "b": "2a8b9d", // Avatar background color
+                        "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg" // Avatar filename
+                    },
+                    "user_avatar_lg": {
+                        "b": "2a8b9d", // Avatar background color
+                        "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png" // Avatar filename
+                    },
+                    "user_dpp": 1 // 1 if user is devRant++, 0 if not devRant++
                 },
-                "num_comments": 12,
-                "tags": [
-                    "some-tag"
-                ],
-                "vote_state": 0, // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
-                "edited": false,
-                "rt": 1, // No clue what this is
-                "rc": 1, // No clue what this is
-                "user_id": 12301,
-                "user_username": "User1",
-                "user_score": 1234,
-                "user_avatar": {
-                    "b": "2a8b9d", // Avatar background color
-                    "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg" // Avatar filename
-                },
-                "user_avatar_lg": {
-                    "b": "2a8b9d", // Avatar background color
-                    "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png" // Avatar filename
-                },
-                "user_dpp": 1 // 1 if user is devRant++, 0 if not devRant++
+                // ...
+            ],
+            "settings": { // Empty array when not authenticated
+                "notif_state": "1", // If notifications are available
+                "notif_token": ""
             },
-            // ...
-        ],
-        "settings": { // Empty array when not authenticated
-            "notif_state": "1", // If notifications are available
-            "notif_token": ""
-        },
-        "set": "5ee254ee76f3e", // Session hash
-        "wrw": 212,         // Weekly-Rant Week
-        "dpp": 0,           // 1 if devRant++, 0 if not devRant++, not set when not authenticated
-        "num_notifs": 2,    // Not set when not authenticated
-        "unread": {         // Not set when not authenticated
-            "total": 2      // Same as "num_notifs"
-        },
-        "news": {
-            "id": 321,
-            "type": "intlink", // Internal Link (intlink) most of the time, not sure what other values are possible
-            "headline": "Weekly Group Rant",
-            "body": "Story of screenshare gone wrong?",
-            "footer": "Add tag 'wk212' to your rant",
-            "height": 100,
-            "action": "grouprant" // What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")
+            "set": "5ee254ee76f3e", // Session hash
+            "wrw": 212,         // Weekly-Rant Week
+            "dpp": 0,           // 1 if devRant++, 0 if not devRant++, not set when not authenticated
+            "num_notifs": 2,    // Not set when not authenticated
+            "unread": {         // Not set when not authenticated
+                "total": 2      // Same as "num_notifs"
+            },
+            "news": {
+                "id": 321,
+                "type": "intlink", // Internal Link (intlink) most of the time, not sure what other values are possible
+                "headline": "Weekly Group Rant",
+                "body": "Story of screenshare gone wrong?",
+                "footer": "Add tag 'wk212' to your rant",
+                "height": 100,
+                "action": "grouprant" // What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")
+            }
         }
-    }
-    ```
+        ```
 
 ## Get a single rant [GET /devrant/rants/{id}{?app}]
 
@@ -107,73 +109,76 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    ```js
-    {
-        "rant": {
-            "id": 10123,
-            "text": "Bla bla fuck everything",
-            "score": 12,
-            "created_time": 1517755150,
-            "attached_image": {   // Empty string if there is no image
-            "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-            "width": 753,
-            "height": 546
-            },
-            "num_comments": 8,
-            "tags": [
-            "some-tag"
-            ],
-            "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
-            "edited": true,
-            "link": "rants/10123/some-strange-text-for-seo",
-            "rt": 1,   // No clue what this is
-            "rc": 7,   // No clue what this is
-            "links": [
-            {
-                "type": "url",
-                "url": "https://github.com/User1/SomeRepo",
-                "short_url": "https://github.com/User...",
-                "title": "https://github.com/User...",
-                "start": 278,    // Starting position of the link
-                "end": 313,      // Ending position of the link
-                "special": 1     // No clue what this is
-            }
-            ],
-            "special": true,   // No clue what this is
-            "user_id": 12301,
-            "user_username": "User1",
-            "user_score": 1234,
-            "user_avatar": {
-            "b": "69c9cd",
-            "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
-            },
-            "user_avatar_lg": {
-            "b": "69c9cd",
-            "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
-            },
-            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
-        },
-        "comments": [
-            {
-                "id": 2639015,
-                "rant_id": 10123,
-                "body": "This rant sucks!",
-                "score": -100,
-                "created_time": 1591901533,
-                "vote_state": 0,
-                "user_id": 5125,
-                "user_username": "User2",
-                "user_score": 10000,
-                "user_avatar": {
-                    "b": "69c9cd",
-                    "i": "v-37_c-3_b-6_g-m_9-1_1-6_16-4_3-13_8-1_7-1_5-1_12-6_17-2_6-2_10-5_2-26_22-2_15-10_11-3_18-2_19-1_4-1.jpg"
+    + Attributes (Rant)
+
+    + Body
+        ```js
+        {
+            "rant": {
+                "id": 10123,
+                "text": "Bla bla fuck everything",
+                "score": 12,
+                "created_time": 1517755150,
+                "attached_image": {   // Empty string if there is no image
+                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                "width": 753,
+                "height": 546
+                },
+                "num_comments": 8,
+                "tags": [
+                "some-tag"
+                ],
+                "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+                "edited": true,
+                "link": "rants/10123/some-strange-text-for-seo",
+                "rt": 1,   // No clue what this is
+                "rc": 7,   // No clue what this is
+                "links": [
+                {
+                    "type": "url",
+                    "url": "https://github.com/User1/SomeRepo",
+                    "short_url": "https://github.com/User...",
+                    "title": "https://github.com/User...",
+                    "start": 278,    // Starting position of the link
+                    "end": 313,      // Ending position of the link
+                    "special": 1     // No clue what this is
                 }
-            }
-            // ....
-        ],
-        "success": true
-    }
-    ```
+                ],
+                "special": true,   // No clue what this is
+                "user_id": 12301,
+                "user_username": "User1",
+                "user_score": 1234,
+                "user_avatar": {
+                "b": "69c9cd",
+                "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
+                },
+                "user_avatar_lg": {
+                "b": "69c9cd",
+                "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
+                },
+                "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+            },
+            "comments": [
+                {
+                    "id": 2639015,
+                    "rant_id": 10123,
+                    "body": "This rant sucks!",
+                    "score": -100,
+                    "created_time": 1591901533,
+                    "vote_state": 0,
+                    "user_id": 5125,
+                    "user_username": "User2",
+                    "user_score": 10000,
+                    "user_avatar": {
+                        "b": "69c9cd",
+                        "i": "v-37_c-3_b-6_g-m_9-1_1-6_16-4_3-13_8-1_7-1_5-1_12-6_17-2_6-2_10-5_2-26_22-2_15-10_11-3_18-2_19-1_4-1.jpg"
+                    }
+                }
+                // ....
+            ],
+            "success": true
+        }
+        ```
 
 ## Get a random rant [GET /devrant/rants/surprise{?app}]
 
@@ -183,54 +188,57 @@ This doesn't work on playground
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "rant": {
-            "id": 20123,
-            "text": "Such random. Much wow",
-            "score": 13,
-            "created_time": 1517755155,
-            "attached_image": {   // Empty string if there is no image
-            "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-            "width": 753,
-            "height": 546
-            },
-            "num_comments": 8,
-            "tags": [
-            "some-tag"
-            ],
-            "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
-            "edited": true,
-            "rt": 1,   // No clue what this is
-            "rc": 7,   // No clue what this is
-            "links": [
-            {
-                "type": "url",
-                "url": "https://github.com/User1/SomeRepo",
-                "short_url": "https://github.com/User...",
-                "title": "https://github.com/User...",
-                "start": 278,    // Starting position of the link
-                "end": 313,      // Ending position of the link
-                "special": 1     // No clue what this is
+    + Attributes (Rant)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "rant": {
+                "id": 20123,
+                "text": "Such random. Much wow",
+                "score": 13,
+                "created_time": 1517755155,
+                "attached_image": {   // Empty string if there is no image
+                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                "width": 753,
+                "height": 546
+                },
+                "num_comments": 8,
+                "tags": [
+                "some-tag"
+                ],
+                "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+                "edited": true,
+                "rt": 1,   // No clue what this is
+                "rc": 7,   // No clue what this is
+                "links": [
+                {
+                    "type": "url",
+                    "url": "https://github.com/User1/SomeRepo",
+                    "short_url": "https://github.com/User...",
+                    "title": "https://github.com/User...",
+                    "start": 278,    // Starting position of the link
+                    "end": 313,      // Ending position of the link
+                    "special": 1     // No clue what this is
+                }
+                ],
+                "special": true,   // No clue what this is
+                "user_id": 12302,
+                "user_username": "User2",
+                "user_score": 123,
+                "user_avatar": {
+                "b": "69c9cd",
+                "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
+                },
+                "user_avatar_lg": {
+                "b": "69c9cd",
+                "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
+                },
+                "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
             }
-            ],
-            "special": true,   // No clue what this is
-            "user_id": 12302,
-            "user_username": "User2",
-            "user_score": 123,
-            "user_avatar": {
-            "b": "69c9cd",
-            "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
-            },
-            "user_avatar_lg": {
-            "b": "69c9cd",
-            "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
-            },
-            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
         }
-    }
-    ```
+        ```
 
 ## Get list of stories [GET /devrant/story-rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
 
@@ -253,44 +261,47 @@ This doesn't work on playground
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "rants": [
-            {
-            "id": 40123,
-            "text": "Bla bla I hate my life, but this is a very long rant fuck yeah!",
-            "score": 123,
-            "created_time": 1518160633,   // When the rant was created
-            "attached_image": {   // Empty string if there is no image
-                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-                "width": 753,
-                "height": 546
-            },
-            "num_comments": 12,
-            "tags": [
-                "some-tag"
-            ],
-            "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
-            "edited": false,
-            "rt": 1,   // No clue what this is
-            "rc": 1,   // No clue what this is
-            "user_id": 12301,
-            "user_username": "User1",
-            "user_score": 1234,
-            "user_avatar": {
-                "b": "2a8b9d",
-                "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg"
-            },
-            "user_avatar_lg": {
-                "b": "2a8b9d",
-                "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png"
-            },
-            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
-            }
-        ]
-    }
-    ```
+    + Attributes (RantFeed)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "rants": [
+                {
+                "id": 40123,
+                "text": "Bla bla I hate my life, but this is a very long rant fuck yeah!",
+                "score": 123,
+                "created_time": 1518160633,   // When the rant was created
+                "attached_image": {   // Empty string if there is no image
+                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                    "width": 753,
+                    "height": 546
+                },
+                "num_comments": 12,
+                "tags": [
+                    "some-tag"
+                ],
+                "vote_state": 0,   // 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote allowed
+                "edited": false,
+                "rt": 1,   // No clue what this is
+                "rc": 1,   // No clue what this is
+                "user_id": 12301,
+                "user_username": "User1",
+                "user_score": 1234,
+                "user_avatar": {
+                    "b": "2a8b9d",
+                    "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg"
+                },
+                "user_avatar_lg": {
+                    "b": "2a8b9d",
+                    "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png"
+                },
+                "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+                }
+            ]
+        }
+        ```
 
 ## Get list of collabs [GET /devrant/collabs{?app,limit,sort,range,skip}]
 
@@ -313,47 +324,50 @@ This doesn't work on playground
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "rants": [
-            {
-            "id": 12311,
-            "text": "devRant-Docs Page [more details]",
-            "score": 1234567,
-            "created_time": 1519068050,
-            "attached_image": {   // Empty string if there is no image
-                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-                "width": 753,
-                "height": 546
-            },
-            "num_comments": 123,
-            "tags": [
-                "some-tag"
-            ],
-            "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
-            "edited": false,
-            "link": "collabs/12311/some-strange-text-for-seo",
-            "rt": 2,  // No clue what this is
-            "rc": 2,  // No clue what this is
-            "c_type": 2,   // 1 = Open source idea, 2 = Existing open source project, 3 = Project idea, 4 = Existing project
-            "c_type_long": "Existing open source project", // Collab type as string (see above)
-            "user_id": 12301,
-            "user_username": "User1",
-            "user_score": 1234568,
-            "user_avatar": {
-                "b": "69c9cd",
-                "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
-            },
-            "user_avatar_lg": {
-                "b": "69c9cd",
-                "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
-            },
-            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
-            }
-        ]
-    }
-    ```
+    + Attributes (array[CollabInFeed])
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "rants": [
+                {
+                "id": 12311,
+                "text": "devRant-Docs Page [more details]",
+                "score": 1234567,
+                "created_time": 1519068050,
+                "attached_image": {   // Empty string if there is no image
+                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                    "width": 753,
+                    "height": 546
+                },
+                "num_comments": 123,
+                "tags": [
+                    "some-tag"
+                ],
+                "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+                "edited": false,
+                "link": "collabs/12311/some-strange-text-for-seo",
+                "rt": 2,  // No clue what this is
+                "rc": 2,  // No clue what this is
+                "c_type": 2,   // 1 = Open source idea, 2 = Existing open source project, 3 = Project idea, 4 = Existing project
+                "c_type_long": "Existing open source project", // Collab type as string (see above)
+                "user_id": 12301,
+                "user_username": "User1",
+                "user_score": 1234568,
+                "user_avatar": {
+                    "b": "69c9cd",
+                    "i": "v-18_c-3_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.jpg"
+                },
+                "user_avatar_lg": {
+                    "b": "69c9cd",
+                    "i": "v-18_c-1_b-6_g-m_9-1_1-3_16-8_3-11_8-4_7-4_5-2_12-3_6-12_10-4_2-18_18-4_4-2_19-3_21-2.png"
+                },
+                "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+                }
+            ]
+        }
+        ```
     
 # Authentication and user [/users/]
 
@@ -541,3 +555,118 @@ This doesn't work on playground
         ]
     }
     ```
+
+# Data Structures
+
+## RantFeed (object)
++ success: true (boolean) - Whether the request was successful
++ rants (array[RantInFeed])                
++ settings (object) - Empty array when not authenticated
+    + notif_state: `1` (string) - Whether notifications are available
+    + notif_token (string)
++ set: `5ee254ee76f3e` (string) - Session hash
++ wrw: 212 (number) - Weekly-Rant Week
++ dpp: 0 (number) - 1 if devRant++, 0 if not devRant++, not set when not authenticated
++ num_notifs: 0 (number) - Not set when not authenticated
++ unread (object) - Not set when not authenticated
+    + total: 0 (number) - Same as num_notifs
++ news (object)
+    + id: 321 (number)
+    + type: `intlink` (string) - Internal Link (intlink) most of the time, not sure what other values are possible
+    + headline: `Weekly Group Rant` (string)
+    + body: `Story of screenshare gone wrong?` (string)
+    + footer: `Add tag 'wk212' to your rant` (string)
+    + height: 200 (number)
+    + action: `grouprant` (string) - What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")
+
+## RantInFeed (object)
++ id: 20123 (number)
++ text: `Bla bla some long rant text with emojis and \n's` (string)
++ score: 123 (number)
++ created_time: 1518160633 (number) - When the rant was created
++ attached_image (object) - Empty string if there is no image
+    + url: `https://img.devrant.com/devrant/rant/imageName.jpg` (string)
+    + width: 753 (number)
+    + height: 546 (number)
++ num_comments: 12 (number)
++ tags (array[string])
++ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ edited: false (boolean)
++ rt: 1 (number) - No clue what this is
++ rc: 1 (number) - No clue what this is
++ user_id: 12301 (number)
++ user_username: `User1` (string)
++ user_score: 1234 (number)
++ user_avatar (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg` (string) - Avatar filename
++ user_avatar_lg (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
++ user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
+
+## Rant (object)
++ id: 20123 (number)
++ text: `Bla bla some long rant text with emojis and \n's` (string)
++ score: 123 (number)
++ created_time: 1518160633 (number) - When the rant was created
++ attached_image (object) - Empty string if there is no image
+    + url: `https://img.devrant.com/devrant/rant/imageName.jpg` (string)
+    + width: 753 (number)
+    + height: 546 (number)
++ num_comments: 12 (number)
++ tags (array[string])
++ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ edited: false (boolean)
++ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
++ rt: 1 (number) - No clue what this is
++ rc: 1 (number) - No clue what this is
++ links (array)
+    + (object)
+        + type: `url` (string) - Only urls are allowed in rants themselves so this should always be url
+        + url: `https://github.com/User1/SomeRepo` (string)
+        + short_url: `https://github.com/User...` (string) - Truncated url
+        + title: `https://github.com/User...` (string)
+        + start: 278 (number) - Starting position of the link
+        + end: 313 (number) - Ending position of the link
+        + special: 1 (number) - No clue what this is
++ special: 1 (number) - No clue what this is
++ user_id: 12301 (number)
++ user_username: `User1` (string)
++ user_score: 1234 (number)
++ user_avatar (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg` (string) - Avatar filename
++ user_avatar_lg (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
++ user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
+
+## CollabInFeed (object)
++ id: 20123 (number)
++ text: `devRant API Docs [more details]` (string)
++ score: 123 (number)
++ created_time: 1518160633 (number) - When the rant was created
++ attached_image (object) - Empty string if there is no image
+    + url: `https://img.devrant.com/devrant/rant/imageName.jpg` (string)
+    + width: 753 (number)
+    + height: 546 (number)
++ num_comments: 12 (number)
++ tags (array[string])
++ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ edited: false (boolean)
++ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
++ rt: 1 (number) - No clue what this is
++ rc: 1 (number) - No clue what this is
++ c_type: 2 (number) - 1 = Open source idea, 2 = Existing open source project, 3 = Project idea, 4 = Existing project
++ c_type_long: `Existing open source project` (string) - Collab type as string (see above)
++ user_id: 12301 (number)
++ user_username: `User1` (string)
++ user_score: 1234 (number)
++ user_avatar (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg` (string) - Avatar filename
++ user_avatar_lg (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
++ user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
