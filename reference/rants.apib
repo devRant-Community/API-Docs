@@ -175,7 +175,9 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    + Attributes (Rant)
+    + Attributes (object)
+        + success: true (boolean)
+        + rant (Rant)
 
     + Body
         ```js
@@ -311,7 +313,9 @@ If provided with keys it will get rants tailored to user
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
 
 + Response 200 (application/json)
-    + Attributes (array[CollabInFeed])
+    + Attributes (object)
+        + success: true (boolean)
+        + rants (array[CollabInFeed])
 
     + Body
         ```js
