@@ -379,7 +379,7 @@ If provided with keys it will get rants tailored to user
     
 # Authentication and user [/users/]
 
-## Get access keys [POST /users/auth-token]
+## Get access keys [POST /users/auth-token{?app,username,password}]
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
@@ -1006,7 +1006,7 @@ If provided with keys it will get rants tailored to user
 + id: 2639015 (number)
 + rand_id: 10123 (number)
 + body: `This rant sucks!` (string)
-+ score: -100 (number)
++ score: 10 (number)
 + created_time: 1591901533 (number)
 + vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
 + user_id: 5125 (number)
