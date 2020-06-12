@@ -378,6 +378,15 @@ This doesn't work on playground
         }
     }
     ```
+
++ Response 400 (application/json)
+    ```js
+    {
+        "success": false,
+        "error": "Invalid login credentials entered. Please try again."
+    }
+    ```
+
 ## Get user notifications [GET /users/me/notif-feed{?app,token_id,token_key,user_id}]
 
 + Parameters
