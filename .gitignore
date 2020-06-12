@@ -1,6 +1,0 @@
-#module files
-node_modules
-pnpm-lock.yaml
-
-#Compiled html for testing
-dist
