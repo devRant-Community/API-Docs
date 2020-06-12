@@ -1,0 +1,20 @@
+## RantFeed (object)
++ success: true (boolean) - Whether the request was successful
++ rants (array[RantInFeed])                
++ settings (object) - Empty array when not authenticated
+    + notif_state: `1` (string) - Whether notifications are available
+    + notif_token (string)
++ set: `5ee254ee76f3e` (string) - Session hash
++ wrw: 212 (number) - Weekly-Rant Week
++ dpp: 0 (number) - 1 if devRant++, 0 if not devRant++, not set when not authenticated
++ num_notifs: 0 (number) - Not set when not authenticated
++ unread (object) - Not set when not authenticated
+    + total: 0 (number) - Same as num_notifs
++ news (object)
+    + id: 321 (number)
+    + type: `intlink` (string) - Internal Link (intlink) most of the time, not sure what other values are possible
+    + headline: `Weekly Group Rant` (string)
+    + body: `Story of screenshare gone wrong?` (string)
+    + footer: `Add tag 'wk212' to your rant` (string)
+    + height: 200 (number)
+    + action: `grouprant` (string) - What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")

@@ -1,0 +1,90 @@
+# Weeklys [/devrant/]
+
+## Get weekly list [GET /devrant/weekly-list{?app}]
+
++ Parameters 
+    + app: 3 (required, number) - App ID parameter
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success":true,
+        "weeks":[
+            {
+                "week":212,
+                "prompt":"Story of screenshare gone wrong?",
+                "date":"6\/8\/20",
+                "num_rants":16
+            },
+            {
+                "week":211,
+                "prompt":"How you'll know you \"made it\" as a dev?",
+                "date":"6\/1\/20",
+                "num_rants":34
+            }
+        ]
+    }
+    ```
+
+## Get weekly list rants [GET /devrant/weekly-rants{?app,week,sort,limit,skip}]
+
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+    + sort: `top` (optional, enum[string])
+        Sort rants
+        + Members
+            + `algo`
+            + `top`
+            + `recent`
+    + limit: 20 (optional, number) - Limit the amount of rants to load. Used for pagination/infinite scroll. Maximum is 50, if more defaults to 20
+    + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "rants": [
+            {
+            "id": 30123,
+            "text": "Got rejected because of dickpick. Oops.",
+            "score": 123,
+            "created_time": 1518160644,   // When the rant was created
+            "attached_image": {   // Empty string if there is no image
+                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                "width": 753,
+                "height": 546
+            },
+            "num_comments": 12,
+            "tags": [
+                "wk90"
+            ],
+            "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+            "edited": false,
+            "rt": 1,   // No clue what this is
+            "rc": 1,   // No clue what this is
+            "user_id": 12301,
+            "user_username": "User1",
+            "user_score": 1234,
+            "user_avatar": {
+                "b": "2a8b9d",
+                "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg"
+            },
+            "user_avatar_lg": {
+                "b": "2a8b9d",
+                "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png"
+            },
+            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+            }
+        ],
+        "settings": [],   // Not sure what this contains
+        "wrw": 90,   // Weekly-Rant Week
+        "news": {
+            "id": 123,
+            "type": "weekly",    // Not sure (Maybe if it's an announcement rant or the weekly rant topic)
+            "headline": "Worst interview rejection?",
+            "footer": "Week 90 Group Rant - Add tag 'wk90' to your rant",
+            "height": 65,
+            "action": "none"     // Not sure (What to do when clicked)
+        }
+    }
+    ```
