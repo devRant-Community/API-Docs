@@ -352,7 +352,7 @@ If provided with keys it will get rants tailored to user
         ]
     }
     ```
-    
+
 # Authentication and user [/users/]
 
 ## Get access keys [POST /users/auth-token{?app,username,password}]
@@ -382,46 +382,6 @@ If provided with keys it will get rants tailored to user
     {
         "success": false,
         "error": "Invalid login credentials entered. Please try again."
-    }
-    ```
-
-## Get user notifications [GET /users/me/notif-feed{?app,token_id,token_key,user_id}]
-
-+ Parameters
-    + app: 3 (required, number) - App ID parameter
-    + token_id (required, number) - Token ID of the user. Used for authentication
-    + token_key (required, string) - Token key of the user. Used for authentication
-    + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
-
-+ Response 200 (application/json)
-    ```js
-    {
-        "success": true
-        "data": {
-            "items": [
-            {
-                "created_time":1591546309,
-                "type":"content_vote",  //Type of ++ (form x_y where x is content/comment and y is vote/discuss)
-                "read":0, //0 = unread, 1 = read
-                "rant_id":2619313,
-                "uid":2451362,
-            },
-            //There is going to be 100 total
-            ]
-            "check_time":1591546309
-            "username_map": {
-            "2451362":'"frogstair", // "notif id": "username"
-            // ...
-            },
-            "unread": {
-            "all": 1,
-            "upvotes": 1,
-            "mentions": 0,
-            "comments": 0,
-            "subs": 0,
-            "total": 1 //Same as all
-            }
-        }
     }
     ```
 
@@ -711,5 +671,68 @@ If provided with keys it will get rants tailored to user
             "height": 65,
             "action": "none"     // Not sure (What to do when clicked)
         }
+    }
+    ```
+
+
+# User interaction [/devrant]
+
+## Get user notifications [GET /users/me/notif-feed{?app,token_id,token_key,user_id}]
+
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+    + token_id (required, number) - Token ID of the user. Used for authentication
+    + token_key (required, string) - Token key of the user. Used for authentication
+    + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true
+        "data": {
+            "items": [
+            {
+                "created_time":1591546309,
+                "type":"content_vote",  //Type of ++ (form x_y where x is content/comment and y is vote/discuss)
+                "read":0, //0 = unread, 1 = read
+                "rant_id":2619313,
+                "uid":2451362,
+            },
+            //There is going to be 100 total
+            ]
+            "check_time":1591546309
+            "username_map": {
+            "2451362":'"frogstair", // "notif id": "username"
+            // ...
+            },
+            "unread": {
+            "all": 1,
+            "upvotes": 1,
+            "mentions": 0,
+            "comments": 0,
+            "subs": 0,
+            "total": 1 //Same as all
+            }
+        }
+    }
+    ```
+
+## Post a rant [POST /devrant/rants{?app,rant,type,token_id,token_key,user_id}]
+
++ Parameters
+    + app: 3 (required, number) - App ID Parameters
+    + rant: `Bla bla bla fuck my life` (required, string) - Text in the rant
+    + type: 3 (required, number) - Type of rant<br>1=rant<br>2=undefined<br>3=joke/meme<br>4=question<br>5=devRant<br>6=random
+    + token_id (optional, number) - Token ID of the user. Used for authentication
+    + token_key (optional, string) - Token key of the user. Used for authentication
+    + user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
+
++ Request (application/x-form-urlencoded)
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "rant_id": 2619313
     }
     ```
