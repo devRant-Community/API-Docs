@@ -1,0 +1,139 @@
+openapi: 3.0.0
+info:
+  title: devRant
+  version: '1.0'
+  contact:
+    name: Skayo
+    url: 'https://skayo.dev'
+    email: contact@skayo.dev
+  license:
+    name: MIT
+servers:
+  - url: 'https://devrant.com/api'
+paths:
+  /devrant/rants:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - rant
+        - devrant
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  rants:
+                    type: array
+                    items: {}
+                  set:
+                    type: string
+                  wrw:
+                    type: integer
+                  dpp:
+                    type: integer
+                  num_notifs:
+                    type: integer
+                  unread:
+                    type: object
+                    properties:
+                      total:
+                        type: integer
+                  news:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      type:
+                        type: string
+                      headline:
+                        type: string
+                      body:
+                        type: string
+                      footer:
+                        type: string
+                      height:
+                        type: integer
+                      action:
+                        type: string
+                  settings:
+                    type: object
+                    properties:
+                      notif_state:
+                        type: string
+                      notif_token:
+                        type: string
+      operationId: get-devrant-rants
+      description: Get list of rants
+      parameters:
+        - schema:
+            type: number
+            minimum: ''
+            default: 3
+          in: query
+          name: app
+          description: App ID parameter
+          required: true
+        - schema:
+            type: string
+            default: algo
+            enum:
+              - algo
+              - top
+              - recent
+          in: query
+          name: sort
+          description: Sort rants
+        - schema:
+            type: string
+            enum:
+              - day
+              - week
+              - month
+              - all
+            default: week
+          in: query
+          name: range
+          description: Time range of the rants to load
+        - schema:
+            type: integer
+            default: 20
+            maximum: 50
+            minimum: 0
+          in: query
+          name: limit
+          description: Limit the amount of rants to load. Used for pagination/infinite scroll
+        - schema:
+            type: integer
+            default: '0'
+            minLength: 0
+          in: query
+          name: skip
+          description: How many rants to skip before loading. Used for pagination/infinite scroll
+components:
+  schemas: {}
+  securitySchemes:
+    token_key:
+      type: apiKey
+      in: query
+      name: Token Key
+      description: Token Key returned from /users/auth-token
+    token_id:
+      name: Token ID
+      type: apiKey
+      in: query
+      description: Token ID returned from /users/auth-token
+    user_id:
+      name: User ID
+      type: apiKey
+      in: query
+      description: User ID returned from /users/auth-token
+security:
+  - token_key: []
+  - token_id: []
+  - user_id: []
