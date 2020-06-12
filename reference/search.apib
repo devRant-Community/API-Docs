@@ -7,45 +7,50 @@
     + term: `find me this` (required, string) - Search term
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "results": [
-            {
-                "id": 30123,
-                "text": "Find me this thing on google please",
-                "score": 123,
-                "created_time": 1487173080,   // When the rant was created
-                "attached_image": {   // Empty string if there is no image
-                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-                    "width": 753,
-                    "height": 546
-                },
-                "num_comments": 12,
-                "tags": [
-                    "fuck",
-                    "penis"
-                ],
-                "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
-                "edited": true,
-                "rt": 1,           // No clue what this is
-                "rc": 1,           // No clue what this is
-                "user_id": 12301,
-                "user_username": "User1",
-                "user_score": 1234,
-                "user_avatar": {
-                    "b": "69c9cd",
-                    "i": "v-18_c-3_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.jpg"
-                },
-                "user_avatar_lg": {
-                    "b": "69c9cd",
-                    "i": "v-18_c-1_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.png"
-                },
-                // ...
-            }
-        ]
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+        + results (array[RantInFeed])
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "results": [
+                {
+                    "id": 30123,
+                    "text": "Find me this thing on google please",
+                    "score": 123,
+                    "created_time": 1487173080,   // When the rant was created
+                    "attached_image": {   // Empty string if there is no image
+                        "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                        "width": 753,
+                        "height": 546
+                    },
+                    "num_comments": 12,
+                    "tags": [
+                        "fuck",
+                        "penis"
+                    ],
+                    "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+                    "edited": true,
+                    "rt": 1,           // No clue what this is
+                    "rc": 1,           // No clue what this is
+                    "user_id": 12301,
+                    "user_username": "User1",
+                    "user_score": 1234,
+                    "user_avatar": {
+                        "b": "69c9cd",
+                        "i": "v-18_c-3_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.jpg"
+                    },
+                    "user_avatar_lg": {
+                        "b": "69c9cd",
+                        "i": "v-18_c-1_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.png"
+                    },
+                    // ...
+                }
+            ]
+        }
+        ```
 
 ## Get list of most used tags [GET /devrant/search/tags{?app}]
 
@@ -53,30 +58,35 @@
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success":true,
-        "tags":[
-            "rant",
-            "linux",
-            "devrant",
-            "java",
-            "javascript",
-            "windows",
-            "android",
-            "js",
-            "fml",
-            "programming",
-            "php",
-            "python",
-            "code",
-            "git",
-            "joke",
-            "wtf",
-            "google",
-            "github",
-            "css",
-            "funny"
-        ]
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+        + tags (array[string])
+
+    + Body
+        ```js
+        {
+            "success":true,
+            "tags":[
+                "rant",
+                "linux",
+                "devrant",
+                "java",
+                "javascript",
+                "windows",
+                "android",
+                "js",
+                "fml",
+                "programming",
+                "php",
+                "python",
+                "code",
+                "git",
+                "joke",
+                "wtf",
+                "google",
+                "github",
+                "css",
+                "funny"
+            ]
+        }
+        ```
