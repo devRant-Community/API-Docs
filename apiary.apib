@@ -561,45 +561,50 @@ If provided with keys it will get rants tailored to user
     + term: `find me this` (required, string) - Search term
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "results": [
-            {
-                "id": 30123,
-                "text": "Find me this thing on google please",
-                "score": 123,
-                "created_time": 1487173080,   // When the rant was created
-                "attached_image": {   // Empty string if there is no image
-                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-                    "width": 753,
-                    "height": 546
-                },
-                "num_comments": 12,
-                "tags": [
-                    "fuck",
-                    "penis"
-                ],
-                "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
-                "edited": true,
-                "rt": 1,           // No clue what this is
-                "rc": 1,           // No clue what this is
-                "user_id": 12301,
-                "user_username": "User1",
-                "user_score": 1234,
-                "user_avatar": {
-                    "b": "69c9cd",
-                    "i": "v-18_c-3_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.jpg"
-                },
-                "user_avatar_lg": {
-                    "b": "69c9cd",
-                    "i": "v-18_c-1_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.png"
-                },
-                // ...
-            }
-        ]
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+        + results (array[RantInFeed])
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "results": [
+                {
+                    "id": 30123,
+                    "text": "Find me this thing on google please",
+                    "score": 123,
+                    "created_time": 1487173080,   // When the rant was created
+                    "attached_image": {   // Empty string if there is no image
+                        "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                        "width": 753,
+                        "height": 546
+                    },
+                    "num_comments": 12,
+                    "tags": [
+                        "fuck",
+                        "penis"
+                    ],
+                    "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+                    "edited": true,
+                    "rt": 1,           // No clue what this is
+                    "rc": 1,           // No clue what this is
+                    "user_id": 12301,
+                    "user_username": "User1",
+                    "user_score": 1234,
+                    "user_avatar": {
+                        "b": "69c9cd",
+                        "i": "v-18_c-3_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.jpg"
+                    },
+                    "user_avatar_lg": {
+                        "b": "69c9cd",
+                        "i": "v-18_c-1_b-6_g-m_9-1_1-2_16-10_3-11_8-1_7-1_5-4_12-2_6-11_10-5_2-14_18-1_4-4_19-2_20-9.png"
+                    },
+                    // ...
+                }
+            ]
+        }
+        ```
 
 ## Get list of most used tags [GET /devrant/search/tags{?app}]
 
@@ -607,33 +612,38 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success":true,
-        "tags":[
-            "rant",
-            "linux",
-            "devrant",
-            "java",
-            "javascript",
-            "windows",
-            "android",
-            "js",
-            "fml",
-            "programming",
-            "php",
-            "python",
-            "code",
-            "git",
-            "joke",
-            "wtf",
-            "google",
-            "github",
-            "css",
-            "funny"
-        ]
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+        + tags (array[string])
+
+    + Body
+        ```js
+        {
+            "success":true,
+            "tags":[
+                "rant",
+                "linux",
+                "devrant",
+                "java",
+                "javascript",
+                "windows",
+                "android",
+                "js",
+                "fml",
+                "programming",
+                "php",
+                "python",
+                "code",
+                "git",
+                "joke",
+                "wtf",
+                "google",
+                "github",
+                "css",
+                "funny"
+            ]
+        }
+        ```
 
 # Weeklys [/devrant/]
 
@@ -643,25 +653,30 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success":true,
-        "weeks":[
-            {
-                "week":212,
-                "prompt":"Story of screenshare gone wrong?",
-                "date":"6\/8\/20",
-                "num_rants":16
-            },
-            {
-                "week":211,
-                "prompt":"How you'll know you \"made it\" as a dev?",
-                "date":"6\/1\/20",
-                "num_rants":34
-            }
-        ]
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+        + weeks (array[Weekly])
+
+    + Body
+        ```js
+        {
+            "success":true,
+            "weeks":[
+                {
+                    "week":212,
+                    "prompt":"Story of screenshare gone wrong?",
+                    "date":"6\/8\/20",
+                    "num_rants":16
+                },
+                {
+                    "week":211,
+                    "prompt":"How you'll know you \"made it\" as a dev?",
+                    "date":"6\/1\/20",
+                    "num_rants":34
+                }
+            ]
+        }
+        ```
 
 ## Get weekly list rants [GET /devrant/weekly-rants{?app,week,sort,limit,skip}]
 
@@ -677,54 +692,57 @@ If provided with keys it will get rants tailored to user
     + skip: 0 (optional, number) - How many rants to skip before loading. Used for pagination/infinite scroll
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "rants": [
-            {
-            "id": 30123,
-            "text": "Got rejected because of dickpick. Oops.",
-            "score": 123,
-            "created_time": 1518160644,   // When the rant was created
-            "attached_image": {   // Empty string if there is no image
-                "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
-                "width": 753,
-                "height": 546
-            },
-            "num_comments": 12,
-            "tags": [
-                "wk90"
+    + Attribute (RantFeed)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "rants": [
+                {
+                "id": 30123,
+                "text": "Got rejected because of dickpick. Oops.",
+                "score": 123,
+                "created_time": 1518160644,   // When the rant was created
+                "attached_image": {   // Empty string if there is no image
+                    "url": "https://img.devrant.com/devrant/rant/imageName.jpg",
+                    "width": 753,
+                    "height": 546
+                },
+                "num_comments": 12,
+                "tags": [
+                    "wk90"
+                ],
+                "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
+                "edited": false,
+                "rt": 1,   // No clue what this is
+                "rc": 1,   // No clue what this is
+                "user_id": 12301,
+                "user_username": "User1",
+                "user_score": 1234,
+                "user_avatar": {
+                    "b": "2a8b9d",
+                    "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg"
+                },
+                "user_avatar_lg": {
+                    "b": "2a8b9d",
+                    "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png"
+                },
+                "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+                }
             ],
-            "vote_state": 0,   // As far as I know: 1=upvoted, -1=downvoted, 0=unvoted, -2=no vote
-            "edited": false,
-            "rt": 1,   // No clue what this is
-            "rc": 1,   // No clue what this is
-            "user_id": 12301,
-            "user_username": "User1",
-            "user_score": 1234,
-            "user_avatar": {
-                "b": "2a8b9d",
-                "i": "v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg"
-            },
-            "user_avatar_lg": {
-                "b": "2a8b9d",
-                "i": "v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png"
-            },
-            "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
+            "settings": [],   // Not sure what this contains
+            "wrw": 90,   // Weekly-Rant Week
+            "news": {
+                "id": 123,
+                "type": "weekly",    // Not sure (Maybe if it's an announcement rant or the weekly rant topic)
+                "headline": "Worst interview rejection?",
+                "footer": "Week 90 Group Rant - Add tag 'wk90' to your rant",
+                "height": 65,
+                "action": "none"     // Not sure (What to do when clicked)
             }
-        ],
-        "settings": [],   // Not sure what this contains
-        "wrw": 90,   // Weekly-Rant Week
-        "news": {
-            "id": 123,
-            "type": "weekly",    // Not sure (Maybe if it's an announcement rant or the weekly rant topic)
-            "headline": "Worst interview rejection?",
-            "footer": "Week 90 Group Rant - Add tag 'wk90' to your rant",
-            "height": 65,
-            "action": "none"     // Not sure (What to do when clicked)
         }
-    }
-    ```
+        ```
 
 # User interaction [/devrant]
 
@@ -737,36 +755,51 @@ If provided with keys it will get rants tailored to user
     + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true
-        "data": {
-            "items": [
-            {
-                "created_time":1591546309,
-                "type":"content_vote",  //Type of ++ (form x_y where x is content/comment and y is vote/discuss)
-                "read":0, //0 = unread, 1 = read
-                "rant_id":2619313,
-                "uid":2451362,
-            },
-            //There is going to be 100 total
-            ]
-            "check_time":1591546309
-            "username_map": {
-            "2451362":'"frogstair", // "notif id": "username"
-            // ...
-            },
-            "unread": {
-            "all": 1,
-            "upvotes": 1,
-            "mentions": 0,
-            "comments": 0,
-            "subs": 0,
-            "total": 1 //Same as all
+    + Attributes (object)
+        + success: true (boolean)
+        + data (object)
+            + items: (array[Notif]) - 100 items in total
+            + check_time: 1591546309 (number)
+            + username_map (object) - Object with key-value pairs where key is notif ID and value is username
+            + unread (object)
+                + all: 1 (number)
+                + upvotes: 1 (number)
+                + mentions: 0 (number)
+                + comments: 0 (number)
+                + subs: 0 (number)
+                + total: 1 (number) - Same as all
+
+    + Body
+        ```js
+        {
+            "success": true
+            "data": {
+                "items": [
+                    {
+                        "created_time":1591546309,
+                        "type":"content_vote",  //Type of ++ (form x_y where x is content/comment and y is vote/discuss)
+                        "read":0, //0 = unread, 1 = read
+                        "rant_id":2619313,
+                        "uid":2451362,
+                    },
+                    //There is going to be 100 total
+                ]
+                "check_time":1591546309
+                "username_map": {
+                    "2451362":'"frogstair", // "notif id": "username"
+                    // ...
+                },
+                "unread": {
+                    "all": 1,
+                    "upvotes": 1,
+                    "mentions": 0,
+                    "comments": 0,
+                    "subs": 0,
+                    "total": 1 //Same as all
+                }
             }
         }
-    }
-    ```
+        ```
 
 ## Post a rant [POST /devrant/rants{?app,rant,type,token_id,token_key,user_id}]
 
@@ -781,12 +814,17 @@ If provided with keys it will get rants tailored to user
 + Request (application/x-form-urlencoded)
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "rant_id": 2619313
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+        + rant_id: 2619313 (number)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "rant_id": 2619313
+        }
+        ```
 
 ## Post a comment [POST /devrant/rants/{id}/comments{?app,comment,token_id,token_key,user_id}]
 
@@ -798,11 +836,15 @@ If provided with keys it will get rants tailored to user
     + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+
+    + Body
+        ```js
+        {
+            "success": true
+        }
+        ```
 
 ## Delete a rant [DELETE /devrant/rants/{id}{?app,token_id,token_key,user_id}]
 
@@ -814,11 +856,15 @@ If provided with keys it will get rants tailored to user
     + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+
+    + Body
+        ```js
+        {
+            "success": true
+        }
+        ```
 
 ## Delete a comment [DELETE /devrant/comments/{id}{?app,token_id,token_key,user_id}]
 
@@ -830,11 +876,15 @@ If provided with keys it will get rants tailored to user
     + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true
-    }
-    ```
+    + Attributes (object)
+        + success: true (boolean)
+
+    + Body
+        ```js
+        {
+            "success": true
+        }
+        ```
 
 
 # Data Structures
@@ -895,7 +945,7 @@ If provided with keys it will get rants tailored to user
     + body: `Story of screenshare gone wrong?` (string)
     + footer: `Add tag 'wk212' to your rant` (string)
     + height: 200 (number)
-    + action: `grouprant` (string) - What to do when clicked, "grouprant" means go to group rants section, not sure what other values are possible (I'm guessing there's "rant")
+    + action: `grouprant` (string) - What to do when clicked, "grouprant" means go to group rants section, "none" means do nothing. Not sure what other values are possible (I'm guessing there's "rant")
 
 ## RantInFeed (object)
 + id: 20123 (number)
@@ -965,3 +1015,53 @@ If provided with keys it will get rants tailored to user
 + user_avatar (object)
     + b: `2a8b9d` (string) - Avatar background color
     + i: `v-37_c-3_b-6_g-m_9-1_16_16-4_3-13_8-1_7-1_5-1_12-6_17-2_6-2_10-5_2-26_22-2_15-10_11-3_18-2_19-1_4-1.jpg` (string) - Avatar filename
+
+## Profile (object)
++ username: `User1` (string)
++ score: 1234 (number)
++ about: `Bla bla I'm a dev.` (string)
++ location: `Idk` (string)
++ created_time: 1514824661 (number) - Time the user joined devRant
++ skills: `No skills :/` (string)
++ github: `User1` (string)
++ website: `www.user1.com` (string)
++ content (object)
+    + rants (array[RantInFeed]) - User's rants
+    + upvoted (array[RantInFeed]) - User's upvoted rants
+    + comments (array[Comment]) - User's comments
+    + favorites (array[RantInFeed]) - User's favorited rants
++ counts (object)
+    + rants: 12 (number)
+    + upvoted: 123 (number)
+    + comments: 12 (number)
+    + favorites: 1 (number)
+    + collabs: 2 (number)
++ avatar (object)
+	+ b: `2a8b9d` (string) - Avatar background color
+	+ i: `v-18_c-1_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.png` (string) - Avatar file name
++ avatar_sm (object)
+	+ b: `2a8b9d` (string) - Avatar background color
+	+ i: `v-18_c-3_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.jpg` (string) - Avatar file name
++ dpp: 0 (number) - Numberic bool indicator if the user is a devRant++ member or not
+
+## Supporter (object)
++ user (object)
+	+ id: 12301 (number)
+	+ name: `User1`
+	+ avatar (object)
+		+ b: `2a8b9d` (string) - Avatar background color
+		+ i: `v-18_c-1_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.png` (string) - Avatar file name
++ start: 1496914102 (number) - Timestamp when the user joined devRant++
+
+## Notif (object)
++ created_time: 1591546309 (number)
++ type: `content_vote` (string) - Type of ++ (form x_y where x is content/comment and y is vote/discuss)
++ read: 0 (number) - 0 = unread, 1 = read
++ rant_id: 2619313 (number)
++ uid: 2451362 (number) - ID of the user that "fired" the notif
+
+## Weekly (object)
++ week: 212 (number)
++ prompt: `Story of screenshare gone wrong?` (string)
++ date: `6/8/20` (string) - Date in format "d/m/yy"
++ num_rants: 16 (number)
