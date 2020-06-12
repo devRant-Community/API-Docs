@@ -372,7 +372,7 @@ If provided with keys it will get rants tailored to user
     
 # Authentication and user [/users/]
 
-## Get access keys [POST /users/auth-token{?app,username,password}]
+## Get access keys [POST /users/auth-token]
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
@@ -409,7 +409,7 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
     + skip: 0 (optional, number) - Amount of content to skip
     + content: `all` (optional, enum[string])
-        Time range of the rants to load
+        Which type of content to load
         + Members
             + `all`
             + `rants`
