@@ -14,6 +14,7 @@ Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair]
 
 Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant)
 
+
 # Rants [/devrant/rants]
 
 ## Get rant feed [GET /devrant/rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
@@ -690,7 +691,6 @@ If provided with keys it will get rants tailored to user
     }
     ```
 
-
 # User interaction [/devrant]
 
 ## Get user notifications [GET /users/me/notif-feed{?app,token_id,token_key,user_id}]
@@ -801,7 +801,45 @@ If provided with keys it will get rants tailored to user
     }
     ```
 
+
 # Data Structures
+
+## Rant (object)
++ id: 20123 (number)
++ text: `Bla bla some long rant text with emojis and \n's` (string)
++ score: 123 (number)
++ created_time: 1518160633 (number) - When the rant was created
++ attached_image (object) - Empty string if there is no image
+    + url: `https://img.devrant.com/devrant/rant/imageName.jpg` (string)
+    + width: 753 (number)
+    + height: 546 (number)
++ num_comments: 12 (number)
++ tags (array[string])
++ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ edited: false (boolean)
++ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
++ rt: 1 (number) - No clue what this is
++ rc: 1 (number) - No clue what this is
++ links (array)
+    + (object)
+        + type: `url` (string) - Only urls are allowed in rants themselves so this should always be url
+        + url: `https://github.com/User1/SomeRepo` (string)
+        + short_url: `https://github.com/User...` (string) - Truncated url
+        + title: `https://github.com/User...` (string)
+        + start: 278 (number) - Starting position of the link
+        + end: 313 (number) - Ending position of the link
+        + special: 1 (number) - No clue what this is
++ special: 1 (number) - No clue what this is
++ user_id: 12301 (number)
++ user_username: `User1` (string)
++ user_score: 1234 (number)
++ user_avatar (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg` (string) - Avatar filename
++ user_avatar_lg (object)
+    + b: `2a8b9d` (string) - Avatar background color
+    + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
++ user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
 
 ## RantFeed (object)
 + success: true (boolean) - Whether the request was successful
@@ -839,43 +877,6 @@ If provided with keys it will get rants tailored to user
 + edited: false (boolean)
 + rt: 1 (number) - No clue what this is
 + rc: 1 (number) - No clue what this is
-+ user_id: 12301 (number)
-+ user_username: `User1` (string)
-+ user_score: 1234 (number)
-+ user_avatar (object)
-    + b: `2a8b9d` (string) - Avatar background color
-    + i: `v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg` (string) - Avatar filename
-+ user_avatar_lg (object)
-    + b: `2a8b9d` (string) - Avatar background color
-    + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
-+ user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
-
-## Rant (object)
-+ id: 20123 (number)
-+ text: `Bla bla some long rant text with emojis and \n's` (string)
-+ score: 123 (number)
-+ created_time: 1518160633 (number) - When the rant was created
-+ attached_image (object) - Empty string if there is no image
-    + url: `https://img.devrant.com/devrant/rant/imageName.jpg` (string)
-    + width: 753 (number)
-    + height: 546 (number)
-+ num_comments: 12 (number)
-+ tags (array[string])
-+ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
-+ edited: false (boolean)
-+ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
-+ rt: 1 (number) - No clue what this is
-+ rc: 1 (number) - No clue what this is
-+ links (array)
-    + (object)
-        + type: `url` (string) - Only urls are allowed in rants themselves so this should always be url
-        + url: `https://github.com/User1/SomeRepo` (string)
-        + short_url: `https://github.com/User...` (string) - Truncated url
-        + title: `https://github.com/User...` (string)
-        + start: 278 (number) - Starting position of the link
-        + end: 313 (number) - Ending position of the link
-        + special: 1 (number) - No clue what this is
-+ special: 1 (number) - No clue what this is
 + user_id: 12301 (number)
 + user_username: `User1` (string)
 + user_score: 1234 (number)
