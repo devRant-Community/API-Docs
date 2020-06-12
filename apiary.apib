@@ -8,6 +8,8 @@ Here you will find documentation for all known endpoints
 **Note:**<br>
 All *POST* requests are done with header application/x-form-urlencoded, API blueprint does not support *POST* request documentation yet
 
+***POST requests will not work in playground***
+
 Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair](https://github.com/frogstair)
 
 Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant)
@@ -723,9 +725,9 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID Parameters
     + rant: `Bla bla bla fuck my life` (required, string) - Text in the rant
     + type: 3 (required, number) - Type of rant<br>1=rant<br>2=undefined<br>3=joke/meme<br>4=question<br>5=devRant<br>6=random
-    + token_id (optional, number) - Token ID of the user. Used for authentication
-    + token_key (optional, string) - Token key of the user. Used for authentication
-    + user_id (optional, number) - ID of the user on whose behalf the action is done. Used for authentication
+    + token_id (required, number) - Token ID of the user. Used for authentication
+    + token_key (required, string) - Token key of the user. Used for authentication
+    + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
 
 + Request (application/x-form-urlencoded)
 
@@ -734,5 +736,21 @@ If provided with keys it will get rants tailored to user
     {
         "success": true,
         "rant_id": 2619313
+    }
+    ```
+
+## Post a comment [POST /devrant/rants/{id}/comments{?app,comment,token_id,token_key,user_id}]
+
++ Parameters
+    + app: 3 (required, number) - App ID Parameters
+    + comment: `This rant sucks!` (required, string) - Comment text
+    + token_id (required, number) - Token ID of the user. Used for authentication
+    + token_key (required, string) - Token key of the user. Used for authentication
+    + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true
     }
     ```
