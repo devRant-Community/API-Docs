@@ -361,8 +361,8 @@ This doesn't work on playground
 
 + Parameters
     + app: 3 (required, number) - App ID parameter
-    + username: `` (required, string) - Username to login with
-    + password: `` (required, string) - Password to login with
+    + username (required, string) - Username to login with
+    + password (required, string) - Password to login with
 
 + Request (application/x-form-urlencoded)
 
@@ -414,6 +414,71 @@ This doesn't work on playground
             "subs": 0,
             "total": 1 //Same as all
             }
+        }
+    }
+    ```
+
+## Get user information [GET /users/{id}{?app,skip,content}]
+
++ Parameters
+    + id (required, number) - User ID
+    + app: 3 (required, number) - App ID parameter
+    + skip: 0 (optional, number) - Amount of content to skip
+    + content: `all` (optional, enum[string])
+        Time range of the rants to load
+        + Members
+            + `all`
+            + `rants`
+            + `upvoted`
+            + `comments`
+            + `favorites`
+            + `collabs`
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "profile": {
+            "username": "User1",
+            "score": 1234,
+            "about": "Bla bla I'm a dev.",
+            "location": "Idk",
+            "created_time": 1514824661,      // Time the user joined devRant
+            "skills": "No skills :/",
+            "github": "User1",
+            "website": "www.user1.com",
+            "content": {
+            "content": {
+                "rants": [
+                // Rants ...
+                ],
+                "upvoted": [
+                // Upvoted Rants...
+                ],
+                "comments": [
+                // Comments...
+                ],
+                "favorites": [
+                // Favorited Rants...
+                ]
+            },
+            "counts": {
+                "rants": 12,
+                "upvoted": 123,
+                "comments": 12,
+                "favorites": 1,
+                "collabs": 2
+            }
+            },
+            "avatar": {
+            "b": "2a8b9d",
+            "i": "v-18_c-1_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.png"
+            },
+            "avatar_sm": {
+            "b": "2a8b9d",
+            "i": "v-18_c-3_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.jpg"
+            },
+            "dpp": 0       // Bool indicator if the user is a devRant++ Member or not
         }
     }
     ```
