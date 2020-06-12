@@ -5,6 +5,9 @@ HOST: https://devrant.com/api
 Welcome to the unofficial devRant API Documentation!
 Here you will find documentation for all known endpoints
 
+**Note:**<br>
+All *POST* requests are done with header application/x-form-urlencoded, API blueprint does not support *POST* request documentation yet
+
 Documentation was written by [@Skayo](https://github.com/Skayo) and [@frogstair](https://github.com/frogstair)
 
 Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant)
@@ -12,7 +15,7 @@ Find an awesome-list [here](https://github.com/devRant-Community/awesome-devrant
 # Rants [/devrant/rants]
 
 ## Get rant feed [GET /devrant/rants{?app,limit,sort,range,skip,token_id,token_key,user_id}]
-Get rant feed
+Get rant feed<br>
 If provided with keys it will get rants tailored to user
 
 + Parameters
@@ -349,5 +352,28 @@ This doesn't work on playground
             "user_dpp": 1    // Bool indicator if the user is a devRant++ Member or not
             }
         ]
+    }
+    ```
+    
+# Authentication [/users/]
+
+## Get access keys [POST /users/auth-token]
+
++ Parameters
+    + username: `` (required, string) - Username to login with
+    + password: `` (required, string) - Password to login with
+
++ Request (application/x-form-urlencoded)
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "auth-token": {
+            "id": 6712386,
+            "key": tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M,
+            "expire_time": 6712386,
+            "user_id": 1085040
+        }
     }
     ```
