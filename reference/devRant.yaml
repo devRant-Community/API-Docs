@@ -13,7 +13,7 @@ servers:
 paths:
   /devrant/rants:
     get:
-      summary: Your GET endpoint
+      summary: Get list of rants
       tags:
         - rant
         - devrant
@@ -68,8 +68,10 @@ paths:
                         type: string
                       notif_token:
                         type: string
+              examples:
+                Example: {}
       operationId: get-devrant-rants
-      description: Get list of rants
+      description: ''
       parameters:
         - schema:
             type: number
