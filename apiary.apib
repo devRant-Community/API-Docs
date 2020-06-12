@@ -491,3 +491,17 @@ This doesn't work on playground
         }
     }
     ```
+
+## Get user ID [GET /get-user-id{?app,username}]
+
++ Parameters
+    + app: 3 (required, number) - App ID parameter
+    + username (required, string) - User username
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true,
+        "user_id": 12301
+    }
+    ```
