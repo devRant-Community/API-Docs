@@ -825,6 +825,22 @@ If provided with keys it will get rants tailored to user
     }
     ```
 
+## Delete a comment [DELETE /devrant/comments/{id}{?app,token_id,token_key,user_id}]
+
++ Parameters
+    + id (required, number) - ID of the comment to delete
+    + app: 3 (required, number) - App ID Parameters
+    + token_id (required, number) - Token ID of the user. Used for authentication
+    + token_key (required, string) - Token key of the user. Used for authentication
+    + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
+
++ Response 200 (application/json)
+    ```js
+    {
+        "success": true
+    }
+    ```
+
 # Data Structures
 
 ## RantFeed (object)
