@@ -10,25 +10,39 @@
 + Request (application/x-form-urlencoded)
 
 + Response 200 (application/json)
-    ```js
-    {
-        "success": true,
-        "auth-token": {
-            "id": 6712386,
-            "key": tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M,
-            "expire_time": 6712386,
-            "user_id": 1085040
+    + Attributes (object)
+        + success: `true` (boolean)
+        + auth_token (object)
+            + id: 6712386 (number)
+            + key: `tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M` (string)
+            + expire_time: 6712386 (number)
+            + user_id: 1085040 (number)
+
+    + Body
+        ```js
+        {
+            "success": true,
+            "auth_token": {
+                "id": 6712386,
+                "key": "tD5qeCHb6qvvfU4dLpFEWPL7YDNjA4hz7caGLW7M",
+                "expire_time": 6712386,
+                "user_id": 1085040
+            }
         }
-    }
-    ```
+        ```
 
 + Response 400 (application/json)
-    ```js
-    {
-        "success": false,
-        "error": "Invalid login credentials entered. Please try again."
-    }
-    ```
+    + Attributes (object)
+        + success: `true` (boolean)
+        + error: `Invalid login credentials entered. Please try again.` (string)
+
+    + Body
+        ```js
+        {
+            "success": false,
+            "error": "Invalid login credentials entered. Please try again."
+        }
+        ```
 
 ## Get user information [GET /users/{id}{?app,skip,content}]
 

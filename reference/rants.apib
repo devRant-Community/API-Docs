@@ -95,7 +95,10 @@ If provided with keys it will get rants tailored to user
     + app: 3 (required, number) - App ID parameter
 
 + Response 200 (application/json)
-    + Attributes (Rant)
+    + Attributes (object)
+        + rant (Rant)
+        + comments (array[Comment])
+        + success: `true` (boolean)
 
     + Body
         ```js
