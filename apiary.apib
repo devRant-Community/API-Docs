@@ -519,7 +519,15 @@ If provided with keys it will get rants tailored to user
 
 + Response 200 (application/json)
     + Attributes (object)
-        + items: (array[Supporter])
+        + items: (array)
+            + (object)
+                + user (object)
+                    + id: 12301 (number)
+                    + name: `User1`
+                    + avatar (object)
+                        + b: `2a8b9d` (string) - Avatar background color
+                        + i: `v-18_c-1_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.png` (string) - Avatar file name
+                + start: 1496914102 (number) - Timestamp when the user joined devRant++
 
     + Body
         ```js
@@ -655,7 +663,12 @@ If provided with keys it will get rants tailored to user
 + Response 200 (application/json)
     + Attributes (object)
         + success: true (boolean)
-        + weeks (array[Weekly])
+        + weeks (array)
+            + (object)
+                + week: 212 (number)
+                + prompt: `Story of screenshare gone wrong?` (string)
+                + date: `6/8/20` (string) - Date in format "d/m/yy"
+                + num_rants: 16 (number)
 
     + Body
         ```js
@@ -758,7 +771,21 @@ If provided with keys it will get rants tailored to user
     + Attributes (object)
         + success: true (boolean)
         + data (object)
-            + items: (array[Notif]) - 100 items in total
+            + items: (array) - 100 items in total
+                + (object)
+                    + created_time: 1591546309 (number)
+                    + type: `content_vote` (enum[string])
+                        Type of notif
+                        + Members
+                            + `comment_vote`
+                            + `comment_content`
+                            + `comment_mention`
+                            + `comment_discuss`
+                            + `content_vote`
+                            + `rant_sub`
+                    + read: 0 (number) - 0 = unread, 1 = read
+                    + rant_id: 2619313 (number)
+                    + uid: 2451362 (number) - ID of the user that "fired" the notif
             + check_time: 1591546309 (number)
             + username_map (object) - Object with key-value pairs where key is notif ID and value is username
             + unread (object)
@@ -806,7 +833,15 @@ If provided with keys it will get rants tailored to user
 + Parameters
     + app: 3 (required, number) - App ID Parameters
     + rant: `Bla bla bla fuck my life` (required, string) - Text in the rant
-    + type: 3 (required, number) - Type of rant<br>1=rant<br>2=undefined<br>3=joke/meme<br>4=question<br>5=devRant<br>6=random
+    + type: 3 (required, enum[number])
+        Type of rant
+        + Members
+            + 1 - Rant
+            + 2 - Undefined
+            + 3 - Joke/Meme
+            + 4 - Question
+            + 5 - devRant
+            + 6 - Random
     + token_id (required, number) - Token ID of the user. Used for authentication
     + token_key (required, string) - Token key of the user. Used for authentication
     + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication
@@ -900,9 +935,14 @@ If provided with keys it will get rants tailored to user
     + height: 546 (number)
 + num_comments: 12 (number)
 + tags (array[string])
-+ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ vote_state: 0 (enum[number])
+    + Members
+        + 1 - Upvoted
+        + -1 - Downvoted
+        + 0 - Unvoted
+        + -2 - No vote allowed
 + edited: false (boolean)
-+ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
++ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc. First part can be "rants" or "collabs"
 + rt: 1 (number) - No clue what this is
 + rc: 1 (number) - No clue what this is
 + links (array)
@@ -915,6 +955,11 @@ If provided with keys it will get rants tailored to user
         + end: 313 (number) - Ending position of the link
         + special: 1 (number) - No clue what this is
 + special: 1 (number) - No clue what this is
++ c_type_long: `Existing open source project` (string) - Only if collab.
++ c_description: `Jungla is an alternative to GraphQL. Bla bla bla help pls` (string) - Only if collab.
++ c_tech_stack: `NodeJS` (string) - Only if collab.
++ c_team_size: `2` (string) - Only if collab.
++ c_url: `https://github.com/crazywolf132/Jungla` (string) - Only if collab.
 + user_id: 12301 (number)
 + user_username: `User1` (string)
 + user_score: 1234 (number)
@@ -945,7 +990,12 @@ If provided with keys it will get rants tailored to user
     + body: `Story of screenshare gone wrong?` (string)
     + footer: `Add tag 'wk212' to your rant` (string)
     + height: 200 (number)
-    + action: `grouprant` (string) - What to do when clicked, "grouprant" means go to group rants section, "none" means do nothing. Not sure what other values are possible (I'm guessing there's "rant")
+    + action: `grouprant` (enum[string])
+        What to do when clicked
+        + Members
+            + `grouprant` - Go to group rants section
+            + `none` - Do nothing
+            + `rant` - Go to a rant (Not confirmed if actually exists!)
 
 ## RantInFeed (object)
 + id: 20123 (number)
@@ -957,40 +1007,25 @@ If provided with keys it will get rants tailored to user
     + width: 753 (number)
     + height: 546 (number)
 + num_comments: 12 (number)
-+ tags (array[string])
-+ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
-+ edited: false (boolean)
-+ rt: 1 (number) - No clue what this is
-+ rc: 1 (number) - No clue what this is
-+ user_id: 12301 (number)
-+ user_username: `User1` (string)
-+ user_score: 1234 (number)
-+ user_avatar (object)
-    + b: `2a8b9d` (string) - Avatar background color
-    + i: `v-18_c-3_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.jpg` (string) - Avatar filename
-+ user_avatar_lg (object)
-    + b: `2a8b9d` (string) - Avatar background color
-    + i: `v-18_c-1_b-4_g-m_9-1_1-2_16-3_3-3_8-3_7-3_5-4_12-2_6-7_10-9_2-48_15-11_18-4_4-4_19-3_20-14.png` (string) - Avatar filename
-+ user_dpp: 1 (number) - 1 if user is devRant++, 0 if not devRant++
-
-## CollabInFeed (object)
-+ id: 20123 (number)
-+ text: `devRant API Docs [more details]` (string)
-+ score: 123 (number)
-+ created_time: 1518160633 (number) - When the rant was created
-+ attached_image (object) - Empty string if there is no image
-    + url: `https://img.devrant.com/devrant/rant/imageName.jpg` (string)
-    + width: 753 (number)
-    + height: 546 (number)
-+ num_comments: 12 (number)
-+ tags (array[string])
-+ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ tags (array[string]) - List of tags. First tag is post type (rant, undefined, joke/meme, question, devRant, random, collab)
++ vote_state: 0 (enum[number])
+	+ Members
+		+ 1 - Upvoted
+		+ -1 - Downvoted
+		+ 0 - Unvoted
+		+ -2 - No vote allowed
 + edited: false (boolean)
 + link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
 + rt: 1 (number) - No clue what this is
 + rc: 1 (number) - No clue what this is
-+ c_type: 2 (number) - 1 = Open source idea, 2 = Existing open source project, 3 = Project idea, 4 = Existing project
-+ c_type_long: `Existing open source project` (string) - Collab type as string (see above)
++ c_type: 2 (enum[number])
+    Only if collab.
+    + Members
+        + 1 - Open source idea
+        + 2 - Existing open source project
+        + 3 - Project idea
+        + 4 - Existing project
++ c_type_long: `Existing open source project` (string) - Only if collab. Collab type as string (see above)
 + user_id: 12301 (number)
 + user_username: `User1` (string)
 + user_score: 1234 (number)
@@ -1008,7 +1043,12 @@ If provided with keys it will get rants tailored to user
 + body: `This rant sucks!` (string)
 + score: 10 (number)
 + created_time: 1591901533 (number)
-+ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ vote_state: 0 (enum[number])
+	+ Members
+		+ 1 - Upvoted
+		+ -1 - Downvoted
+		+ 0 - Unvoted
+		+ -2 - No vote allowed
 + user_id: 5125 (number)
 + user_username: `User2` (string)
 + user_score: 10000 (number)
@@ -1042,26 +1082,4 @@ If provided with keys it will get rants tailored to user
 + avatar_sm (object)
     + b: `2a8b9d` (string) - Avatar background color
     + i: `v-18_c-3_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.jpg` (string) - Avatar file name
-+ dpp: 0 (number) - Numberic bool indicator if the user is a devRant++ member or not
-
-## Supporter (object)
-+ user (object)
-    + id: 12301 (number)
-    + name: `User1`
-    + avatar (object)
-        + b: `2a8b9d` (string) - Avatar background color
-        + i: `v-18_c-1_b-4_g-m_9-1_1-1_16-7_3-1_8-1_7-1_5-1_12-1_6-16_10-6_2-27_11-3_18-2_4-1_19-1.png` (string) - Avatar file name
-+ start: 1496914102 (number) - Timestamp when the user joined devRant++
-
-## Notif (object)
-+ created_time: 1591546309 (number)
-+ type: `content_vote` (string) - Type of ++ (form x_y where x is content/comment and y is vote/discuss)
-+ read: 0 (number) - 0 = unread, 1 = read
-+ rant_id: 2619313 (number)
-+ uid: 2451362 (number) - ID of the user that "fired" the notif
-
-## Weekly (object)
-+ week: 212 (number)
-+ prompt: `Story of screenshare gone wrong?` (string)
-+ date: `6/8/20` (string) - Date in format "d/m/yy"
-+ num_rants: 16 (number)
++ dpp: 0 (number) - Numeric bool indicator if the user is a devRant++ member or not
