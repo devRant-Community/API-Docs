@@ -12,7 +12,21 @@
     + Attributes (object)
         + success: true (boolean)
         + data (object)
-            + items: (array[Notif]) - 100 items in total
+            + items: (array) - 100 items in total
+                + (object)
+                    + created_time: 1591546309 (number)
+                    + type: `content_vote` (enum[string])
+                        Type of notif
+                        + Members
+                            + `comment_vote`
+                            + `comment_content`
+                            + `comment_mention`
+                            + `comment_discuss`
+                            + `content_vote`
+                            + `rant_sub`
+                    + read: 0 (number) - 0 = unread, 1 = read
+                    + rant_id: 2619313 (number)
+                    + uid: 2451362 (number) - ID of the user that "fired" the notif
             + check_time: 1591546309 (number)
             + username_map (object) - Object with key-value pairs where key is notif ID and value is username
             + unread (object)
@@ -60,7 +74,15 @@
 + Parameters
     + app: 3 (required, number) - App ID Parameters
     + rant: `Bla bla bla fuck my life` (required, string) - Text in the rant
-    + type: 3 (required, number) - Type of rant<br>1=rant<br>2=undefined<br>3=joke/meme<br>4=question<br>5=devRant<br>6=random
+    + type: 3 (required, enum[number])
+        Type of rant
+        + Members
+            + 1 - Rant
+            + 2 - Undefined
+            + 3 - Joke/Meme
+            + 4 - Question
+            + 5 - devRant
+            + 6 - Random
     + token_id (required, number) - Token ID of the user. Used for authentication
     + token_key (required, string) - Token key of the user. Used for authentication
     + user_id (required, number) - ID of the user on whose behalf the action is done. Used for authentication

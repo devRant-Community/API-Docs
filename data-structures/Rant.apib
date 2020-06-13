@@ -9,9 +9,14 @@
     + height: 546 (number)
 + num_comments: 12 (number)
 + tags (array[string])
-+ vote_state: 0 (number) - 1 = upvoted, -1 = downvoted, 0 = unvoted, -2 = no vote allowed
++ vote_state: 0 (enum[number])
+    + Members
+        + 1 - Upvoted
+        + -1 - Downvoted
+        + 0 - Unvoted
+        + -2 - No vote allowed
 + edited: false (boolean)
-+ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc
++ link: `rants/10123/some-strange-text-for-seo` (string) - Link to rant for social share etc. First part can be "rants" or "collabs"
 + rt: 1 (number) - No clue what this is
 + rc: 1 (number) - No clue what this is
 + links (array)
@@ -24,6 +29,11 @@
         + end: 313 (number) - Ending position of the link
         + special: 1 (number) - No clue what this is
 + special: 1 (number) - No clue what this is
++ c_type_long: `Existing open source project` (string) - Only if collab.
++ c_description: `Jungla is an alternative to GraphQL. Bla bla bla help pls` (string) - Only if collab.
++ c_tech_stack: `NodeJS` (string) - Only if collab.
++ c_team_size: `2` (string) - Only if collab.
++ c_url: `https://github.com/crazywolf132/Jungla` (string) - Only if collab.
 + user_id: 12301 (number)
 + user_username: `User1` (string)
 + user_score: 1234 (number)
